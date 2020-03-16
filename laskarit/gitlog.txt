@@ -1,3 +1,5 @@
+GitLog laskareita varten:
+
 commit 6d3bcb8a1baad7ef1a810372b33fd9949f92ee32
 Author: Elma Nevala <elma.nevala@helsinki.fi>
 Date:   Mon Mar 16 11:51:07 2020 +0200
