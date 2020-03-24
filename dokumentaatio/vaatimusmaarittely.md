@@ -13,7 +13,7 @@ Ainostaan yksi käyttäjärooli eli pelaajat. Top-listalle päästäessä valita
 
 Sovellus koostuu alustavasti neljästä eri näkymästä.
 
-[kuva]
+![alt-text](https://raw.githubusercontent.com/elmanevala/ot-harjoitustyo/master/dokumentaatio/kayttoliittymaluonnos.jpg)
 
 
 ## Perusversion toiminnallisuudet
