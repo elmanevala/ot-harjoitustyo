@@ -16,6 +16,11 @@ Harjoitustyö kursille ohjelmistotekniikka.
 * [Viikko2](https://github.com/elmanevala/ot-harjoitustyo/tree/master/laskarit/viikko2)
 * Testien harjoittelua
 
+### Viikko 3
+
+* [Viikko3](https://github.com/elmanevala/ot-harjoitustyo/tree/master/laskarit/viikko3)
+* Luokka- ja sekvenssikaavioita
+
 ## Dokumentaatiota
 
 * [Vaatimusmäärittely](https://github.com/elmanevala/ot-harjoitustyo/blob/master/dokumentaatio/vaatimusmaarittely.md)
