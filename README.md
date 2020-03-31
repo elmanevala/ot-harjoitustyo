@@ -1,25 +1,32 @@
-# Harjoitustyö
+# Ristinolla
 
-Harjoitustyö kursille ohjelmistotekniikka.
+Harjoitustyö kursille ohjelmistotekniikka. Sovelluksella voi pelata ristinollaa kaveria tai vihollista vastaan yhdellä koneella. Käyttäjä voi itse päättää peliruudukon koon ja kuinka pitkä coittirivin tulee olla.
 
-## Laksarit
+## Huom
 
-### Viikko1
+* Pelin käyttöliittymä toimii valikon osalta, mutta pelin siirroista tulostuu tiedot syötteenä.
 
-* [komentorivi.txt](https://github.com/elmanevala/ot-harjoitustyo/blob/master/laskarit/komentorivi.txt)
-* [gitlog.txt](https://github.com/elmanevala/ot-harjoitustyo/blob/master/laskarit/gitlog.txt)
-* GitHub harjoittelua
+## Komentorivitoiminnot
 
-### Viikko2
+### Testaus
 
-* [testikattavuus.png](https://github.com/elmanevala/ot-harjoitustyo/blob/master/laskarit/viikko2/testikattavuus.png)
-* [Viikko2](https://github.com/elmanevala/ot-harjoitustyo/tree/master/laskarit/viikko2)
-* Testien harjoittelua
+ Testit suoritetaan komennolla
+ ```
+  mvn test
+ ´´´
 
-### Viikko 3
+ Testikattavuusraportti luodaan komennolla
+ ```
+  mvn test jacoco:report
+ ´´´
 
-* [Viikko3](https://github.com/elmanevala/ot-harjoitustyo/tree/master/laskarit/viikko3)
-* Luokka- ja sekvenssikaavioita
+### Ohjelman suorittaminen
+
+ Sovellusta voi käyttää terminaalin kautta komennolla
+ ```
+  mvn compile exec:java -Dexec.mainClass=ristinollaapp.main.Main
+ ´´´ 
+ 
 
 ## Dokumentaatiota
 
