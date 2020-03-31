@@ -1,6 +1,6 @@
 # Ristinolla
 
-Harjoitustyö kursille ohjelmistotekniikka. Sovelluksella voi pelata ristinollaa kaveria tai vihollista vastaan yhdellä koneella. Käyttäjä voi itse päättää peliruudukon koon ja kuinka pitkä coittirivin tulee olla.
+Harjoitustyö kursille ohjelmistotekniikka. Sovelluksella voi pelata ristinollaa kaveria tai vihollista vastaan yhdellä koneella. Käyttäjä voi itse päättää peliruudukon koon ja kuinka pitkä voittirivin tulee olla.
 
 ## Huom
 
@@ -19,6 +19,7 @@ Harjoitustyö kursille ohjelmistotekniikka. Sovelluksella voi pelata ristinollaa
  ```
   mvn test jacoco:report
  ```
+
 
 ### Ohjelman suorittaminen
 
