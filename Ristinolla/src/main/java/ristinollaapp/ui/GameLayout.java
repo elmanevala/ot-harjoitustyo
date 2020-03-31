@@ -21,18 +21,17 @@ public class GameLayout {
 
     private BorderPane gameLayout;
     private Grid gamegrid;
-    private String vuoro;
 
     public GameLayout(int size) {
         this.gameLayout = new BorderPane();
         this.gamegrid = new Grid(size);
-        this.vuoro = "X";
 
         createLayout();
     }
 
     public void createLayout() {
-        Label turn = new Label("Vuoro: " + this.vuoro);
+        String vuoro = gamegrid.getVuoro();
+        Label turn = new Label("Vuoro: " + vuoro);
         turn.setFont(new Font("Arial", 20));
 
         gameLayout.setAlignment(turn, Pos.CENTER);
@@ -48,15 +47,5 @@ public class GameLayout {
     public BorderPane getLayout() {
         return gameLayout;
     }
-    
-    public void setVuoro(){
-        if (this.vuoro.equals("X")){
-            this.vuoro = "0";
-        } else{
-            this.vuoro = "X";
-        }
-        
-    }
-            
 
 }
