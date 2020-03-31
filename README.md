@@ -10,22 +10,22 @@ Harjoitustyö kursille ohjelmistotekniikka. Sovelluksella voi pelata ristinollaa
 
 ### Testaus
 
- Testit suoritetaan komennolla
+ Testit suoritetaan komennolla:
  ```
   mvn test
- ´´´
+ ```
 
- Testikattavuusraportti luodaan komennolla
+ Testikattavuusraportti luodaan komennolla:
  ```
   mvn test jacoco:report
- ´´´
+ ```
 
 ### Ohjelman suorittaminen
 
- Sovellusta voi käyttää terminaalin kautta komennolla
+ Sovellusta voi käyttää terminaalin kautta komennolla:
  ```
   mvn compile exec:java -Dexec.mainClass=ristinollaapp.main.Main
- ´´´ 
+ ``` 
  
 
 ## Dokumentaatiota
