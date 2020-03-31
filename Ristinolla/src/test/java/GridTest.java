@@ -5,7 +5,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
-import ristinollaapp.domain.Grid;
+import ristinollaapp.ui.GridUi;
 import ristinollaapp.ui.StartMenu;
 
 public class GridTest {
@@ -36,10 +36,12 @@ public class GridTest {
     
     @Test
     public void XHasFirstTurn(){
-        Grid grid = new Grid(3);
+        GridUi grid = new GridUi(3);
         
         assertEquals("X", grid.getVuoro());
     }
+    
+    
 
     @Test
     public void hello() {

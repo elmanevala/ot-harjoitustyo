@@ -1,6 +1,5 @@
 package ristinollaapp.ui;
 
-import ristinollaapp.domain.Grid;
 
 import java.util.ArrayList;
 import javafx.application.Application;
@@ -20,11 +19,11 @@ import javafx.stage.Stage;
 public class GameLayout {
 
     private BorderPane gameLayout;
-    private Grid gamegrid;
+    private GridUi gamegrid;
 
     public GameLayout(int size) {
         this.gameLayout = new BorderPane();
-        this.gamegrid = new Grid(size);
+        this.gamegrid = new GridUi(size);
 
         createLayout();
     }
