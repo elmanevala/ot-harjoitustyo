@@ -27,7 +27,18 @@ Harjoitustyö kursille ohjelmistotekniikka. Sovelluksella voi pelata ristinollaa
  ```
   mvn compile exec:java -Dexec.mainClass=ristinollaapp.main.Main
  ``` 
- 
+
+### Jar-ohjelma
+
+ Ohjelman luominen
+ ```
+ mvn package
+ ```
+
+ Jar ohjelman suorittaminen target-kansion sisällä
+ ```
+ java -jar Ristinolla-1.0-SNAPSHOT.jar
+ ```
 
 ## Dokumentaatiota
 
