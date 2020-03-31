@@ -30,18 +30,18 @@ public class StartMenu {
 
     public void createLayout() {
 
-        startMenu.setPrefSize(400, 400);
+        startMenu.setPrefSize(500, 500);
         Insets insets = new Insets(20);
 
         Label titel = new Label("Tervetuloa pelaamaan ristinollaa!");
         titel.setFont(new Font("Arial", 20));
 
         VBox textFieldLayout = new VBox(8);
-        Label instructions = new Label("Valitse ruudukon koko ja voittorivin pituus: ");
-        TextField gridSize = new TextField("Ruudukon koko (3–7)");
-        gridSize.setMaxWidth(100);
-        TextField rowSize = new TextField("Voittorivin pituus");
-        rowSize.setMaxWidth(100);
+        Label instructions = new Label("Kirjoita ruudukon koko ja voittorivin pituus. \n   Voittorivi ei voi olla ruudukkoa isompi!");
+        TextField gridSize = new TextField("koko (3–7)");
+        gridSize.setMaxWidth(115);
+        TextField rowSize = new TextField("pituus (3–MAX)");
+        rowSize.setMaxWidth(115);
         textFieldLayout.setAlignment(Pos.CENTER);
         textFieldLayout.getChildren().addAll(instructions, gridSize, rowSize);
 
