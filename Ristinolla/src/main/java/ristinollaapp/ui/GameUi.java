@@ -22,14 +22,16 @@ public class GameUi extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        Button nappi = new Button("Tämä on nappi");
 
-        FlowPane komponenttiryhma = new FlowPane();
-        komponenttiryhma.getChildren().add(nappi);
+        stage.setTitle("Ristinolla");
 
-        Scene nakyma = new Scene(komponenttiryhma);
+        StartMenu startmenu = new StartMenu();
+        BorderPane layout = startmenu.getStartMenuLayout();
 
+        Scene nakyma = new Scene(layout);
         stage.setScene(nakyma);
         stage.show();
+
     }
+
 }

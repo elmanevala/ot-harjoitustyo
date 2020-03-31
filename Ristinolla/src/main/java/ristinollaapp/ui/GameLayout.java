@@ -1,6 +1,8 @@
 
 package ristinollaapp.ui;
 
+import ristinollaapp.domain.Grid;
+
 import java.util.ArrayList;
 import javafx.application.Application;
 import javafx.geometry.Insets;
@@ -15,5 +17,18 @@ import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 public class GameLayout {
+    
+    private HBox gameLayout;
+    private Grid gamegrid;
+    
+    public GameLayout(int size){
+        this.gameLayout = new HBox();
+        this.gamegrid = new Grid(size);
+    }
+    
+    public HBox getLayout(){
+        return gameLayout;
+    }
+    
     
 }
