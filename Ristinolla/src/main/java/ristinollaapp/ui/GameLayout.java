@@ -20,10 +20,12 @@ public class GameLayout {
     private BorderPane gameLayout;
     private GridUi gamegrid;
     private Label turn;
+    private BorderPane mainLayout;
 
-    public GameLayout(int size) {
+    public GameLayout(int size, BorderPane mainLayout) {
+        this.mainLayout = mainLayout;
         this.gameLayout = new BorderPane();
-        this.gamegrid = new GridUi(size, this);
+        this.gamegrid = new GridUi(size, this, mainLayout);
         this.turn = new Label("Vuoro: " + this.gamegrid.getVuoro());
 
         createLayout();

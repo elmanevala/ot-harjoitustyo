@@ -65,7 +65,7 @@ public class StartMenu {
 
         if (!text.getText().equals("")) {
             sizesChosen.setOnAction((actionEvent -> {
-                GameLayout gameLayout = new GameLayout(Integer.valueOf(text.getText()));
+                GameLayout gameLayout = new GameLayout(Integer.valueOf(text.getText()), mainLayout);
                 mainLayout.setCenter(gameLayout.getLayout());
             }));
         }

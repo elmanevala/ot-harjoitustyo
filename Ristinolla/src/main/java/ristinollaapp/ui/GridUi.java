@@ -15,8 +15,10 @@ public class GridUi {
     private GameLogic gamelogic;
     private int size;
     private GameLayout layout;
+    private BorderPane mainLayout;
 
-    public GridUi(int size, GameLayout layout) {
+    public GridUi(int size, GameLayout layout, BorderPane mainLayout) {
+        this.mainLayout = mainLayout;
         this.layout = layout;
         this.size = size;
         this.gamelogic = new GameLogic(size, 0);
@@ -29,7 +31,7 @@ public class GridUi {
         for (int i = 0; i < this.size; i++) {
             for (int j = 0; j < this.size; j++) {
                 Button button = createButton(i, j);
-                grid.add(button, i, j);
+                grid.add(button, j, i);
             }
         }
 
@@ -41,14 +43,18 @@ public class GridUi {
         button.setFont(Font.font("Monospaced", 25));
 
         button.setOnAction((actionEvent) -> {
-            this.gamelogic.updateScore(x, y);
+            if (this.gamelogic.spaceEmpty(x, y)) {
+                this.gamelogic.updateScore(x, y);
+                button.setText(this.gamelogic.getTurn());
+                this.gamelogic.changeTurn();
+                this.layout.setTurn(this.gamelogic.getTurn());
 
-            button.setText(this.gamelogic.getTurn());
-            this.gamelogic.changeTurn();
-            this.layout.setTurn(this.gamelogic.getTurn());
-                
-            this.gamelogic.printScoreBoard(); // Tarkistetaan muuttuko pelitilanne pelilogiikassa
-            System.out.println(this.gamelogic.getTurn()); // Tarkistetaan vaihtaako painaminen vuoroa
+                if (this.gamelogic.isThereAWinner()){
+                    WinnerLayoutUi winnerLayout = new WinnerLayoutUi(this.gamelogic);
+                    this.mainLayout.setCenter(winnerLayout.getLayout());
+                }
+                this.gamelogic.printScoreBoard(); // Tarkistetaan muuttuko pelitilanne pelilogiikassa
+            }
         });
 
         return button;
