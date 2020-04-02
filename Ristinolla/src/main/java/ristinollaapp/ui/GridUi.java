@@ -3,6 +3,7 @@ package ristinollaapp.ui;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Font;
 import ristinollaapp.domain.GameLogic;
@@ -13,12 +14,14 @@ public class GridUi {
     private GridPane grid;
     private GameLogic gamelogic;
     private int size;
+    private GameLayout layout;
 
-    public GridUi(int size) {
+    public GridUi(int size, GameLayout layout) {
+        this.layout = layout;
         this.size = size;
         this.gamelogic = new GameLogic(size, 0);
         this.grid = new GridPane();
-        
+
         creatingGrid();
     }
 
@@ -38,11 +41,12 @@ public class GridUi {
         button.setFont(Font.font("Monospaced", 25));
 
         button.setOnAction((actionEvent) -> {
-            this.gamelogic.changeTurn();
             this.gamelogic.updateScore(x, y);
-            
+
             button.setText(this.gamelogic.getTurn());
-            
+            this.gamelogic.changeTurn();
+            this.layout.setTurn(this.gamelogic.getTurn());
+                
             this.gamelogic.printScoreBoard(); // Tarkistetaan muuttuko pelitilanne pelilogiikassa
             System.out.println(this.gamelogic.getTurn()); // Tarkistetaan vaihtaako painaminen vuoroa
         });

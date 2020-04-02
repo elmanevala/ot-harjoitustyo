@@ -1,6 +1,5 @@
 package ristinollaapp.ui;
 
-
 import java.util.ArrayList;
 import javafx.application.Application;
 import javafx.geometry.Insets;
@@ -20,17 +19,17 @@ public class GameLayout {
 
     private BorderPane gameLayout;
     private GridUi gamegrid;
+    private Label turn;
 
     public GameLayout(int size) {
         this.gameLayout = new BorderPane();
-        this.gamegrid = new GridUi(size);
+        this.gamegrid = new GridUi(size, this);
+        this.turn = new Label("Vuoro: " + this.gamegrid.getVuoro());
 
         createLayout();
     }
 
     public void createLayout() {
-        String vuoro = gamegrid.getVuoro();
-        Label turn = new Label("Vuoro: " + vuoro);
         turn.setFont(new Font("Arial", 20));
 
         gameLayout.setAlignment(turn, Pos.CENTER);
@@ -45,6 +44,10 @@ public class GameLayout {
 
     public BorderPane getLayout() {
         return gameLayout;
+    }
+
+    public void setTurn(String turn) {
+        this.turn.setText("Vuoro: " + this.gamegrid.getVuoro());
     }
 
 }

@@ -32,8 +32,6 @@ public class GameUi extends Application {
         StartMenu startmenu = new StartMenu(this.mainLayout);
         BorderPane layout = startmenu.getStartMenuLayout();
         
-        
-
         Scene nakyma = new Scene(layout);
         stage.setScene(nakyma);
         stage.show();

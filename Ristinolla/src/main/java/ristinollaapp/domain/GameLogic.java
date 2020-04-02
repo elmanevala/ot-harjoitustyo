@@ -25,6 +25,20 @@ public class GameLogic {
         this.score[x][y] = this.turn;
     }
 
+    public boolean canHaveTurn(int x, int y) {
+        if (spaceEmpty(x, y) && !gameOver) {
+            return true;
+        }
+        return false;
+    }
+    
+    public boolean spaceEmpty(int x, int y){
+        if (this.score[x][y] != "e"){
+            return true;
+        }
+        return false;
+    }
+
     public boolean IsThereAWinnerInRows() {
         int sameSymbolsInARow = 1;
 
