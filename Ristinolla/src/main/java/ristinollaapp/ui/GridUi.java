@@ -41,6 +41,8 @@ public class GridUi {
             this.gamelogic.changeTurn();
             this.gamelogic.updateScore(x, y);
             
+            button.setText(this.gamelogic.getTurn());
+            
             this.gamelogic.printScoreBoard(); // Tarkistetaan muuttuko pelitilanne pelilogiikassa
             System.out.println(this.gamelogic.getTurn()); // Tarkistetaan vaihtaako painaminen vuoroa
         });

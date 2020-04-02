@@ -21,8 +21,8 @@ public class StartMenu {
     private BorderPane mainLayout;
     private BorderPane startMenu;
 
-    public StartMenu() {
-        this.mainLayout = new BorderPane();
+    public StartMenu(BorderPane mainLayout) {
+        this.mainLayout = mainLayout;
         this.startMenu = new BorderPane();
 
         createLayout();
