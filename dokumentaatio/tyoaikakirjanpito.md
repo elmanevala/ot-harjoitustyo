@@ -3,6 +3,7 @@
 | Päivämäärä	| Aika	| Aihe									|
 | -------------	| ----- | ---------------------------------------------------------------------	|
 | 24.3.2020	| 2.5 h	| Vaatimusmäärittely ja oman aiheen hiomista.				|
-| 30.3.2020	| 3 h	| Sovelluksen alustava rakenne, pom.xml-teidosto kuntoon.		|
+| 30.3.2020	| 3 h	| Sovelluksen alustava rakenne, pom.xml-tiedosto kuntoon.		|
 | 31.3.2020	| 11h	| Alustavaa käyttöliittymää, pelin toimintalogiikkaa, testejä.		|
 | 2.4.2020	| 4h	| Pelilogiikan kehittämistä, vähän käyttöliittymän hiomista.		|
+| 6.4.2020	| 5.5h	| Pelilogiikan kehittämistä ja koodin ulkoasun parantelua.		|
