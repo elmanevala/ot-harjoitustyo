@@ -49,7 +49,7 @@ public class GridUi {
                 this.gamelogic.changeTurn();
                 this.layout.setTurn(this.gamelogic.getTurn());
 
-                if (this.gamelogic.isThereAWinner()) {
+                if (this.gamelogic.isThereAWinner(x,y)) {
                     WinnerLayoutUi winnerLayout = new WinnerLayoutUi(this.gamelogic);
                     this.mainLayout.setCenter(winnerLayout.getLayout());
                 }

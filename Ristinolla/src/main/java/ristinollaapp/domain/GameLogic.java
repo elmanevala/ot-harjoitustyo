@@ -71,100 +71,98 @@ public class GameLogic {
         return this.score[x][y];
     }
 
-    public boolean isThereAWinnerInColumns() {
+    public boolean isThereAWinnerInColumns(int x, int y) {
         int sameSymbolsInAColumn = 1;
 
-        for (int i = 0; i < this.score[0].length; i++) {
-            for (int j = 1; j < this.score.length; j++) {
-                if (this.score[j - 1][i].equals(this.score[j][i]) && !this.score[j][i].equals("e") && !this.score[i][j - 1].equals("e")) {
-                    sameSymbolsInAColumn++;
-                }
-                if (sameSymbolsInAColumn == this.score.length) {
-                    this.gameOver = true;
-                }
+        for (int i = 1; i < this.score.length; i++) {
+            if (this.score[i - 1][y].equals(this.score[i][y]) && !this.score[i][y].equals("e") && !this.score[i - 1][y].equals("e")) {
+                sameSymbolsInAColumn++;
             }
-            sameSymbolsInAColumn = 1;
+        }
+        if (sameSymbolsInAColumn == this.score.length) {
+            this.gameOver = true;
         }
         return this.gameOver;
     }
 
-    public boolean isThereAWinnerInRows() {
+    public boolean isThereAWinnerInRows(int x, int y) {
         int sameSymbolsInARow = 1;
 
-        for (int i = 0; i < this.score.length; i++) {
-            for (int j = 1; j < this.score[0].length; j++) {
-                if (this.score[i][j - 1].equals(this.score[i][j]) && !this.score[i][j].equals("e") && !this.score[i][j - 1].equals("e")) {
-                    sameSymbolsInARow++;
-                }
-                if (sameSymbolsInARow == this.score[0].length) {
-                    this.gameOver = true;
-                }
+        for (int i = 1; i < this.score.length; i++) {
+            if (this.score[x][i - 1].equals(this.score[x][i]) && !this.score[x][i].equals("e") && !this.score[x][i - 1].equals("e")) {
+                sameSymbolsInARow++;
             }
-            sameSymbolsInARow = 1;
+        }
+
+        if (sameSymbolsInARow == this.score.length) {
+            this.gameOver = true;
         }
         return this.gameOver;
     }
 
-    public boolean isThereAWinnerDiagonalRightLeft() {
-        int dim = this.score.length;
-        for (int k = 0; k < dim * 2; k++) {
-            ArrayList<String> diagonalElements = new ArrayList<>();
-            for (int j = 0; j <= k; j++) {
-                int i = k - j;
-                if (i < dim && j < dim) {
-                    diagonalElements.add(this.score[i][j]);
-                }
+    public boolean isThereAWinnerDiagonalFromRighDown(int x, int y) {
+        int row = 0;
+        int col = 0;
+        if (x > y) {
+            row = x - y;
+            col = 0;
+        } else {
+            row = 0;
+            col = y - x;
+        }
+
+        ArrayList<String> fromRightDown = new ArrayList<>();
+
+        while (row < this.score.length && col < this.score.length) {
+            fromRightDown.add(this.score[row][col]);
+            row++;
+            col++;
+        }
+
+        int apu = 1;
+
+        for (int i = 1; i < fromRightDown.size(); i++) {
+            if (fromRightDown.get(i - 1).equals(fromRightDown.get(i))) {
+                apu++;
             }
-            int elementsInARow = 1;
-            for (int i = 1; i < diagonalElements.size(); i++) {
-                if (diagonalElements.get(i - 1).equals(diagonalElements.get(i)) && !diagonalElements.get(i).equals("e") && !diagonalElements.get(i - 1).equals("e")) {
-                    elementsInARow++;
-                }
-            }
-            if (elementsInARow == this.score.length) {
-                this.gameOver = true;
-            }
+        }
+
+        if (apu == fromRightDown.size() && apu >= 3) {
+            this.gameOver = true;
         }
         return this.gameOver;
     }
 
-    public boolean isThereAWinnerDiagonalLeftRight() {
-        for (int i = this.score.length - 1; i > 0; i--) {
-            ArrayList<String> elements = new ArrayList<>();
-            for (int j = 0, x = i; x <= this.score.length - 1; j++, x++) {
-                elements.add(this.score[x][j]);
-                System.out.print(this.score[x][j] + " ");
-            }
-            System.out.println("");
-            int elementsInARow = 1;
-            for (int j = 1; j < elements.size(); j++) {
-                if (elements.get(j - 1).equals(elements.get(j)) && !elements.get(j).equals("e") && !elements.get(j - 1).equals("e")) {
-                    elementsInARow++;
-                }
-            }
-            if (elementsInARow == this.score.length) {
-                this.gameOver = true;
+    public boolean isThereAWinnerDiagonalFromLeftUp(int x, int y) {
+        int row = 0;
+        int col = 0;
+        if (x + y < this.score.length - 1) {
+            row = x + y;
+            col = 0;
+        } else {
+            row = this.score.length - 1;
+            col = x -this.score.length + 1 + y; 
+        }
+
+        ArrayList<String> fromLeftUp = new ArrayList<>();
+
+        while (row >= 0 && col < this.score.length) {
+            fromLeftUp.add(this.score[row][col]);
+            row--;
+            col++;
+        }
+
+        int apu = 1;
+
+        for (int i = 1; i < fromLeftUp.size(); i++) {
+            if (fromLeftUp.get(i - 1).equals(fromLeftUp.get(i))) {
+                apu++;
             }
         }
 
-        for (int i = 0; i <= this.score.length - 1; i++) {
-            ArrayList<String> elements = new ArrayList<>();
-            for (int j = 0, y = i; y <= this.score.length - 1; j++, y++) {
-                elements.add(this.score[j][y]);
-                System.out.print(this.score[j][y] + " ");
-            }
-            int elementsInARow = 1;
-            for (int j = 1; j < elements.size(); j++) {
-                if (elements.get(j - 1).equals(elements.get(j)) && !elements.get(j).equals("e") && !elements.get(j - 1).equals("e")) {
-                    elementsInARow++;
-                }
-            }
-            if (elementsInARow == this.score.length) {
-                this.gameOver = true;
-            }
-            System.out.println("");
+        if (apu == fromLeftUp.size() && apu >= 3) {
+            this.gameOver = true;
         }
-
         return this.gameOver;
     }
 
@@ -172,8 +170,8 @@ public class GameLogic {
         return false;
     }
 
-    public boolean isThereAWinner() {
-        if (isThereAWinnerInColumns() || isThereAWinnerInRows() || isThereAWinnerDiagonalRightLeft() || isThereAWinnerDiagonalLeftRight()) {
+    public boolean isThereAWinner(int x, int y) {
+        if (isThereAWinnerInColumns(x, y) || isThereAWinnerInRows(x, y) || isThereAWinnerDiagonalFromRighDown(x, y) || isThereAWinnerDiagonalFromLeftUp(x, y)) {
             this.gameOver = true;
             changeTurn();
             this.winner = this.turn;
