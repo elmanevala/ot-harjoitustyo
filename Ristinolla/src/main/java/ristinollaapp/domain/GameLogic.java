@@ -1,5 +1,7 @@
 package ristinollaapp.domain;
 
+import java.util.ArrayList;
+
 public class GameLogic {
 
     private String turn;
@@ -74,7 +76,7 @@ public class GameLogic {
 
         for (int i = 0; i < this.score[0].length; i++) {
             for (int j = 1; j < this.score.length; j++) {
-                if (this.score[j - 1][i].equals(this.score[j][i]) && !this.score[j][i].equals("e")) {
+                if (this.score[j - 1][i].equals(this.score[j][i]) && !this.score[j][i].equals("e") && !this.score[i][j - 1].equals("e")) {
                     sameSymbolsInAColumn++;
                 }
                 if (sameSymbolsInAColumn == this.score.length) {
@@ -91,7 +93,7 @@ public class GameLogic {
 
         for (int i = 0; i < this.score.length; i++) {
             for (int j = 1; j < this.score[0].length; j++) {
-                if (this.score[i][j - 1].equals(this.score[i][j]) && !this.score[i][j].equals("e")) {
+                if (this.score[i][j - 1].equals(this.score[i][j]) && !this.score[i][j].equals("e") && !this.score[i][j - 1].equals("e")) {
                     sameSymbolsInARow++;
                 }
                 if (sameSymbolsInARow == this.score[0].length) {
@@ -104,24 +106,30 @@ public class GameLogic {
     }
 
     public boolean isThereAWinnerDiagonal() {
-        int sameSymbolsDiagonally = 1;
+        int dim = this.score.length;
 
-        for (int start = this.score.length - 2; start <= this.score.length - 1; start++) {
-            String previous = this.score[start][0];
-            for (int i = start - 1; i >= 0; i--) {
-                for (int j = 1; j <= start; j++) {
-                    if (this.score[i][j].equals(previous) && !this.score[i][j].equals("e")) {
-                        sameSymbolsDiagonally++;
-                    }
-                    if (sameSymbolsDiagonally == this.score.length) {
-                        return true;
-                    }
-                    previous = this.score[i][j];
+        for (int k = 0; k < dim * 2; k++) {
+            ArrayList<String> diagonalElements = new ArrayList<>();
+            for (int j = 0; j <= k; j++) {
+                int i = k - j;
+                if (i < dim && j < dim) {
+                    diagonalElements.add(this.score[i][j]);
+                    System.out.print(this.score[i][j] + " ");
                 }
             }
-            sameSymbolsDiagonally = 1;
+            int elemenstInARow = 1;
+            for (int i = 1; i < diagonalElements.size(); i++) {
+                if (diagonalElements.get(i - 1).equals(diagonalElements.get(i)) && !diagonalElements.get(i).equals("e") && !diagonalElements.get(i - 1).equals("e")) {
+                    elemenstInARow++;
+                }
+            }
+            if (elemenstInARow == this.score.length) {
+                this.gameOver = true;
+            }
+            System.out.println();
         }
-        return false;
+
+        return this.gameOver;
     }
 
     public boolean isThereAWinnerCross() {
@@ -129,7 +137,7 @@ public class GameLogic {
     }
 
     public boolean isThereAWinner() {
-        if (isThereAWinnerInColumns() || isThereAWinnerInRows()) {
+        if (isThereAWinnerInColumns() || isThereAWinnerInRows() || isThereAWinnerDiagonal()) {
             this.gameOver = true;
             changeTurn();
             this.winner = this.turn;
