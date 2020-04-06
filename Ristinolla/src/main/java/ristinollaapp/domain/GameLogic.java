@@ -166,9 +166,6 @@ public class GameLogic {
         return this.gameOver;
     }
 
-    public boolean isThereAWinnerCross() {
-        return false;
-    }
 
     public boolean isThereAWinner(int x, int y) {
         if (isThereAWinnerInColumns(x, y) || isThereAWinnerInRows(x, y) || isThereAWinnerDiagonalFromRighDown(x, y) || isThereAWinnerDiagonalFromLeftUp(x, y)) {

@@ -65,7 +65,7 @@ public class GameLogicTest {
         logic.updateScore(0, 0);
         logic.updateScore(0, 1);
         logic.updateScore(0, 2);
-        assertEquals(true, logic.IsThereAWinnerInRows());
+        assertEquals(true, logic.isThereAWinnerInRows(0,2));
     }
     
     @Test
@@ -73,7 +73,7 @@ public class GameLogicTest {
         logic.updateScore(0, 0);
         logic.updateScore(1, 0);
         logic.updateScore(2, 0);
-        assertEquals(true, logic.IsThereAWinnerInColumns());
+        assertEquals(true, logic.isThereAWinnerInColumns(2,0));
     }
 
     @Test
