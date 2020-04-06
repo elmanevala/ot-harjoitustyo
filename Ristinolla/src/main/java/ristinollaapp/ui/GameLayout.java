@@ -26,7 +26,7 @@ public class GameLayout {
         this.mainLayout = mainLayout;
         this.gameLayout = new BorderPane();
         this.gamegrid = new GridUi(size, this, mainLayout);
-        this.turn = new Label("Vuoro: " + this.gamegrid.getVuoro());
+        this.turn = new Label("Vuoro: " + this.gamegrid.getTurn());
 
         createLayout();
     }
@@ -49,7 +49,7 @@ public class GameLayout {
     }
 
     public void setTurn(String turn) {
-        this.turn.setText("Vuoro: " + this.gamegrid.getVuoro());
+        this.turn.setText("Vuoro: " + this.gamegrid.getTurn());
     }
 
 }

@@ -30,8 +30,8 @@ public class GridUi {
     public void creatingGrid() {
         for (int i = 0; i < this.size; i++) {
             for (int j = 0; j < this.size; j++) {
-                Button button = createButton(j, i);
-                grid.add(button, i, j);
+                Button button = createButton(i, j);
+                grid.add(button, j, i);
             }
         }
 
@@ -65,7 +65,7 @@ public class GridUi {
         return grid;
     }
 
-    public String getVuoro() {
+    public String getTurn() {
         return this.gamelogic.getTurn();
     }
 

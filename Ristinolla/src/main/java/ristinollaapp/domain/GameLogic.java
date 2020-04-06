@@ -74,7 +74,7 @@ public class GameLogic {
 
         for (int i = 0; i < this.score[0].length; i++) {
             for (int j = 1; j < this.score.length; j++) {
-                if (this.score[j - 1][i].equals(this.score[j][i]) && !this.score[i][j].equals("e")) {
+                if (this.score[j - 1][i].equals(this.score[j][i]) && !this.score[j][i].equals("e")) {
                     sameSymbolsInAColumn++;
                 }
                 if (sameSymbolsInAColumn == this.score.length) {
@@ -101,6 +101,27 @@ public class GameLogic {
             sameSymbolsInARow = 1;
         }
         return this.gameOver;
+    }
+
+    public boolean isThereAWinnerDiagonal() {
+        int sameSymbolsDiagonally = 1;
+
+        for (int start = this.score.length - 2; start <= this.score.length - 1; start++) {
+            String previous = this.score[start][0];
+            for (int i = start - 1; i >= 0; i--) {
+                for (int j = 1; j <= start; j++) {
+                    if (this.score[i][j].equals(previous) && !this.score[i][j].equals("e")) {
+                        sameSymbolsDiagonally++;
+                    }
+                    if (sameSymbolsDiagonally == this.score.length) {
+                        return true;
+                    }
+                    previous = this.score[i][j];
+                }
+            }
+            sameSymbolsDiagonally = 1;
+        }
+        return false;
     }
 
     public boolean isThereAWinnerCross() {
