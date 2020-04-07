@@ -1,6 +1,6 @@
 # Ristinolla
 
-Harjoitustyö kursille ohjelmistotekniikka. Sovelluksella voi pelata ristinollaa kaveria tai vihollista vastaan yhdellä koneella. Käyttäjä voi itse päättää peliruudukon koon ja kuinka pitkä voittirivin tulee olla.
+Harjoitustyö kursille ohjelmistotekniikka. Sovelluksella voi pelata ristinollaa kaveria tai vihollista vastaan yhdellä koneella. Käyttäjä voi itse päättää peliruudukon koon ja kuinka pitkä voittorivin tulee olla.
 
 ## Huom
 
@@ -20,6 +20,10 @@ Harjoitustyö kursille ohjelmistotekniikka. Sovelluksella voi pelata ristinollaa
   mvn test jacoco:report
  ```
 
+ Koodin luettavuutta voi testata komennolla:
+ ```
+ mvn jxr:jxr checkstyle:checkstyle
+ ```
 
 ### Ohjelman suorittaminen
 
@@ -30,12 +34,12 @@ Harjoitustyö kursille ohjelmistotekniikka. Sovelluksella voi pelata ristinollaa
 
 ### Jar-ohjelma
 
- Ohjelman luominen
+ Jarin generoiminen target-hakemistoon:
  ```
  mvn package
  ```
 
- Jar ohjelman suorittaminen target-kansion sisällä
+ Jar ohjelman suorittaminen target-kansion sisällä:
  ```
  java -jar Ristinolla-1.0-SNAPSHOT.jar
  ```
@@ -44,4 +48,4 @@ Harjoitustyö kursille ohjelmistotekniikka. Sovelluksella voi pelata ristinollaa
 
 * [Vaatimusmäärittely](https://github.com/elmanevala/ot-harjoitustyo/blob/master/dokumentaatio/vaatimusmaarittely.md)
 * [Työaikakirjanpito](https://github.com/elmanevala/ot-harjoitustyo/blob/master/dokumentaatio/tyoaikakirjanpito.md)
-
+* [Arkkitehtuuria](https://github.com/elmanevala/ot-harjoitustyo/blob/master/dokumentaatio/arkkitehtuuri.md)

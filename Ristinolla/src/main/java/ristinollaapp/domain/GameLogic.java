@@ -39,6 +39,10 @@ public class GameLogic {
     public String getWinner() {
         return this.winner;
     }
+    
+    public int getWinnerRow() {
+        return this.winnerRowSize;
+    }
 
     public String getTurn() {
         return this.turn;
