@@ -45,7 +45,7 @@ public class GameLogic {
     public String getTurn() {
         return this.turn;
     }
-
+    
     public Boolean GameIsOver() {
         return this.gameOver;
     }

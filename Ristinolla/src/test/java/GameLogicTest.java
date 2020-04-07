@@ -27,7 +27,8 @@ public class GameLogicTest {
 
     @Before
     public void setUp() {
-        logic = new GameLogic(3, 0);
+        logic = new GameLogic(3, 3);
+        
     }
 
     @After
