@@ -8,5 +8,4 @@
 | 2.4.2020	| 4h	| Pelilogiikan kehittämistä, vähän käyttöliittymän hiomista.			|
 | 6.4.2020	| 5.5h	| Pelilogiikan kehittämistä ja koodin ulkoasun parantelua.			|
 | 7.4.2020	| 2.5h	| Lisää testejä, checkstyle ja kustomoitu voittorivi -toiminnalisuus käyttöön.	| 
-|---------------|-------| ------------------------------------------------------------------------------|
 |Aika yhteensä:	| 28.5h	|										|
