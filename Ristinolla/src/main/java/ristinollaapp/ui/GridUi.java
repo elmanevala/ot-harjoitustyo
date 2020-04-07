@@ -17,12 +17,13 @@ public class GridUi {
     private GameLayout layout;
     private BorderPane mainLayout;
 
-    public GridUi(int size, GameLayout layout, BorderPane mainLayout) {
+    public GridUi(int size, int row, GameLayout layout, BorderPane mainLayout) {
         this.mainLayout = mainLayout;
         this.layout = layout;
         this.size = size;
-        this.gamelogic = new GameLogic(size, 0);
+        this.gamelogic = new GameLogic(size, row);
         this.grid = new GridPane();
+        
 
         creatingGrid();
     }

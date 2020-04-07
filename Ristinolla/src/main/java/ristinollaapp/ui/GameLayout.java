@@ -22,10 +22,10 @@ public class GameLayout {
     private Label turn;
     private BorderPane mainLayout;
 
-    public GameLayout(int size, BorderPane mainLayout) {
+    public GameLayout(int size, int row, BorderPane mainLayout) {
         this.mainLayout = mainLayout;
         this.gameLayout = new BorderPane();
-        this.gamegrid = new GridUi(size, this, mainLayout);
+        this.gamegrid = new GridUi(size, row, this, mainLayout);
         this.turn = new Label("Vuoro: " + this.gamegrid.getTurn());
 
         createLayout();

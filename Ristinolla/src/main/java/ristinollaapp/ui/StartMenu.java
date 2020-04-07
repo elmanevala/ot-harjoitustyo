@@ -45,7 +45,7 @@ public class StartMenu {
         textFieldLayout.setAlignment(Pos.CENTER);
         textFieldLayout.getChildren().addAll(instructions, gridSize, rowSize);
 
-        Button chooseButton = createButton(gridSize);
+        Button chooseButton = createButton(gridSize, rowSize);
 
         startMenu.setAlignment(textFieldLayout, Pos.CENTER);
         startMenu.setAlignment(titel, Pos.CENTER);
@@ -60,12 +60,12 @@ public class StartMenu {
 
     }
 
-    public Button createButton(TextField text) {
+    public Button createButton(TextField grid, TextField row) {
         Button sizesChosen = new Button("Valitse ja pelaa");
 
-        if (!text.getText().equals("")) {
+        if (!grid.getText().equals("")) {
             sizesChosen.setOnAction((actionEvent -> {
-                GameLayout gameLayout = new GameLayout(Integer.valueOf(text.getText()), mainLayout);
+                GameLayout gameLayout = new GameLayout(Integer.valueOf(grid.getText()), Integer.valueOf(row.getText()), mainLayout);
                 mainLayout.setCenter(gameLayout.getLayout());
             }));
         }

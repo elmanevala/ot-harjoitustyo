@@ -22,6 +22,8 @@ public class GameLogic {
                 score[i][j] = "e";
             }
         }
+        
+        System.out.println("voittorivi: " + this.winnerRowSize);
     }
 
     public void updateScore(int x, int y) {
@@ -79,7 +81,7 @@ public class GameLogic {
                 sameSymbolsInAColumn++;
             }
         }
-        if (sameSymbolsInAColumn == this.score.length) {
+        if (sameSymbolsInAColumn == this.winnerRowSize) {
             this.gameOver = true;
         }
         return this.gameOver;
@@ -94,7 +96,7 @@ public class GameLogic {
             }
         }
 
-        if (sameSymbolsInARow == this.score.length) {
+        if (sameSymbolsInARow == this.winnerRowSize) {
             this.gameOver = true;
         }
         return this.gameOver;
@@ -122,12 +124,12 @@ public class GameLogic {
         int apu = 1;
 
         for (int i = 1; i < fromRightDown.size(); i++) {
-            if (fromRightDown.get(i - 1).equals(fromRightDown.get(i))) {
+            if (fromRightDown.get(i - 1).equals(fromRightDown.get(i)) && !fromRightDown.get(i - 1).equals("e") && !fromRightDown.get(i).equals("e")) {
                 apu++;
             }
         }
 
-        if (apu == fromRightDown.size() && apu >= 3) {
+        if (apu == this.winnerRowSize) {
             this.gameOver = true;
         }
         return this.gameOver;
@@ -155,12 +157,12 @@ public class GameLogic {
         int apu = 1;
 
         for (int i = 1; i < fromLeftUp.size(); i++) {
-            if (fromLeftUp.get(i - 1).equals(fromLeftUp.get(i))) {
+            if (fromLeftUp.get(i - 1).equals(fromLeftUp.get(i)) && !fromLeftUp.get(i - 1).equals("e") && !fromLeftUp.get(i).equals("e")) {
                 apu++;
             }
         }
 
-        if (apu == fromLeftUp.size() && apu >= 3) {
+        if (apu == this.winnerRowSize) {
             this.gameOver = true;
         }
         return this.gameOver;
