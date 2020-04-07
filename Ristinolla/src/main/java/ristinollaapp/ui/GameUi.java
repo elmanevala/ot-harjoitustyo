@@ -15,7 +15,7 @@ import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 public class GameUi extends Application {
-    
+
     BorderPane mainLayout;
 
     public static void main(String[] args) {
@@ -28,10 +28,10 @@ public class GameUi extends Application {
         stage.setTitle("Ristinolla");
 
         this.mainLayout = new BorderPane();
-        
+
         StartMenu startmenu = new StartMenu(this.mainLayout);
         BorderPane layout = startmenu.getStartMenuLayout();
-        
+
         Scene nakyma = new Scene(layout);
         stage.setScene(nakyma);
         stage.show();

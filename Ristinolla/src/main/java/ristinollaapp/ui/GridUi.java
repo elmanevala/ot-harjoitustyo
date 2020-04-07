@@ -23,7 +23,6 @@ public class GridUi {
         this.size = size;
         this.gamelogic = new GameLogic(size, row);
         this.grid = new GridPane();
-        
 
         creatingGrid();
     }
@@ -50,7 +49,7 @@ public class GridUi {
                 this.gamelogic.changeTurn();
                 this.layout.setTurn(this.gamelogic.getTurn());
 
-                if (this.gamelogic.isThereAWinner(x,y)) {
+                if (this.gamelogic.isThereAWinner(x, y)) {
                     WinnerLayoutUi winnerLayout = new WinnerLayoutUi(this.gamelogic);
                     this.mainLayout.setCenter(winnerLayout.getLayout());
                 }
@@ -60,7 +59,6 @@ public class GridUi {
 
         return button;
     }
-
 
     public GridPane getGameGrid() {
         return grid;

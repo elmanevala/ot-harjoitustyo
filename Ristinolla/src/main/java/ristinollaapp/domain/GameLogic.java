@@ -22,8 +22,6 @@ public class GameLogic {
                 score[i][j] = "e";
             }
         }
-        
-        System.out.println("voittorivi: " + this.winnerRowSize);
     }
 
     public void updateScore(int x, int y) {
@@ -45,8 +43,8 @@ public class GameLogic {
     public String getTurn() {
         return this.turn;
     }
-    
-    public Boolean GameIsOver() {
+
+    public Boolean gameIsOver() {
         return this.gameOver;
     }
 
@@ -102,7 +100,7 @@ public class GameLogic {
         return this.gameOver;
     }
 
-    public boolean isThereAWinnerDiagonalFromRighDown(int x, int y) {
+    public boolean winnerDiagRightDown(int x, int y) {
         int row = 0;
         int col = 0;
         if (x > y) {
@@ -135,7 +133,7 @@ public class GameLogic {
         return this.gameOver;
     }
 
-    public boolean isThereAWinnerDiagonalFromLeftUp(int x, int y) {
+    public boolean winnerDiagLeftUp(int x, int y) {
         int row = 0;
         int col = 0;
         if (x + y < this.score.length - 1) {
@@ -143,7 +141,7 @@ public class GameLogic {
             col = 0;
         } else {
             row = this.score.length - 1;
-            col = x -this.score.length + 1 + y; 
+            col = x - this.score.length + 1 + y;
         }
 
         ArrayList<String> fromLeftUp = new ArrayList<>();
@@ -168,9 +166,8 @@ public class GameLogic {
         return this.gameOver;
     }
 
-
     public boolean isThereAWinner(int x, int y) {
-        if (isThereAWinnerInColumns(x, y) || isThereAWinnerInRows(x, y) || isThereAWinnerDiagonalFromRighDown(x, y) || isThereAWinnerDiagonalFromLeftUp(x, y)) {
+        if (isThereAWinnerInColumns(x, y) || isThereAWinnerInRows(x, y) || winnerDiagRightDown(x, y) || winnerDiagLeftUp(x, y)) {
             this.gameOver = true;
             changeTurn();
             this.winner = this.turn;

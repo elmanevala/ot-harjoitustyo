@@ -28,7 +28,7 @@ public class GameLogicTest {
     @Before
     public void setUp() {
         logic = new GameLogic(3, 3);
-        
+
     }
 
     @After
@@ -60,21 +60,21 @@ public class GameLogicTest {
         logic.updateScore(0, 0);
         assertEquals("0", logic.getSymbolFromScoreBoard(0, 0));
     }
-    
+
     @Test
-    public void GamesEndsWhenThereIsASymbolRow(){
+    public void GamesEndsWhenThereIsASymbolRow() {
         logic.updateScore(0, 0);
         logic.updateScore(0, 1);
         logic.updateScore(0, 2);
-        assertEquals(true, logic.isThereAWinnerInRows(0,2));
+        assertEquals(true, logic.isThereAWinnerInRows(0, 2));
     }
-    
+
     @Test
-    public void GamesEndsWhenThereIsASymbolColumn(){
+    public void GamesEndsWhenThereIsASymbolColumn() {
         logic.updateScore(0, 0);
         logic.updateScore(1, 0);
         logic.updateScore(2, 0);
-        assertEquals(true, logic.isThereAWinnerInColumns(2,0));
+        assertEquals(true, logic.isThereAWinnerInColumns(2, 0));
     }
 
     @Test
