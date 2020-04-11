@@ -9,6 +9,8 @@ public class GameLogic {
     private boolean gameOver;
     private int winnerRowSize;
     private String winner;
+    private int xmoves;
+    private int omoves;
 
     public GameLogic(int size, int winnerRow) {
 
@@ -16,6 +18,8 @@ public class GameLogic {
         this.score = new String[size][size];
         this.turn = "X";
         this.gameOver = false;
+        this.xmoves = 0;
+        this.omoves = 0;
 
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < size; j++) {
@@ -26,6 +30,11 @@ public class GameLogic {
 
     public void updateScore(int x, int y) {
         this.score[x][y] = this.turn;
+        if (this.turn == "X"){
+            this.xmoves++;
+        } else {
+            this.omoves++;
+        }
     }
 
     public boolean spaceEmpty(int x, int y) {
@@ -69,6 +78,7 @@ public class GameLogic {
             System.out.println("");
         }
         System.out.println("");
+        System.out.println("x:n vuorot: " + this.xmoves + ". 0:n vuorot: " + this.omoves);
     }
 
     public String getSymbolFromScoreBoard(int x, int y) {
