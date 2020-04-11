@@ -13,6 +13,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
+import ristinollaapp.doa.TopLists;
 
 public class GameUi extends Application {
 
@@ -31,6 +32,8 @@ public class GameUi extends Application {
 
         StartMenu startmenu = new StartMenu(this.mainLayout);
         BorderPane layout = startmenu.getStartMenuLayout();
+        
+        TopLists listats = new TopLists();
 
         Scene nakyma = new Scene(layout);
         stage.setScene(nakyma);
