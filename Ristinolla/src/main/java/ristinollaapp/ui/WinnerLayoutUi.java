@@ -20,6 +20,9 @@ public class WinnerLayoutUi {
 
     public void createLayout() {
         Label winner = new Label("Onneksi olkoon, " + this.winner + " voitit!");
+        System.out.println("luon voittajatilaa");
+        
+        System.out.println(gameLogic.getWinnerMoves());
 
         winnerLayout.setCenter(winner);
     }

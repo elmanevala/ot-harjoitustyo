@@ -11,6 +11,7 @@ public class GameLogic {
     private String winner;
     private int xmoves;
     private int omoves;
+    private int winnermoves;
 
     public GameLogic(int size, int winnerRow) {
 
@@ -185,9 +186,22 @@ public class GameLogic {
             this.gameOver = true;
             changeTurn();
             this.winner = this.turn;
+            setWinnerMoves();
             return true;
         } else {
             return false;
         }
+    }
+    
+    public void setWinnerMoves(){
+        if(this.turn.equals("X")){
+            this.winnermoves = this.xmoves;
+        } else {
+            this.winnermoves = this.omoves;
+        }
+    }
+    
+    public int getWinnerMoves(){
+        return this.winnermoves;
     }
 }
