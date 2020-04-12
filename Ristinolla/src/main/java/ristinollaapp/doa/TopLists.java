@@ -24,8 +24,8 @@ public class TopLists {
         s.execute("CREATE TABLE IF NOT EXISTS TopLists (id INTEGER PRIMARY KEY, name TEXT NOT NULL, gridsize INTEGER, rowsize INTEGER, moves INTEGER);");
         closeConnection();
     }
-    
-        private void startConnection() throws SQLException {
+
+    private void startConnection() throws SQLException {
         connection = DriverManager.getConnection("jdbc:sqlite:toplists.db");
         s = connection.createStatement();
     }
@@ -33,6 +33,33 @@ public class TopLists {
     private void closeConnection() throws SQLException {
         s.close();
         connection.close();
+    }
+
+    private void insertTopPlayer(int gridsize, int rowsize, String name, int moves) throws SQLException {
+        startConnection();
+        stmt = connection.prepareStatement("INSERT INTO TopLists (name, gridsize, rowsize, moves) VALUES (?,?,?,?);");
+        stmt.setString(1, name);
+        stmt.setInt(2, gridsize);
+        stmt.setInt(3, rowsize);
+        stmt.setInt(4, moves);
+        stmt.executeUpdate();
+        stmt.close();
+        closeConnection();
+    }
+    
+    private boolean isInTopFive(int rowsize, int gridsize, int moves) throws SQLException{
+        startConnection();
+        stmt = connection.prepareStatement("SELECT name, moves FROM TopLists WHERE gridsize=? AND rowsize=? AND moves<?");
+        stmt.setInt(1, gridsize);
+        stmt.setInt(2, rowsize);
+        stmt.setInt(3, moves);
+        ResultSet leastMoveWins = stmt.executeQuery();
+        
+        if (leastMoveWins.getFetchSize() >= 5){
+            return false;
+        } else {
+            return true;
+        }
     }
 
 }
