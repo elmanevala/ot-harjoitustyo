@@ -11,5 +11,11 @@ public class TopListLogic {
         this.dao = new TopLists();
     }
 
-    
+    public boolean isInTopFive(int gridsize, int rowsize, int moves) throws SQLException{
+        if(this.dao.isInTopFive(gridsize, rowsize, moves)){
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

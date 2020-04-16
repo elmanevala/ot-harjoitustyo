@@ -47,13 +47,19 @@ public class TopLists {
         closeConnection();
     }
     
-    private boolean isInTopFive(int rowsize, int gridsize, int moves) throws SQLException{
+    public boolean isInTopFive(int rowsize, int gridsize, int moves) throws SQLException{
         startConnection();
-        stmt = connection.prepareStatement("SELECT name, moves FROM TopLists WHERE gridsize=? AND rowsize=? AND moves<?");
-        stmt.setInt(1, gridsize);
-        stmt.setInt(2, rowsize);
-        stmt.setInt(3, moves);
+        stmt = connection.prepareStatement("SELECT * FROM TopLists");
+//        stmt.setInt(1, gridsize);
+//        stmt.setInt(2, rowsize);
+//        stmt.setInt(3, moves);
         ResultSet leastMoveWins = stmt.executeQuery();
+        
+        System.out.println("Tsekkaamassa top-listaa");
+        
+        while (leastMoveWins.next()){
+            System.out.println(leastMoveWins.getString("name"));
+        }
         
         if (leastMoveWins.getFetchSize() >= 5){
             return false;

@@ -1,5 +1,6 @@
 package ristinollaapp.ui;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import javafx.application.Application;
 import javafx.geometry.Insets;
@@ -22,7 +23,7 @@ public class GameLayout {
     private Label turn;
     private BorderPane mainLayout;
 
-    public GameLayout(int size, int row, BorderPane mainLayout) {
+    public GameLayout(int size, int row, BorderPane mainLayout) throws SQLException{
         this.mainLayout = mainLayout;
         this.gameLayout = new BorderPane();
         this.gamegrid = new GridUi(size, row, this, mainLayout);
