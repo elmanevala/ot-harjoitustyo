@@ -73,8 +73,12 @@ public class StartMenu {
         return sizesChosen;
     }
 
-    public BorderPane getStartMenuLayout() {
+    public BorderPane getMainLayout() {
         return mainLayout;
+    }
+    
+    public BorderPane getStartMenuLayout(){
+        return this.startMenu;
     }
 
 }

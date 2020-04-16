@@ -126,7 +126,7 @@ public class GameLogicTest {
     }
 
     public void winnerRowisSetCorrect() {
-        assertEquals(3, logic.getWinnerRow());
+        assertEquals(3, logic.getRowSize());
     }
 
     @Test

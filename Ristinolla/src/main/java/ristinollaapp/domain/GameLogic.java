@@ -7,15 +7,17 @@ public class GameLogic {
     private String turn;
     private String[][] score;
     private boolean gameOver;
-    private int winnerRowSize;
+    private int rowSize;
     private String winner;
     private int xmoves;
     private int omoves;
     private int winnermoves;
+    private int gridSize;
 
-    public GameLogic(int size, int winnerRow) {
+    public GameLogic(int size, int rowsize) {
 
-        this.winnerRowSize = winnerRow;
+        this.gridSize = size;
+        this.rowSize = rowsize;
         this.score = new String[size][size];
         this.turn = "X";
         this.gameOver = false;
@@ -50,8 +52,12 @@ public class GameLogic {
         return this.winner;
     }
     
-    public int getWinnerRow() {
-        return this.winnerRowSize;
+    public int getRowSize() {
+        return this.rowSize;
+    }
+    
+    public int getGridSize(){
+        return this.gridSize;
     }
 
     public String getTurn() {
@@ -94,7 +100,7 @@ public class GameLogic {
                 sameSymbolsInAColumn++;
             }
         }
-        if (sameSymbolsInAColumn == this.winnerRowSize) {
+        if (sameSymbolsInAColumn == this.rowSize) {
             this.gameOver = true;
         }
         return this.gameOver;
@@ -109,7 +115,7 @@ public class GameLogic {
             }
         }
 
-        if (sameSymbolsInARow == this.winnerRowSize) {
+        if (sameSymbolsInARow == this.rowSize) {
             this.gameOver = true;
         }
         return this.gameOver;
@@ -142,7 +148,7 @@ public class GameLogic {
             }
         }
 
-        if (apu == this.winnerRowSize) {
+        if (apu == this.rowSize) {
             this.gameOver = true;
         }
         return this.gameOver;
@@ -175,7 +181,7 @@ public class GameLogic {
             }
         }
 
-        if (apu == this.winnerRowSize) {
+        if (apu == this.rowSize) {
             this.gameOver = true;
         }
         return this.gameOver;

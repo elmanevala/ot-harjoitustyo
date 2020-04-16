@@ -1,5 +1,8 @@
 package ristinollaapp.ui;
 
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
@@ -17,7 +20,7 @@ public class GridUi {
     private GameLayout layout;
     private BorderPane mainLayout;
 
-    public GridUi(int size, int row, GameLayout layout, BorderPane mainLayout) {
+    public GridUi(int size, int row, GameLayout layout, BorderPane mainLayout) throws SQLException{
         this.mainLayout = mainLayout;
         this.layout = layout;
         this.size = size;
@@ -27,7 +30,7 @@ public class GridUi {
         creatingGrid();
     }
 
-    public void creatingGrid() {
+    public void creatingGrid() throws SQLException{
         for (int i = 0; i < this.size; i++) {
             for (int j = 0; j < this.size; j++) {
                 Button button = createButton(i, j);
@@ -38,7 +41,7 @@ public class GridUi {
         this.grid.setAlignment(Pos.CENTER);
     }
 
-    public Button createButton(int x, int y) {
+    public Button createButton(int x, int y) throws SQLException {
         Button button = new Button(" ");
         button.setFont(Font.font("Monospaced", 25));
 
@@ -50,8 +53,12 @@ public class GridUi {
                 this.layout.setTurn(this.gamelogic.getTurn());
 
                 if (this.gamelogic.isThereAWinner(x, y)) {
-                    WinnerLayoutUi winnerLayout = new WinnerLayoutUi(this.gamelogic);
-                    this.mainLayout.setCenter(winnerLayout.getLayout());
+                    try {
+                        WinnerLayoutUi winnerLayout = new WinnerLayoutUi(this.gamelogic, this.mainLayout);
+                        this.mainLayout.setCenter(winnerLayout.getLayout());
+                    } catch (SQLException ex) {
+                        Logger.getLogger(GridUi.class.getName()).log(Level.SEVERE, null, ex);
+                    }
                 }
                 this.gamelogic.printScoreBoard(); // Tarkistetaan muuttuko pelitilanne pelilogiikassa
             }

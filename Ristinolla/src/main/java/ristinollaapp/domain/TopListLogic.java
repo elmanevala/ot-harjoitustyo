@@ -1,14 +1,15 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package ristinollaapp.domain;
 
-/**
- *
- * @author elmaneva
- */
+import java.sql.SQLException;
+import ristinollaapp.doa.TopLists;
+
 public class TopListLogic {
+
+    private TopLists dao;
+
+    public TopListLogic(int gridsize, int rowsize, int moves) throws SQLException {
+        this.dao = new TopLists();
+    }
+
     
 }
