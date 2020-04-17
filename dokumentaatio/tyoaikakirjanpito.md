@@ -10,4 +10,6 @@
 | 7.4.2020	| 2.5h	| Lisää testejä, checkstyle ja kustomoitu voittorivi -toiminnalisuus käyttöön.	| 
 | 11.4.2020	| 1h	| Tietokantojen pohdintaa ja tietokantataulun luonti.				|
 | 12.4.2020	| 2h	| Alustavaa logiikkaa tietokannalle.						|
-|Aika yhteensä:	| 28.5h	|										|
+| 16.4.2020	| 2.5h	| Tietokannan käyttöön lisää metodeja						|
+| 17.4.2020	| 7h	| Käyttöliittymää TOP-listoihin ja pelilogiikan bugien korjailua		|
+|Aika yhteensä:	| 41h	|										|
