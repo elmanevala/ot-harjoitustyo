@@ -38,13 +38,15 @@ public class WinnerLayoutUi {
         Insets insets = new Insets(100);
         winnerLayout.setAlignment(winner, Pos.CENTER);
 
-        VBox buttons = new VBox(10, addStartMenuButton());
+        VBox buttons = new VBox(10);
         buttons.setAlignment(Pos.CENTER);
         buttons.setPadding(insets);
 
         if (topListLogic.isInTopFive()) {
             TextField winnerName = nameField();
             buttons.getChildren().addAll(new Text("Mahtavaa, pääsit TOP-listalle!"), winnerName, addTopListButton(winnerName));
+        } else {
+            buttons.getChildren().addAll(addStartMenuButton());
         }
 
         winnerLayout.setMargin(winner, new Insets(50));

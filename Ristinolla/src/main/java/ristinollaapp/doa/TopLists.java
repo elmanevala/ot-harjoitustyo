@@ -46,6 +46,19 @@ public class TopLists {
         stmt.close();
         closeConnection();
     }
+//
+//    public int getRank() throws SQLException {
+//        startConnection();
+//        stmt = connection.prepareStatement("SELECT COALESCE(COUNT(*), 0) as rank FROM TopLists");
+//
+//        ResultSet numberOfTopWins = stmt.executeQuery();
+//
+//        int number = numberOfTopWins.getInt("rank");
+//        
+//        closeConnection();
+//        
+//        return number;
+//    }
 
     public boolean isInTopFive(int gridsize, int rowsize, int moves) throws SQLException {
         startConnection();
@@ -68,18 +81,18 @@ public class TopLists {
 
     public ArrayList<String> topFive(int gridsize, int rowsize, int moves) throws SQLException {
         startConnection();
-        stmt = connection.prepareStatement("SELECT name, moves FROM TopLists WHERE gridsize=? AND rowsize=? AND moves<=? ORDER BY moves LIMIT 5");
+        stmt = connection.prepareStatement("SELECT name, moves FROM TopLists WHERE gridsize=? AND rowsize=? AND moves<=? ORDER BY moves, id DESC LIMIT 5");
         stmt.setInt(1, gridsize);
         stmt.setInt(2, rowsize);
         stmt.setInt(3, moves);
         ResultSet leastMoveWins = stmt.executeQuery();
 
         ArrayList<String> topfive = new ArrayList<>();
-        
-        while (leastMoveWins.next()){
+
+        while (leastMoveWins.next()) {
             topfive.add(leastMoveWins.getString("name") + "    " + leastMoveWins.getString("moves"));
         }
-        
+
         closeConnection();
         return topfive;
     }
