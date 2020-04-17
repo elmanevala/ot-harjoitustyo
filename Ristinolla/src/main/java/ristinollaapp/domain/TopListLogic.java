@@ -34,5 +34,12 @@ public class TopListLogic {
     public void addName(String name) throws SQLException {
         this.dao.insertTopPlayer(this.gridsize, this.rowsize, name, this.moves);
     }
-    
+
+    public int getRowSize() {
+        return this.rowsize;
+    }
+
+    public int getgridSize() {
+        return this.gridsize;
+    }
 }

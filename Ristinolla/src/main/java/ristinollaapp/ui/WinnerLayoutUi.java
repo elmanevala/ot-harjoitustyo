@@ -46,7 +46,7 @@ public class WinnerLayoutUi {
             TextField winnerName = nameField();
             buttons.getChildren().addAll(new Text("Mahtavaa, pääsit TOP-listalle!"), winnerName, addTopListButton(winnerName));
         } else {
-            buttons.getChildren().addAll(addStartMenuButton());
+            buttons.getChildren().addAll(addStartMenuButton(), toTopListButton());
         }
 
         winnerLayout.setMargin(winner, new Insets(50));
@@ -77,6 +77,25 @@ public class WinnerLayoutUi {
             try {
                 topList = new TopListUi(mainLayout, this.topListLogic);
                 this.topListLogic.addName(name.getText());
+                topList.updateList();
+                mainLayout.setCenter(topList.getTopListLayout());
+            } catch (SQLException ex) {
+                Logger.getLogger(WinnerLayoutUi.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }));
+
+        return toLists;
+    }
+
+    public Button toTopListButton() {
+        Button toLists = new Button("TOP-listat");
+
+        toLists.setAlignment(Pos.CENTER);
+
+        toLists.setOnAction((actionEvent -> {
+            TopListUi topList;
+            try {
+                topList = new TopListUi(mainLayout, this.topListLogic);
                 topList.updateList();
                 mainLayout.setCenter(topList.getTopListLayout());
             } catch (SQLException ex) {

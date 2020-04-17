@@ -13,6 +13,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
@@ -22,8 +23,10 @@ public class GameLayout {
     private GridUi gamegrid;
     private Label turn;
     private BorderPane mainLayout;
+    private int row;
 
     public GameLayout(int size, int row, BorderPane mainLayout) throws SQLException{
+        this.row = row;
         this.mainLayout = mainLayout;
         this.gameLayout = new BorderPane();
         this.gamegrid = new GridUi(size, row, this, mainLayout);
@@ -34,9 +37,15 @@ public class GameLayout {
 
     public void createLayout() {
         turn.setFont(new Font("Arial", 20));
+        Label rowText = new Label("Voittosuoran pituus on " + this.row);
+        rowText.setFont(new Font("Arial", 15));
+        
+        VBox titels = new VBox(10);
+        titels.setAlignment(Pos.CENTER);
+        titels.getChildren().addAll(this.turn, rowText);
 
-        gameLayout.setAlignment(turn, Pos.CENTER);
-        gameLayout.setTop(turn);
+        gameLayout.setAlignment(titels, Pos.CENTER);
+        gameLayout.setTop(titels);
 
         GridPane grid = gamegrid.getGameGrid();
 

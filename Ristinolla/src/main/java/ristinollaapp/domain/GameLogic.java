@@ -186,7 +186,7 @@ public class GameLogic {
         }
         return this.gameOver;
     }
-
+    
     public boolean isThereAWinner(int x, int y) {
         if (isThereAWinnerInColumns(x, y) || isThereAWinnerInRows(x, y) || winnerDiagRightDown(x, y) || winnerDiagLeftUp(x, y)) {
             this.gameOver = true;
@@ -198,6 +198,7 @@ public class GameLogic {
             return false;
         }
     }
+    
     
     public void setWinnerMoves(){
         if(this.turn.equals("X")){
