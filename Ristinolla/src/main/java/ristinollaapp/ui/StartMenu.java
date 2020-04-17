@@ -1,6 +1,9 @@
 package ristinollaapp.ui;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -61,13 +64,19 @@ public class StartMenu {
 
     }
 
-    public Button createButton(TextField grid, TextField row) throws SQLiteException {
+    public Button createButton(TextField grid, TextField row) {
         Button sizesChosen = new Button("Valitse ja pelaa");
 
         if (!grid.getText().equals("")) {
             sizesChosen.setOnAction((actionEvent -> {
-                GameLayout gameLayout = new GameLayout(Integer.valueOf(grid.getText()), Integer.valueOf(row.getText()), mainLayout);
-                mainLayout.setCenter(gameLayout.getLayout());
+                GameLayout gameLayout;
+                try {
+                    gameLayout = new GameLayout(Integer.valueOf(grid.getText()), Integer.valueOf(row.getText()), mainLayout);
+                    mainLayout.setCenter(gameLayout.getLayout());
+                } catch (SQLException ex) {
+                    Logger.getLogger(StartMenu.class.getName()).log(Level.SEVERE, null, ex);
+                }
+
             }));
         }
 
@@ -77,8 +86,8 @@ public class StartMenu {
     public BorderPane getMainLayout() {
         return mainLayout;
     }
-    
-    public BorderPane getStartMenuLayout(){
+
+    public BorderPane getStartMenuLayout() {
         return this.startMenu;
     }
 

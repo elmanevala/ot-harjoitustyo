@@ -25,17 +25,17 @@ public class TopLists {
         closeConnection();
     }
 
-    private void startConnection() throws SQLException {
+    public void startConnection() throws SQLException {
         connection = DriverManager.getConnection("jdbc:sqlite:toplists.db");
         s = connection.createStatement();
     }
 
-    private void closeConnection() throws SQLException {
+    public void closeConnection() throws SQLException {
         s.close();
         connection.close();
     }
 
-    private void insertTopPlayer(int gridsize, int rowsize, String name, int moves) throws SQLException {
+    public void insertTopPlayer(int gridsize, int rowsize, String name, int moves) throws SQLException {
         startConnection();
         stmt = connection.prepareStatement("INSERT INTO TopLists (name, gridsize, rowsize, moves) VALUES (?,?,?,?);");
         stmt.setString(1, name);
@@ -46,34 +46,41 @@ public class TopLists {
         stmt.close();
         closeConnection();
     }
-    
-    public boolean isInTopFive(int gridsize, int rowsize, int moves) throws SQLException{
+
+    public boolean isInTopFive(int gridsize, int rowsize, int moves) throws SQLException {
         startConnection();
         stmt = connection.prepareStatement("SELECT COALESCE(COUNT(name), 0) as number FROM TopLists WHERE gridsize=? AND rowsize=? AND moves<?");
         stmt.setInt(1, gridsize);
         stmt.setInt(2, rowsize);
         stmt.setInt(3, moves);
         ResultSet leastMoveWins = stmt.executeQuery();
-        
-        System.out.println("koko: " + gridsize);
-        System.out.println("rivin koko: " + rowsize);
-        System.out.println("voittos siirrot: " + moves);
-        System.out.println("Tsekkaamassa top-listaa");
-        
-//        while (leastMoveWins.next()){
-//            System.out.println(leastMoveWins.getString("number"));
-//        }
-        
+
         int number = leastMoveWins.getInt("number");
-        
-        System.out.println("pienempien voittojen määrä: " + number);
-        
-        if (number >= 5){
+
+        if (number >= 5) {
+            closeConnection();
             return false;
         } else {
+            closeConnection();
             return true;
         }
     }
+
+    public ArrayList<String> topFive(int gridsize, int rowsize, int moves) throws SQLException {
+        startConnection();
+        stmt = connection.prepareStatement("SELECT name, moves FROM TopLists WHERE gridsize=? AND rowsize=? AND moves<? ORDER BY moves LIMIT 5");
+        stmt.setInt(1, gridsize);
+        stmt.setInt(2, rowsize);
+        stmt.setInt(3, moves);
+        ResultSet leastMoveWins = stmt.executeQuery();
+
+        ArrayList<String> topfive = new ArrayList<>();
         
-    
+        while (leastMoveWins.next()){
+            topfive.add("name" + "    " + "moves");
+        }
+        
+        return topfive;
+    }
+
 }

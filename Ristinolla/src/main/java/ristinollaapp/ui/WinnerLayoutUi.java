@@ -1,6 +1,7 @@
 package ristinollaapp.ui;
 
 import java.sql.SQLException;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -30,18 +31,23 @@ public class WinnerLayoutUi {
         createLayout();
     }
 
-    public void createLayout() throws SQLException{
+    public void createLayout() throws SQLException {
         Label winner = new Label("Onneksi olkoon, " + this.winner + " voitit!");
+        Insets insets = new Insets(100);
+        winnerLayout.setAlignment(winner, Pos.CENTER);
 
-        VBox buttons = new VBox(addStartMenuButton());
+        VBox buttons = new VBox(10, addStartMenuButton());
         buttons.setAlignment(Pos.CENTER);
+        buttons.setPadding(insets);
 
         if (topListLogic.isInTopFive(gameLogic.getGridSize(), gameLogic.getRowSize(), gameLogic.getWinnerMoves())) {
-            buttons.getChildren().addAll(new Text("Mahtavaa, pääsit TOP-listalle!"), nameField(), addTopListButton());
+            TextField winnerName = nameField();
+            buttons.getChildren().addAll(new Text("Mahtavaa, pääsit TOP-listalle!"), winnerName, addTopListButton(winnerName));
         }
-
-        winnerLayout.setCenter(winner);
-        winnerLayout.setBottom(buttons);
+        
+        winnerLayout.setMargin(winner, new Insets(50));
+        winnerLayout.setTop(winner);
+        winnerLayout.setCenter(buttons);
     }
 
     public Button addStartMenuButton() {
@@ -57,24 +63,25 @@ public class WinnerLayoutUi {
         return toStart;
     }
 
-    public Button addTopListButton() {
+    public Button addTopListButton(TextField name){
         Button toLists = new Button("Lisää nimimerkkisi!");
 
         toLists.setAlignment(Pos.CENTER);
 
         toLists.setOnAction((actionEvent -> {
             TopListUi topList = new TopListUi(mainLayout);
+            this.topListLogic.addName(gameLogic.getGridSize(), gameLogic.getRowSize(), name.getText() , gameLogic.getWinnerMoves());
             mainLayout.setCenter(topList.getTopListLayout());
         }));
 
         return toLists;
     }
-    
-    public TextField nameField(){
+
+    public TextField nameField() {
         TextField winnerName = new TextField("nimimerkki");
         winnerName.setAlignment(Pos.CENTER);
         winnerName.setMaxWidth(120);
-        
+
         return winnerName;
     }
 
