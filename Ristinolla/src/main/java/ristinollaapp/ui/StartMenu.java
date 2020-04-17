@@ -15,6 +15,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
+import org.sqlite.SQLiteException;
 
 public class StartMenu {
 
@@ -60,7 +61,7 @@ public class StartMenu {
 
     }
 
-    public Button createButton(TextField grid, TextField row) {
+    public Button createButton(TextField grid, TextField row) throws SQLiteException {
         Button sizesChosen = new Button("Valitse ja pelaa");
 
         if (!grid.getText().equals("")) {

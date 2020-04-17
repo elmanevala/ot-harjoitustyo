@@ -4,6 +4,7 @@ import java.sql.SQLException;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -36,7 +37,7 @@ public class WinnerLayoutUi {
         buttons.setAlignment(Pos.CENTER);
 
         if (topListLogic.isInTopFive(gameLogic.getGridSize(), gameLogic.getRowSize(), gameLogic.getWinnerMoves())) {
-            buttons.getChildren().addAll(new Text("Mahtavaa, pääsit TOP-listalle!"),addTopListButton());
+            buttons.getChildren().addAll(new Text("Mahtavaa, pääsit TOP-listalle!"), nameField(), addTopListButton());
         }
 
         winnerLayout.setCenter(winner);
@@ -67,6 +68,14 @@ public class WinnerLayoutUi {
         }));
 
         return toLists;
+    }
+    
+    public TextField nameField(){
+        TextField winnerName = new TextField("nimimerkki");
+        winnerName.setAlignment(Pos.CENTER);
+        winnerName.setMaxWidth(120);
+        
+        return winnerName;
     }
 
     public BorderPane getLayout() {

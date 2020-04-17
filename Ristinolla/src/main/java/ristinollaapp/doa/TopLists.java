@@ -47,21 +47,28 @@ public class TopLists {
         closeConnection();
     }
     
-    public boolean isInTopFive(int rowsize, int gridsize, int moves) throws SQLException{
+    public boolean isInTopFive(int gridsize, int rowsize, int moves) throws SQLException{
         startConnection();
-        stmt = connection.prepareStatement("SELECT * FROM TopLists");
-//        stmt.setInt(1, gridsize);
-//        stmt.setInt(2, rowsize);
-//        stmt.setInt(3, moves);
+        stmt = connection.prepareStatement("SELECT COALESCE(COUNT(name), 0) as number FROM TopLists WHERE gridsize=? AND rowsize=? AND moves<?");
+        stmt.setInt(1, gridsize);
+        stmt.setInt(2, rowsize);
+        stmt.setInt(3, moves);
         ResultSet leastMoveWins = stmt.executeQuery();
         
+        System.out.println("koko: " + gridsize);
+        System.out.println("rivin koko: " + rowsize);
+        System.out.println("voittos siirrot: " + moves);
         System.out.println("Tsekkaamassa top-listaa");
         
-        while (leastMoveWins.next()){
-            System.out.println(leastMoveWins.getString("name"));
-        }
+//        while (leastMoveWins.next()){
+//            System.out.println(leastMoveWins.getString("number"));
+//        }
         
-        if (leastMoveWins.getFetchSize() >= 5){
+        int number = leastMoveWins.getInt("number");
+        
+        System.out.println("pienempien voittojen määrä: " + number);
+        
+        if (number >= 5){
             return false;
         } else {
             return true;
