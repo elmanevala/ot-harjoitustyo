@@ -22,8 +22,10 @@ public class WinnerLayoutUi {
     private GameLogic gameLogic;
     private TopListLogic topListLogic;
     private BorderPane mainLayout;
+    private boolean draw;
 
-    public WinnerLayoutUi(GameLogic gameLogic, BorderPane mainLayout) throws SQLException {
+    public WinnerLayoutUi(GameLogic gameLogic, BorderPane mainLayout, boolean draw) throws SQLException {
+        this.draw = draw;
         this.mainLayout = mainLayout;
         this.gameLogic = gameLogic;
         this.winnerLayout = new BorderPane();
@@ -34,7 +36,12 @@ public class WinnerLayoutUi {
     }
 
     public void createLayout() throws SQLException {
-        Label winner = new Label("Onneksi olkoon, " + this.winner + " voitit!");
+        Label winner = new Label();
+        if (this.draw) {
+            winner.setText("Peli päättyi tasapeliin");
+        } else {
+            winner.setText("Onneksi olkoon, " + this.winner + " voitit!");
+        }
         Insets insets = new Insets(100);
         winnerLayout.setAlignment(winner, Pos.CENTER);
 
@@ -42,7 +49,7 @@ public class WinnerLayoutUi {
         buttons.setAlignment(Pos.CENTER);
         buttons.setPadding(insets);
 
-        if (topListLogic.isInTopFive()) {
+        if (topListLogic.isInTopFive() && !this.draw) {
             TextField winnerName = nameField();
             buttons.getChildren().addAll(new Text("Mahtavaa, pääsit TOP-listalle!"), winnerName, addTopListButton(winnerName));
         } else {

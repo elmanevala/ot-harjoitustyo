@@ -20,7 +20,7 @@ public class GridUi {
     private GameLayout layout;
     private BorderPane mainLayout;
 
-    public GridUi(int size, int row, GameLayout layout, BorderPane mainLayout) throws SQLException{
+    public GridUi(int size, int row, GameLayout layout, BorderPane mainLayout) throws SQLException {
         this.mainLayout = mainLayout;
         this.layout = layout;
         this.size = size;
@@ -30,7 +30,7 @@ public class GridUi {
         creatingGrid();
     }
 
-    public void creatingGrid() throws SQLException{
+    public void creatingGrid() throws SQLException {
         for (int i = 0; i < this.size; i++) {
             for (int j = 0; j < this.size; j++) {
                 Button button = createButton(i, j);
@@ -53,12 +53,13 @@ public class GridUi {
                 this.layout.setTurn(this.gamelogic.getTurn());
 
                 if (this.gamelogic.isThereAWinner(x, y)) {
-                    try {
-                        WinnerLayoutUi winnerLayout = new WinnerLayoutUi(this.gamelogic, this.mainLayout);
-                        this.mainLayout.setCenter(winnerLayout.getLayout());
-                    } catch (SQLException ex) {
-                        Logger.getLogger(GridUi.class.getName()).log(Level.SEVERE, null, ex);
-                    }
+                    WinnerLayoutUi winnerLayout = new WinnerLayoutUi(this.gamelogic, this.mainLayout, false);
+                    this.mainLayout.setCenter(winnerLayout.getLayout());
+
+                } else if (this.gamelogic.scoreboardFull()) {
+                    System.out.println("olen tasapelissä");
+                    WinnerLayoutUi winnerLayout = new WinnerLayoutUi(this.gamelogic, this.mainLayout, true);
+                    this.mainLayout.setCenter(winnerLayout.getLayout());
                 }
                 this.gamelogic.printScoreBoard(); // Tarkistetaan muuttuko pelitilanne pelilogiikassa
             }

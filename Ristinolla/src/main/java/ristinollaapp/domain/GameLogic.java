@@ -92,6 +92,17 @@ public class GameLogic {
         return this.score[x][y];
     }
 
+    public boolean scoreboardFull() {
+        for (int i = 0; i < this.gridSize; i++) {
+            for (int j = 0; j < this.rowSize; j++) {
+                if (this.score[i][j].equals("e")) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
     public boolean isThereAWinnerInColumns(int x, int y) {
         int sameSymbolsInAColumn = 1;
 
