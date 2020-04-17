@@ -53,13 +53,24 @@ public class GridUi {
                 this.layout.setTurn(this.gamelogic.getTurn());
 
                 if (this.gamelogic.isThereAWinner(x, y)) {
-                    WinnerLayoutUi winnerLayout = new WinnerLayoutUi(this.gamelogic, this.mainLayout, false);
-                    this.mainLayout.setCenter(winnerLayout.getLayout());
+                    WinnerLayoutUi winnerLayout;
+                    try {
+                        winnerLayout = new WinnerLayoutUi(this.gamelogic, this.mainLayout, false);
+                        this.mainLayout.setCenter(winnerLayout.getLayout());
+                    } catch (SQLException ex) {
+                        Logger.getLogger(GridUi.class.getName()).log(Level.SEVERE, null, ex);
+                    }
 
                 } else if (this.gamelogic.scoreboardFull()) {
                     System.out.println("olen tasapelissä");
-                    WinnerLayoutUi winnerLayout = new WinnerLayoutUi(this.gamelogic, this.mainLayout, true);
-                    this.mainLayout.setCenter(winnerLayout.getLayout());
+                    WinnerLayoutUi winnerLayout;
+                    try {
+                        winnerLayout = new WinnerLayoutUi(this.gamelogic, this.mainLayout, true);
+                        this.mainLayout.setCenter(winnerLayout.getLayout());
+                    } catch (SQLException ex) {
+                        Logger.getLogger(GridUi.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+
                 }
                 this.gamelogic.printScoreBoard(); // Tarkistetaan muuttuko pelitilanne pelilogiikassa
             }
