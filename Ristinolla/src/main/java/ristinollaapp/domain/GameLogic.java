@@ -100,7 +100,7 @@ public class GameLogic {
                 sameSymbolsInAColumn++;
             }
         }
-        if (sameSymbolsInAColumn == this.rowSize) {
+        if (sameSymbolsInAColumn >= this.rowSize) {
             this.gameOver = true;
         }
         return this.gameOver;
@@ -115,7 +115,7 @@ public class GameLogic {
             }
         }
 
-        if (sameSymbolsInARow == this.rowSize) {
+        if (sameSymbolsInARow >= this.rowSize) {
             this.gameOver = true;
         }
         return this.gameOver;
@@ -148,7 +148,7 @@ public class GameLogic {
             }
         }
 
-        if (apu == this.rowSize) {
+        if (apu >= this.rowSize) {
             this.gameOver = true;
         }
         return this.gameOver;
@@ -181,7 +181,7 @@ public class GameLogic {
             }
         }
 
-        if (apu == this.rowSize) {
+        if (apu >= this.rowSize) {
             this.gameOver = true;
         }
         return this.gameOver;
