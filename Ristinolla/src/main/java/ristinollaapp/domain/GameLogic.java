@@ -33,7 +33,7 @@ public class GameLogic {
 
     public void updateScore(int x, int y) {
         this.score[x][y] = this.turn;
-        if (this.turn == "X"){
+        if (this.turn == "X") {
             this.xmoves++;
         } else {
             this.omoves++;
@@ -51,12 +51,12 @@ public class GameLogic {
     public String getWinner() {
         return this.winner;
     }
-    
+
     public int getRowSize() {
         return this.rowSize;
     }
-    
-    public int getGridSize(){
+
+    public int getGridSize() {
         return this.gridSize;
     }
 
@@ -98,11 +98,15 @@ public class GameLogic {
         for (int i = 1; i < this.score.length; i++) {
             if (this.score[i - 1][y].equals(this.score[i][y]) && !this.score[i][y].equals("e") && !this.score[i - 1][y].equals("e")) {
                 sameSymbolsInAColumn++;
+            } else {
+                sameSymbolsInAColumn = 1;
             }
+            if (sameSymbolsInAColumn >= this.rowSize) {
+                this.gameOver = true;
+            }
+
         }
-        if (sameSymbolsInAColumn >= this.rowSize) {
-            this.gameOver = true;
-        }
+
         return this.gameOver;
     }
 
@@ -112,12 +116,14 @@ public class GameLogic {
         for (int i = 1; i < this.score.length; i++) {
             if (this.score[x][i - 1].equals(this.score[x][i]) && !this.score[x][i].equals("e") && !this.score[x][i - 1].equals("e")) {
                 sameSymbolsInARow++;
+            } else {
+                sameSymbolsInARow = 1;
+            }
+            if (sameSymbolsInARow >= this.rowSize) {
+                this.gameOver = true;
             }
         }
 
-        if (sameSymbolsInARow >= this.rowSize) {
-            this.gameOver = true;
-        }
         return this.gameOver;
     }
 
@@ -145,12 +151,16 @@ public class GameLogic {
         for (int i = 1; i < fromRightDown.size(); i++) {
             if (fromRightDown.get(i - 1).equals(fromRightDown.get(i)) && !fromRightDown.get(i - 1).equals("e") && !fromRightDown.get(i).equals("e")) {
                 apu++;
+            } else {
+                apu = 1;
+            }
+
+            if (apu >= this.rowSize) {
+                this.gameOver = true;
+                break;
             }
         }
 
-        if (apu >= this.rowSize) {
-            this.gameOver = true;
-        }
         return this.gameOver;
     }
 
@@ -178,15 +188,17 @@ public class GameLogic {
         for (int i = 1; i < fromLeftUp.size(); i++) {
             if (fromLeftUp.get(i - 1).equals(fromLeftUp.get(i)) && !fromLeftUp.get(i - 1).equals("e") && !fromLeftUp.get(i).equals("e")) {
                 apu++;
+            } else {
+                apu = 1;
+            }
+            if (apu >= this.rowSize) {
+                this.gameOver = true;
             }
         }
 
-        if (apu >= this.rowSize) {
-            this.gameOver = true;
-        }
         return this.gameOver;
     }
-    
+
     public boolean isThereAWinner(int x, int y) {
         if (isThereAWinnerInColumns(x, y) || isThereAWinnerInRows(x, y) || winnerDiagRightDown(x, y) || winnerDiagLeftUp(x, y)) {
             this.gameOver = true;
@@ -198,17 +210,16 @@ public class GameLogic {
             return false;
         }
     }
-    
-    
-    public void setWinnerMoves(){
-        if(this.turn.equals("X")){
+
+    public void setWinnerMoves() {
+        if (this.turn.equals("X")) {
             this.winnermoves = this.xmoves;
         } else {
             this.winnermoves = this.omoves;
         }
     }
-    
-    public int getWinnerMoves(){
+
+    public int getWinnerMoves() {
         return this.winnermoves;
     }
 }
