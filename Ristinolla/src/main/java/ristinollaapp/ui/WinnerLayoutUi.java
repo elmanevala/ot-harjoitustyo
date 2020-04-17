@@ -1,6 +1,8 @@
 package ristinollaapp.ui;
 
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -40,11 +42,11 @@ public class WinnerLayoutUi {
         buttons.setAlignment(Pos.CENTER);
         buttons.setPadding(insets);
 
-        if (topListLogic.isInTopFive(gameLogic.getGridSize(), gameLogic.getRowSize(), gameLogic.getWinnerMoves())) {
+        if (topListLogic.isInTopFive()) {
             TextField winnerName = nameField();
             buttons.getChildren().addAll(new Text("Mahtavaa, pääsit TOP-listalle!"), winnerName, addTopListButton(winnerName));
         }
-        
+
         winnerLayout.setMargin(winner, new Insets(50));
         winnerLayout.setTop(winner);
         winnerLayout.setCenter(buttons);
@@ -63,15 +65,20 @@ public class WinnerLayoutUi {
         return toStart;
     }
 
-    public Button addTopListButton(TextField name){
+    public Button addTopListButton(TextField name) {
         Button toLists = new Button("Lisää nimimerkkisi!");
 
         toLists.setAlignment(Pos.CENTER);
 
         toLists.setOnAction((actionEvent -> {
-            TopListUi topList = new TopListUi(mainLayout);
-            this.topListLogic.addName(gameLogic.getGridSize(), gameLogic.getRowSize(), name.getText() , gameLogic.getWinnerMoves());
-            mainLayout.setCenter(topList.getTopListLayout());
+            TopListUi topList;
+            try {
+                topList = new TopListUi(mainLayout, this.topListLogic);
+                this.topListLogic.addName(name.getText());
+                mainLayout.setCenter(topList.getTopListLayout());
+            } catch (SQLException ex) {
+                Logger.getLogger(WinnerLayoutUi.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }));
 
         return toLists;

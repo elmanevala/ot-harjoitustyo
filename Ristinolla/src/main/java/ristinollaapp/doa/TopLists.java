@@ -68,7 +68,7 @@ public class TopLists {
 
     public ArrayList<String> topFive(int gridsize, int rowsize, int moves) throws SQLException {
         startConnection();
-        stmt = connection.prepareStatement("SELECT name, moves FROM TopLists WHERE gridsize=? AND rowsize=? AND moves<? ORDER BY moves LIMIT 5");
+        stmt = connection.prepareStatement("SELECT name, moves FROM TopLists WHERE gridsize=? AND rowsize=? AND moves<=? ORDER BY moves LIMIT 5");
         stmt.setInt(1, gridsize);
         stmt.setInt(2, rowsize);
         stmt.setInt(3, moves);
@@ -77,9 +77,10 @@ public class TopLists {
         ArrayList<String> topfive = new ArrayList<>();
         
         while (leastMoveWins.next()){
-            topfive.add("name" + "    " + "moves");
+            topfive.add(leastMoveWins.getString("name") + "    " + leastMoveWins.getString("moves"));
         }
         
+        closeConnection();
         return topfive;
     }
 

@@ -7,25 +7,31 @@ import ristinollaapp.doa.TopLists;
 public class TopListLogic {
 
     private TopLists dao;
+    private int gridsize;
+    private int rowsize;
+    private int moves;
 
     public TopListLogic(int gridsize, int rowsize, int moves) throws SQLException {
         this.dao = new TopLists();
+        this.gridsize = gridsize;
+        this.rowsize = rowsize;
+        this.moves = moves;
     }
 
-    public boolean isInTopFive(int gridsize, int rowsize, int moves) throws SQLException {
-        if (this.dao.isInTopFive(gridsize, rowsize, moves)) {
+    public boolean isInTopFive() throws SQLException {
+        if (this.dao.isInTopFive(this.gridsize, this.rowsize, this.moves)) {
             return true;
         } else {
             return false;
         }
     }
 
-    public ArrayList<String> topFive(int gridsize, int rowsize, int moves) throws SQLException {
-        ArrayList<String> topfive = dao.topFive(gridsize, rowsize, moves);
+    public ArrayList<String> topFive() throws SQLException {
+        ArrayList<String> topfive = dao.topFive(this.gridsize, this.rowsize, this.moves);
         return topfive;
     }
 
-    public void addName(int gridsize, int rowsize, String name, int moves) throws SQLException {
-        this.dao.insertTopPlayer(gridsize, rowsize, name, moves);
+    public void addName(String name) throws SQLException {
+        this.dao.insertTopPlayer(this.gridsize, this.rowsize, name, this.moves);
     }
 }
