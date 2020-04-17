@@ -14,8 +14,10 @@ public class TopListUi {
     private BorderPane mainLayout;
     private BorderPane topListLayout;
     private TopListLogic topListLogic;
+    private VBox topFiveLayout;
 
     public TopListUi(BorderPane mainLayout, TopListLogic topListLogic) throws SQLException {
+        this.topFiveLayout = new VBox(10);
         this.topListLogic = topListLogic;
         this.mainLayout = this.mainLayout;
         this.topListLayout = new BorderPane();
@@ -26,27 +28,31 @@ public class TopListUi {
     public void createTopListLayout() throws SQLException {
         Label label = new Label("TOP-5 voittoa, joissa käytetty vähiten siirtoja");
 
-        VBox topfiveLayout = new VBox(10);
-
-        topfiveLayout = setTopFive(topfiveLayout);
+        this.topFiveLayout = setTopFive();
 
         this.topListLayout.setTop(label);
-        this.topListLayout.setCenter(topfiveLayout);
+        this.topListLayout.setCenter(this.topFiveLayout);
+    }
+    
+    public void updateList() throws SQLException{
+        this.topFiveLayout.getChildren().removeAll(this.topFiveLayout.getChildren());
+        
+        setTopFive();
     }
 
-    public VBox setTopFive(VBox layout) throws SQLException {
+    public VBox setTopFive() throws SQLException {
         ArrayList<String> list = this.topListLogic.topFive();
         
-        layout.getChildren().add(new Label("Nimimerkki:     siirrot:"));
+        this.topFiveLayout.getChildren().add(new Label("Nimimerkki:     siirrot:"));
         for (int i = 0; i < list.size(); i++) {
             Label entry = new Label(i + 1 + ". " + list.get(i));
-            layout.getChildren().add(entry);
+            this.topFiveLayout.getChildren().add(entry);
         }
         
-        layout.setAlignment(Pos.CENTER);
+        this.topFiveLayout.setAlignment(Pos.CENTER);
 
         
-        return layout;
+        return this.topFiveLayout;
     }
 
     public BorderPane getTopListLayout() {

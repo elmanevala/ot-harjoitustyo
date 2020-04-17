@@ -75,6 +75,7 @@ public class WinnerLayoutUi {
             try {
                 topList = new TopListUi(mainLayout, this.topListLogic);
                 this.topListLogic.addName(name.getText());
+                topList.updateList();
                 mainLayout.setCenter(topList.getTopListLayout());
             } catch (SQLException ex) {
                 Logger.getLogger(WinnerLayoutUi.class.getName()).log(Level.SEVERE, null, ex);
