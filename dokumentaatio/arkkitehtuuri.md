@@ -9,8 +9,8 @@
 
 ## Sekvenssikaavio voitolle
 
-* Sovelluksen toimintalogiikka, kun kayttäjä tekee voittoavan siirron.
+* Sovelluksen toimintalogiikka, kun kayttäjä tekee voittavan siirron.
 
-![alt-text](https://raw.githubusercontent.com/elmanevala/ot-harjoitustyo/master/dokumentaatio/voitonSekvessikaavio.png)
+![alt-text](https://raw.githubusercontent.com/elmanevala/ot-harjoitustyo/master/dokumentaatio/voitonSekvenssikkaavio.png)
 
 Käyttöliittymä kutsuu GameLogic-luokkaa, jossa on tietoja käynnissä olevasta pelistä. Ensin peliluokasta tarkistetaan, että paikka on tyhjä ja luokka palauttaa arvon true. Sitten pelilogiikkassa vaihdetaan vuoroa ja se palauttaa uuden vuoron käyttöliittymään. Nyt käyttöliittymä voi päivittää näkymän uudella vuorolla. Tarkistetaan vielä onko peli päättänyt. Koska siirto oli voittava, palauttaa pelilogiikka arvon true ja käyttöliittymä luo uuden näkymän.

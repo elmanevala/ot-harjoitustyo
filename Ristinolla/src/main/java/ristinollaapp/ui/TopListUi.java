@@ -32,17 +32,19 @@ public class TopListUi {
         titel.setFont(new Font("Arial", 20));
         Label game = new Label(this.topListLogic.getgridSize() + "x" + this.topListLogic.getgridSize() + "-ruudukko, voittosuora " + this.topListLogic.getRowSize());
         game.setFont(new Font("Arial", 15));
-        
+
         VBox titels = new VBox(10);
-        
+
         titels.setAlignment(Pos.CENTER);
         titels.getChildren().addAll(titel, game);
 
         this.topFiveLayout = setTopFive();
 
         this.topListLayout.setTop(titels);
+        Button toStart = toStartMenu();
+        toStart.setAlignment(Pos.CENTER);
+        this.topListLayout.setBottom(toStart);
         this.topListLayout.setCenter(this.topFiveLayout);
-        this.topListLayout.setBottom(toStartMenu());
     }
 
     public void updateList() throws SQLException {
@@ -65,8 +67,8 @@ public class TopListUi {
 
         return this.topFiveLayout;
     }
-    
-        public Button toStartMenu() {
+
+    public Button toStartMenu() {
         Button toStart = new Button("Aloitusvalikkoon");
 
         toStart.setAlignment(Pos.CENTER);
