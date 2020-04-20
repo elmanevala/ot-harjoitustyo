@@ -160,8 +160,7 @@ public class GameLogicTest {
         logic.updateScore(2, 0);
         assertEquals(true, logic.isThereAWinner(0, 2));
     }
-    
-    
+
     @Test
     public void winnerNotFoundWhenNoRows() {
         logic.updateScore(1, 0);
@@ -169,16 +168,33 @@ public class GameLogicTest {
         logic.updateScore(2, 0);
         assertEquals(false, logic.isThereAWinner(1, 1));
     }
-    
+
     @Test
     public void emptyWhenNoUpdates() {
         assertEquals(true, logic.spaceEmpty(0, 0));
     }
-    
-       @Test
+
+    @Test
     public void spaceFullWhenUpdated() {
         logic.updateScore(0, 0);
         assertEquals(false, logic.spaceEmpty(0, 0));
+    }
+
+    @Test
+    public void returnTrueWhenBoardFull() {
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                logic.updateScore(i, j);
+            }
+        }
+
+        assertEquals(true, logic.scoreboardFull());
+    }
+
+    @Test
+    public void returnFalseWhenBoardNotFull() {
+        logic.updateScore(0, 0);
+        assertEquals(false, logic.scoreboardFull());
     }
 
     @Test
