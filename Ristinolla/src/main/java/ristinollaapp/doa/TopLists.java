@@ -13,8 +13,10 @@ public class TopLists {
     private Connection connection;
     private PreparedStatement stmt;
     private Statement s;
+    private String bdname;
 
-    public TopLists() throws SQLException {
+    public TopLists(String dbname) throws SQLException {
+        this.bdname = dbname;
         initializeDB();
     }
 
@@ -26,7 +28,7 @@ public class TopLists {
     }
 
     public void startConnection() throws SQLException {
-        connection = DriverManager.getConnection("jdbc:sqlite:toplists.db");
+        connection = DriverManager.getConnection("jdbc:sqlite:" + this.bdname);
         s = connection.createStatement();
     }
 
@@ -82,6 +84,13 @@ public class TopLists {
 
         closeConnection();
         return topfive;
+    }
+
+    public void clear() throws SQLException {
+        startConnection();
+        s.execute("DROP TABLE IF EXISTS TopLists;");
+        closeConnection();
+        initializeDB();
     }
 
 }

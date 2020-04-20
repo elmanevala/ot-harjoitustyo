@@ -30,7 +30,7 @@ public class WinnerLayoutUi {
         this.gameLogic = gameLogic;
         this.winnerLayout = new BorderPane();
         this.winner = this.gameLogic.getWinner();
-        this.topListLogic = new TopListLogic(gameLogic.getGridSize(), gameLogic.getRowSize(), gameLogic.getWinnerMoves());
+        this.topListLogic = new TopListLogic(gameLogic.getGridSize(), gameLogic.getRowSize(), gameLogic.getWinnerMoves(), "toplists.db");
 
         createLayout();
     }

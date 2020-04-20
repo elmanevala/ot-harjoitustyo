@@ -11,8 +11,8 @@ public class TopListLogic {
     private int rowsize;
     private int moves;
 
-    public TopListLogic(int gridsize, int rowsize, int moves) throws SQLException {
-        this.dao = new TopLists();
+    public TopListLogic(int gridsize, int rowsize, int moves, String dbname) throws SQLException {
+        this.dao = new TopLists(dbname);
         this.gridsize = gridsize;
         this.rowsize = rowsize;
         this.moves = moves;

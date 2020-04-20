@@ -62,7 +62,6 @@ public class GridUi {
                     }
 
                 } else if (this.gamelogic.scoreboardFull()) {
-                    System.out.println("olen tasapelissä");
                     WinnerLayoutUi winnerLayout;
                     try {
                         winnerLayout = new WinnerLayoutUi(this.gamelogic, this.mainLayout, true);
