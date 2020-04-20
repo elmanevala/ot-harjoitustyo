@@ -1,5 +1,6 @@
 package ristinollaapp.ui;
 
+import java.awt.Color;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -24,10 +25,14 @@ public class StartMenuUi {
 
     private BorderPane mainLayout;
     private BorderPane startMenu;
+    private TextField gridSize;
+    private TextField rowSize;
+    private Label warning;
 
     public StartMenuUi(BorderPane mainLayout) {
         this.mainLayout = mainLayout;
         this.startMenu = new BorderPane();
+        this.warning = new Label("");
 
         createLayout();
     }
@@ -41,15 +46,16 @@ public class StartMenuUi {
         titel.setFont(new Font("Arial", 20));
 
         VBox textFieldLayout = new VBox(8);
-        Label instructions = new Label("Kirjoita ruudukon koko ja voittorivin pituus. \n   Voittorivi ei voi olla ruudukkoa isompi!");
-        TextField gridSize = new TextField("koko (3–7)");
-        gridSize.setMaxWidth(115);
-        TextField rowSize = new TextField("pituus (3–MAX)");
-        rowSize.setMaxWidth(115);
+        Label instructions = new Label("Kirjoita ruudukon koko ja voittosuoran pituus. \n        Molempien minimipituus on kolme. \n    Voittosuora ei voi olla ruudukkoa isompi!");
+        this.gridSize = new TextField("ruudukko");
+        gridSize.setMaxWidth(70);
+        this.rowSize = new TextField("suora");
+        rowSize.setMaxWidth(70);
         textFieldLayout.setAlignment(Pos.CENTER);
-        textFieldLayout.getChildren().addAll(instructions, gridSize, rowSize);
+        this.warning.setAlignment(Pos.CENTER);
+        textFieldLayout.getChildren().addAll(instructions, gridSize, rowSize, warning);
 
-        Button chooseButton = createButton(gridSize, rowSize);
+        Button chooseButton = createButton();
 
         startMenu.setAlignment(textFieldLayout, Pos.CENTER);
         startMenu.setAlignment(titel, Pos.CENTER);
@@ -64,23 +70,32 @@ public class StartMenuUi {
 
     }
 
-    public Button createButton(TextField grid, TextField row) {
+    public Button createButton() {
         Button sizesChosen = new Button("Valitse ja pelaa");
 
-        if (!grid.getText().equals("")) {
-            sizesChosen.setOnAction((actionEvent -> {
+        sizesChosen.setOnAction((actionEvent -> {
+            if (grid() > 2 && grid() >= row() && row() > 2) {
                 GameLayoutUi gameLayout;
                 try {
-                    gameLayout = new GameLayoutUi(Integer.valueOf(grid.getText()), Integer.valueOf(row.getText()), mainLayout);
+                    gameLayout = new GameLayoutUi(grid(), row(), mainLayout);
                     mainLayout.setCenter(gameLayout.getLayout());
                 } catch (SQLException ex) {
                     Logger.getLogger(StartMenuUi.class.getName()).log(Level.SEVERE, null, ex);
                 }
-
-            }));
-        }
+            } else {
+                this.warning.setText("Tarkista, että ruudukko ja voittosuora, ovat oikean kokoisia!");
+            }
+        }));
 
         return sizesChosen;
+    }
+
+    public int grid() {
+        return Integer.valueOf(this.gridSize.getText());
+    }
+
+    public int row() {
+        return Integer.valueOf(this.rowSize.getText());
     }
 
     public BorderPane getMainLayout() {
