@@ -67,7 +67,7 @@ public class WinnerLayoutUi {
         toStart.setAlignment(Pos.CENTER);
 
         toStart.setOnAction((actionEvent -> {
-            StartMenu startMenu = new StartMenu(mainLayout);
+            StartMenuUi startMenu = new StartMenuUi(mainLayout);
             mainLayout.setCenter(startMenu.getStartMenuLayout());
         }));
 

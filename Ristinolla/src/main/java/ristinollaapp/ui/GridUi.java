@@ -10,17 +10,17 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Font;
 import ristinollaapp.domain.GameLogic;
-import ristinollaapp.ui.GameLayout;
+import ristinollaapp.ui.GameLayoutUi;
 
 public class GridUi {
 
     private GridPane grid;
     private GameLogic gamelogic;
     private int size;
-    private GameLayout layout;
+    private GameLayoutUi layout;
     private BorderPane mainLayout;
 
-    public GridUi(int size, int row, GameLayout layout, BorderPane mainLayout) throws SQLException {
+    public GridUi(int size, int row, GameLayoutUi layout, BorderPane mainLayout) throws SQLException {
         this.mainLayout = mainLayout;
         this.layout = layout;
         this.size = size;
@@ -49,8 +49,8 @@ public class GridUi {
             if (this.gamelogic.spaceEmpty(x, y)) {
                 this.gamelogic.updateScore(x, y);
                 button.setText(this.gamelogic.getTurn());
-                this.gamelogic.changeTurn();
-                this.layout.setTurn(this.gamelogic.getTurn());
+                String turn = this.gamelogic.changeTurn();
+                this.layout.setTurn(turn);
 
                 if (this.gamelogic.isThereAWinner(x, y)) {
                     WinnerLayoutUi winnerLayout;

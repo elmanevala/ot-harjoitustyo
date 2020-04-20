@@ -1,4 +1,4 @@
-package ristinollaapp.doa;
+package ristinollaapp.dao;
 
 import java.sql.*;
 
@@ -8,14 +8,14 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TopLists {
+public class TopListsDao {
 
     private Connection connection;
     private PreparedStatement stmt;
     private Statement s;
     private String bdname;
 
-    public TopLists(String dbname) throws SQLException {
+    public TopListsDao(String dbname) throws SQLException {
         this.bdname = dbname;
         initializeDB();
     }

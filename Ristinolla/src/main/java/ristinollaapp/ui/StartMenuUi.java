@@ -20,12 +20,12 @@ import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import org.sqlite.SQLiteException;
 
-public class StartMenu {
+public class StartMenuUi {
 
     private BorderPane mainLayout;
     private BorderPane startMenu;
 
-    public StartMenu(BorderPane mainLayout) {
+    public StartMenuUi(BorderPane mainLayout) {
         this.mainLayout = mainLayout;
         this.startMenu = new BorderPane();
 
@@ -69,12 +69,12 @@ public class StartMenu {
 
         if (!grid.getText().equals("")) {
             sizesChosen.setOnAction((actionEvent -> {
-                GameLayout gameLayout;
+                GameLayoutUi gameLayout;
                 try {
-                    gameLayout = new GameLayout(Integer.valueOf(grid.getText()), Integer.valueOf(row.getText()), mainLayout);
+                    gameLayout = new GameLayoutUi(Integer.valueOf(grid.getText()), Integer.valueOf(row.getText()), mainLayout);
                     mainLayout.setCenter(gameLayout.getLayout());
                 } catch (SQLException ex) {
-                    Logger.getLogger(StartMenu.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(StartMenuUi.class.getName()).log(Level.SEVERE, null, ex);
                 }
 
             }));

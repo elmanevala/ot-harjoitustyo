@@ -11,7 +11,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
-import ristinollaapp.doa.TopLists;
+import ristinollaapp.dao.TopListsDao;
 import ristinollaapp.domain.TopListLogic;
 
 /**
@@ -21,7 +21,7 @@ import ristinollaapp.domain.TopListLogic;
 public class TopLIstLogicTest {
 
     TopListLogic logic;
-    TopLists dao;
+    TopListsDao dao;
 
     public TopLIstLogicTest() {
     }
@@ -36,7 +36,7 @@ public class TopLIstLogicTest {
 
     @Before
     public void setUp() throws SQLException {
-        this.dao = new TopLists("test.db");
+        this.dao = new TopListsDao("test.db");
         this.logic = new TopListLogic(4, 3, 3, "test.db");
         this.dao.clear();
     }
@@ -77,8 +77,8 @@ public class TopLIstLogicTest {
 
         assertEquals(2, logic.topFive().size());
     }
-    
-       @Test
+
+    @Test
     public void addsAName() throws SQLException {
         this.dao.insertTopPlayer(4, 3, "epe", 2);
         this.dao.insertTopPlayer(4, 3, "epe", 2);

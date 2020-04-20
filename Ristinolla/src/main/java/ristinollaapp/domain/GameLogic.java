@@ -68,12 +68,14 @@ public class GameLogic {
         return this.gameOver;
     }
 
-    public void changeTurn() {
+    public String changeTurn() {
         if (this.turn.equals("X")) {
             this.turn = "0";
         } else {
             this.turn = "X";
         }
+        
+        return this.turn;
     }
 
     public void printScoreBoard() {

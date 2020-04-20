@@ -19,10 +19,10 @@ Sovellus koostuu alustavasti neljästä eri näkymästä.
 ## Perusversion toiminnallisuudet
 
 * Käyttäjä voi kustomoida peliä
-  * Käyttäjä voi valita ruudukon koon. **TEHTY**
-  * Käyttäjä voi voittavan rivin pituuden.  **TEHTY** 
-* Käyttäjä voi pelata ristinollaa samalla koneella toisen pelaajan kanssa. **TEHTY**
-* Jos käyttäjä voittaa erityisen vähillä siirroilla, hän voi päästä TOP-listalle
+  * Käyttäjä voi valita ruudukon koon. **TEHTY, VKO3**
+  * Käyttäjä voi voittavan rivin pituuden.  **TEHTY, VKO4** 
+* Käyttäjä voi pelata ristinollaa samalla koneella toisen pelaajan kanssa. **TEHTY, VKO4**
+* Jos käyttäjä voittaa erityisen vähillä siirroilla, hän voi päästä TOP-listalle **TEHTY, VKO5**
 
 
 ## Jatkokehitysideoita

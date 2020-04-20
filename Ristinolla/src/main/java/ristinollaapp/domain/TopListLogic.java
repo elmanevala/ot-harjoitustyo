@@ -2,17 +2,17 @@ package ristinollaapp.domain;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
-import ristinollaapp.doa.TopLists;
+import ristinollaapp.dao.TopListsDao;
 
 public class TopListLogic {
 
-    private TopLists dao;
+    private TopListsDao dao;
     private int gridsize;
     private int rowsize;
     private int moves;
 
     public TopListLogic(int gridsize, int rowsize, int moves, String dbname) throws SQLException {
-        this.dao = new TopLists(dbname);
+        this.dao = new TopListsDao(dbname);
         this.gridsize = gridsize;
         this.rowsize = rowsize;
         this.moves = moves;

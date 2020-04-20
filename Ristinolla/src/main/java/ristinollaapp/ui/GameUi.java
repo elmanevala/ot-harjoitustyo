@@ -29,7 +29,7 @@ public class GameUi extends Application {
 
         this.mainLayout = new BorderPane();
 
-        StartMenu startmenu = new StartMenu(this.mainLayout);
+        StartMenuUi startmenu = new StartMenuUi(this.mainLayout);
         BorderPane layout = startmenu.getMainLayout();
 
         Scene nakyma = new Scene(layout);

@@ -72,7 +72,7 @@ public class TopListUi {
         toStart.setAlignment(Pos.CENTER);
 
         toStart.setOnAction((actionEvent -> {
-            StartMenu startMenu = new StartMenu(this.mainLayout);
+            StartMenuUi startMenu = new StartMenuUi(this.mainLayout);
             this.mainLayout.setCenter(startMenu.getStartMenuLayout());
         }));
 

@@ -17,7 +17,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
-public class GameLayout {
+public class GameLayoutUi {
 
     private BorderPane gameLayout;
     private GridUi gamegrid;
@@ -25,7 +25,7 @@ public class GameLayout {
     private BorderPane mainLayout;
     private int row;
 
-    public GameLayout(int size, int row, BorderPane mainLayout) throws SQLException{
+    public GameLayoutUi(int size, int row, BorderPane mainLayout) throws SQLException{
         this.row = row;
         this.mainLayout = mainLayout;
         this.gameLayout = new BorderPane();

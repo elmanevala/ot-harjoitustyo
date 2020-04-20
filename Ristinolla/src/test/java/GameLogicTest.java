@@ -7,7 +7,7 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 import ristinollaapp.domain.GameLogic;
 import ristinollaapp.ui.GridUi;
-import ristinollaapp.ui.StartMenu;
+import ristinollaapp.ui.StartMenuUi;
 
 public class GameLogicTest {
 
