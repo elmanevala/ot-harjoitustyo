@@ -12,4 +12,6 @@
 | 12.4.2020	| 2h	| Alustavaa logiikkaa tietokannalle.						|
 | 16.4.2020	| 2.5h	| Tietokannan käyttöön lisää metodeja						|
 | 17.4.2020	| 7h	| Käyttöliittymää TOP-listoihin ja pelilogiikan bugien korjailua		|
-|Aika yhteensä:	| 41h	|										|
+| 20.4.2020	| 4h	| Testejä, dokumentaatiota ja yleistä koodin siistimistä.			|
+| 21.4.2020	| 3h	| TOP-listojen käyttöliittymän paratelua ja ensimmäinen release			| 
+|Aika yhteensä:	| 48h	|										|

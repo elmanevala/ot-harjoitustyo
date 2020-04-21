@@ -21,7 +21,6 @@ public class TopListsDao {
     }
 
     public void initializeDB() throws SQLException {
-        System.out.println("täällä");
         startConnection();
         s.execute("CREATE TABLE IF NOT EXISTS TopLists (id INTEGER PRIMARY KEY, name TEXT NOT NULL, gridsize INTEGER, rowsize INTEGER, moves INTEGER);");
         closeConnection();

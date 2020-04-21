@@ -83,7 +83,7 @@ public class StartMenuUi {
                     Logger.getLogger(StartMenuUi.class.getName()).log(Level.SEVERE, null, ex);
                 }
             } else {
-                this.warning.setText("Tarkista, että ruudukko ja voittosuora, ovat oikean kokoisia!");
+                this.warning.setText("Tarkista, että ruudukko ja voittosuora ovat oikean kokoisia!");
             }
         }));
 
