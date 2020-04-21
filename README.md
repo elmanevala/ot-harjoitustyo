@@ -2,6 +2,10 @@
 
 Harjoitustyö kursille ohjelmistotekniikka. Sovelluksella voi pelata ristinollaa kaveria tai vihollista vastaan yhdellä koneella. Käyttäjä voi itse päättää peliruudukon koon ja kuinka pitkä voittorivin tulee olla. Jos pelaaja voittaa erityisen vähillä siirroilla, hän pääsee TOP-5-listalle.
 
+## GitHub release
+
+* [Ensimmäinen release](https://github.com/elmanevala/ot-harjoitustyo/releases/tag/viikko5)
+
 ## Komentorivitoiminnot
 
 ### Testaus
