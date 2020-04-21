@@ -2,13 +2,19 @@ package ristinollaapp.ui;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.Priority;
+import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 import ristinollaapp.domain.TopListLogic;
 
 public class TopListUi {
@@ -28,6 +34,7 @@ public class TopListUi {
     }
 
     public void createTopListLayout() throws SQLException {
+        Insets insets = new Insets(10);
         Label titel = new Label("TOP-5 voittoa, joissa käytetty vähiten siirtoja");
         titel.setFont(new Font("Arial", 20));
         Label game = new Label(this.topListLogic.getgridSize() + "x" + this.topListLogic.getgridSize() + "-ruudukko, voittosuora " + this.topListLogic.getRowSize());
@@ -40,9 +47,12 @@ public class TopListUi {
 
         this.topFiveLayout = setTopFive();
 
-        this.topListLayout.setTop(titels);
         Button toStart = toStartMenu();
-        toStart.setAlignment(Pos.CENTER);
+
+        this.topListLayout.setAlignment(toStart, Pos.TOP_CENTER);
+        this.topListLayout.setMargin(toStart, insets);
+
+        this.topListLayout.setTop(titels);
         this.topListLayout.setBottom(toStart);
         this.topListLayout.setCenter(this.topFiveLayout);
     }
@@ -55,17 +65,33 @@ public class TopListUi {
 
     public VBox setTopFive() throws SQLException {
         ArrayList<String> list = this.topListLogic.topFive();
+        Label titel = new Label("Nimimerkki:      siirrot:");
+        titel.setFont(Font.font("Verdana", FontWeight.BOLD, 12));
 
-        this.topFiveLayout.getChildren().add(new Label("Nimimerkki:     siirrot:"));
+        this.topFiveLayout.getChildren().add(titel);
         for (int i = 0; i < list.size(); i++) {
-            Label entry = new Label(i + 1 + ". " + list.get(i));
-            entry.setAlignment(Pos.CENTER_LEFT);
-            this.topFiveLayout.getChildren().add(entry);
+            String[] nameMoves = list.get(i).split(",");
+            this.topFiveLayout.getChildren().add(listEntry(i, nameMoves[0], nameMoves[1]));
         }
 
         this.topFiveLayout.setAlignment(Pos.CENTER);
 
         return this.topFiveLayout;
+    }
+
+    public BorderPane listEntry(int rank, String name, String moves) {
+        BorderPane entryLayout = new BorderPane();
+        entryLayout.setMaxWidth(125);
+        Label rankName = new Label(rank + 1 + ".  " + name);
+        Label movesLabel = new Label(moves);
+        movesLabel.setAlignment(Pos.CENTER_LEFT);
+
+        rankName.setAlignment(Pos.CENTER_LEFT);
+
+        entryLayout.setLeft(rankName);
+        entryLayout.setRight(movesLabel);
+
+        return entryLayout;
     }
 
     public Button toStartMenu() {

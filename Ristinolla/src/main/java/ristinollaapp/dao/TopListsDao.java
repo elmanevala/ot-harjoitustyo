@@ -79,7 +79,7 @@ public class TopListsDao {
         ArrayList<String> topfive = new ArrayList<>();
 
         while (leastMoveWins.next()) {
-            topfive.add(leastMoveWins.getString("name") + "     " + leastMoveWins.getString("moves"));
+            topfive.add(leastMoveWins.getString("name") + "," + leastMoveWins.getString("moves"));
         }
 
         closeConnection();
