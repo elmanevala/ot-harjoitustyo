@@ -54,4 +54,20 @@ public class TopListLogic {
     public String mostPopularRow() throws SQLException{
         return this.dao.mostPopularRow();
     }
+    
+    public String games() throws SQLException {
+        return this.dao.gamesPlayed();
+    }
+    
+    public String mostPopularCombination() throws SQLException {
+        return this.dao.mostPopularGame();
+    }
+    
+    public double averageMoves() throws SQLException {
+        return this.dao.averageMoves();
+    }
+    
+    public String popularPlayed() throws SQLException {
+        return this.dao.mostPopularPlayed();
+    }
 }

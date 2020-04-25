@@ -6,6 +6,8 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 public class TopListsDao {
@@ -103,6 +105,7 @@ public class TopListsDao {
             sizeAndQuantity = mostPopular.getString("gridsize") + "," + mostPopular.getString("mostPopular");
         }
 
+        closeConnection();
         return sizeAndQuantity;
     }
 
@@ -117,9 +120,83 @@ public class TopListsDao {
             sizeAndQuantity = mostPopular.getString("rowsize") + "," + mostPopular.getString("mostPopular");
         }
 
+        closeConnection();
         return sizeAndQuantity;
     }
-    
-    
+
+    public String gamesPlayed() throws SQLException {
+        startConnection();
+
+        stmt = connection.prepareStatement("SELECT COUNT(*) AS games FROM TopLists");
+
+        ResultSet mostPopular = stmt.executeQuery();
+
+        String games = "no games";
+        while (mostPopular.next()) {
+            games = mostPopular.getString("games");
+        }
+
+        closeConnection();
+
+        return games;
+    }
+
+    public String mostPopularGame() throws SQLException {
+        startConnection();
+
+        stmt = connection.prepareStatement("SELECT gridsize, rowsize, COUNT(*) FROM TopLists GROUP BY 10*gridsize+rowsize ORDER BY COUNT(*) DESC LIMIT 1");
+
+        ResultSet mostPopular = stmt.executeQuery();
+
+        String games = "";
+        while (mostPopular.next()) {
+            games = mostPopular.getString("gridsize") + "," + mostPopular.getString("rowsize");
+        }
+
+        closeConnection();
+
+        return games;
+    }
+
+    public String mostPopularPlayed() throws SQLException {
+        String[] sizeAndRow = mostPopularGame().split(",");
+        startConnection();
+
+        stmt = connection.prepareStatement("SELECT COUNT(*) AS sum FROM TopLists WHERE rowsize=? AND gridsize=?");
+        stmt.setInt(1, Integer.valueOf(sizeAndRow[1]));
+        stmt.setInt(2, Integer.valueOf(sizeAndRow[0]));
+
+        ResultSet played = stmt.executeQuery();
+
+        String games = "";
+        while (played.next()) {
+            games = played.getString("sum");
+        }
+
+        closeConnection();
+
+        return games;
+    }
+
+    public double averageMoves() throws SQLException {
+        startConnection();
+
+        stmt = connection.prepareStatement("SELECT moves FROM TopLists");
+
+        ResultSet averageMoves = stmt.executeQuery();
+
+        double sum = 0;
+        double i = 0;
+        while (averageMoves.next()) {
+            sum = sum + averageMoves.getDouble("moves");
+            i++;
+        }
+
+        double average = 1.0 * sum / i;
+
+        closeConnection();
+
+        return average;
+    }
 
 }
