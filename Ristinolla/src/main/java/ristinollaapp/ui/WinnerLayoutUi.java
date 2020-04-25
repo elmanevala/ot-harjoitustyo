@@ -54,6 +54,8 @@ public class WinnerLayoutUi {
             buttons.getChildren().addAll(new Text("Mahtavaa, pääsit TOP-listalle!"), winnerName, addTopListButton(winnerName));
         } else {
             buttons.getChildren().addAll(addStartMenuButton(), toTopListButton());
+            this.topListLogic.addName("notOntheList");
+            System.out.println(this.topListLogic.mostPopularSize());
         }
 
         winnerLayout.setMargin(winner, new Insets(50));

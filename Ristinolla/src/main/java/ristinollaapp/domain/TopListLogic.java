@@ -10,6 +10,10 @@ public class TopListLogic {
     private int gridsize;
     private int rowsize;
     private int moves;
+    
+    public TopListLogic(String dbname) throws SQLException {
+        this.dao = new TopListsDao(dbname);
+    }
 
     public TopListLogic(int gridsize, int rowsize, int moves, String dbname) throws SQLException {
         this.dao = new TopListsDao(dbname);
@@ -41,5 +45,13 @@ public class TopListLogic {
 
     public int getgridSize() {
         return this.gridsize;
+    }
+    
+    public String mostPopularSize() throws SQLException{
+        return this.dao.mostPopularSize();
+    }
+    
+    public String mostPopularRow() throws SQLException{
+        return this.dao.mostPopularRow();
     }
 }

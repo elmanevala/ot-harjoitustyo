@@ -92,4 +92,34 @@ public class TopListsDao {
         initializeDB();
     }
 
+    public String mostPopularSize() throws SQLException {
+        startConnection();
+        stmt = connection.prepareStatement("SELECT gridsize, COUNT(gridsize) AS mostPopular FROM TopLists GROUP BY gridsize ORDER BY mostPopular DESC LIMIT 1");
+
+        ResultSet mostPopular = stmt.executeQuery();
+
+        String sizeAndQuantity = "no games";
+        while (mostPopular.next()) {
+            sizeAndQuantity = mostPopular.getString("gridsize") + "," + mostPopular.getString("mostPopular");
+        }
+
+        return sizeAndQuantity;
+    }
+
+    public String mostPopularRow() throws SQLException {
+        startConnection();
+        stmt = connection.prepareStatement("SELECT rowsize, COUNT(rowsize) AS mostPopular FROM TopLists GROUP BY rowsize ORDER BY mostPopular DESC LIMIT 1");
+
+        ResultSet mostPopular = stmt.executeQuery();
+
+        String sizeAndQuantity = "no games";
+        while (mostPopular.next()) {
+            sizeAndQuantity = mostPopular.getString("rowsize") + "," + mostPopular.getString("mostPopular");
+        }
+
+        return sizeAndQuantity;
+    }
+    
+    
+
 }

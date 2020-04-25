@@ -34,7 +34,7 @@ public class TopListUi {
     }
 
     public void createTopListLayout() throws SQLException {
-        Insets insets = new Insets(10);
+        Insets insets = new Insets(20);
         Label titel = new Label("TOP-5 voittoa, joissa käytetty vähiten siirtoja");
         titel.setFont(new Font("Arial", 20));
         Label game = new Label(this.topListLogic.getgridSize() + "x" + this.topListLogic.getgridSize() + "-ruudukko, voittosuora " + this.topListLogic.getRowSize());

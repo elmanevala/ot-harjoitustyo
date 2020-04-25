@@ -20,6 +20,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import org.sqlite.SQLiteException;
+import ristinollaapp.domain.TopListLogic;
 
 public class StartMenuUi {
 
@@ -41,16 +42,22 @@ public class StartMenuUi {
 
         startMenu.setPrefSize(500, 500);
         Insets insets = new Insets(20);
+        BorderPane top = new BorderPane();
 
         Label titel = new Label("Tervetuloa pelaamaan ristinollaa!");
         titel.setFont(new Font("Arial", 20));
+        titel.setAlignment(Pos.CENTER);
+
+        top.setTop(statsButton());
+        top.setCenter(titel);
+        top.setMargin(titel, insets);
 
         VBox textFieldLayout = new VBox(8);
         Label instructions = new Label("Kirjoita ruudukon koko ja voittosuoran pituus. \n        Molempien minimipituus on kolme. \n    Voittosuora ei voi olla ruudukkoa isompi!");
         this.gridSize = new TextField("ruudukko");
-        gridSize.setMaxWidth(70);
+        gridSize.setMaxWidth(80);
         this.rowSize = new TextField("suora");
-        rowSize.setMaxWidth(70);
+        rowSize.setMaxWidth(80);
         textFieldLayout.setAlignment(Pos.CENTER);
         this.warning.setAlignment(Pos.CENTER);
         textFieldLayout.getChildren().addAll(instructions, gridSize, rowSize, warning);
@@ -58,11 +65,11 @@ public class StartMenuUi {
         Button chooseButton = createButton();
 
         startMenu.setAlignment(textFieldLayout, Pos.CENTER);
-        startMenu.setAlignment(titel, Pos.CENTER);
+        startMenu.setAlignment(top, Pos.CENTER);
         startMenu.setAlignment(chooseButton, Pos.TOP_CENTER);
         startMenu.setMargin(chooseButton, insets);
 
-        startMenu.setTop(titel);
+        startMenu.setTop(top);
         startMenu.setCenter(textFieldLayout);
         startMenu.setBottom(chooseButton);
 
@@ -88,6 +95,23 @@ public class StartMenuUi {
         }));
 
         return sizesChosen;
+    }
+
+    public Button statsButton() {
+        Button toStats = new Button("Pelien tilastoihin");
+
+        toStats.setOnAction((actionEvent -> {
+            StatsUi statsLayout;
+            try {
+                statsLayout = new StatsUi(new TopListLogic("toplists.db"), mainLayout);
+                mainLayout.setCenter(statsLayout.getLayout());
+            } catch (SQLException ex) {
+                Logger.getLogger(StartMenuUi.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+        }));
+
+        return toStats;
     }
 
     public int grid() {
