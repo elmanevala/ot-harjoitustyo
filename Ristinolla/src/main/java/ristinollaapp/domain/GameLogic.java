@@ -31,6 +31,18 @@ public class GameLogic {
         }
     }
 
+    
+    /**
+ * Method sets a new value to a given place in
+ * the scoreboard.
+ * 
+ * @param   x   horizontal location 
+ * @param   y   vertical location
+ *
+ * @see    ristinollaapp.ui.GridUi#createBut
+ *
+ * @return todennäköisyys kalibroituna
+ */
     public void updateScore(int x, int y) {
         this.score[x][y] = this.turn;
         if (this.turn == "X") {
