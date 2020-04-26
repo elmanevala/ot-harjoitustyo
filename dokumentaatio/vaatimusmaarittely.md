@@ -22,16 +22,15 @@ Sovellus koostuu alustavasti neljästä eri näkymästä.
   * Käyttäjä voi valita ruudukon koon. **TEHTY, VKO3**
   * Käyttäjä voi voittavan rivin pituuden.  **TEHTY, VKO4** 
 * Käyttäjä voi pelata ristinollaa samalla koneella toisen pelaajan kanssa. **TEHTY, VKO4**
-* Jos käyttäjä voittaa erityisen vähillä siirroilla, hän voi päästä TOP-listalle **TEHTY, VKO5**
+* Jos käyttäjä voittaa erityisen vähillä siirroilla, hän voi päästä TOP-listalle. **TEHTY, VKO5**
 
 
 ## Jatkokehitysideoita
 
-* Käyttäjä voi tarkastella pelin tilastoja
-  * Kuinka monta peliä on pelattu eri koilla
-  * Mikä koko on suosituin
+* Käyttäjä voi tarkastella pelin tilastoja. **TEHTY, VKO6**
+  * Kuinka monta peliä on pelattu.
+  * Mikä koko, voittosuora ja niiden yhdistelmä on suosituin.
   * Keskiverto siirtojen määrä tarvittu voittoihin
-  * Kuinka monta peliä on päättynyt tasapeliin
 * Lisää kustomointia
   * Ristin ja nollan sijaan peliin voi valita eri symboleja
   * Pelin taustaväriä voi vaihtaa
