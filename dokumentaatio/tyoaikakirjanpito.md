@@ -14,4 +14,5 @@
 | 17.4.2020	| 7h	| Käyttöliittymää TOP-listoihin ja pelilogiikan bugien korjailua		|
 | 20.4.2020	| 4h	| Testejä, dokumentaatiota ja yleistä koodin siistimistä.			|
 | 21.4.2020	| 3h	| TOP-listojen käyttöliittymän paratelua ja ensimmäinen release			| 
-|Aika yhteensä:	| 48h	|										|
+| 25.4.2020	| 4h	| Pelitilastojen luonti.							|
+|Aika yhteensä:	| 52h	|										|
