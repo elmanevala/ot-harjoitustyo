@@ -317,6 +317,7 @@ public class TopListsDao {
 
     /**
      * Checks how many moves it takes on average to win a game.
+     * Excludes rows with an empty name as they have ended in a draw.
      *
      * @return average moves needed for a win as a double
      */
