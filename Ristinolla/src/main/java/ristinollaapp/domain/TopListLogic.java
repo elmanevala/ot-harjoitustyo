@@ -49,6 +49,10 @@ public class TopListLogic {
 
     public String mostPopularSize() {
         String[] parts = this.dao.mostPopularSize().split(",");
+
+        if (parts[0].equals("no games")) {
+            return "Ei dataa";
+        }
         return parts[0];
     }
 
@@ -63,6 +67,10 @@ public class TopListLogic {
 
     public String mostPopularRow() {
         String[] parts = this.dao.mostPopularRow().split(",");
+
+        if (parts[0].equals("no games")) {
+            return "Ei dataa";
+        }
         return parts[0];
     }
 
@@ -81,6 +89,9 @@ public class TopListLogic {
 
     public String mostPopularCombSize() {
         String[] parts = this.dao.mostPopularGame().split(",");
+        if (parts[0].equals("no games")) {
+            return "-";
+        }
         return parts[0];
     }
 
@@ -91,9 +102,9 @@ public class TopListLogic {
 
     public String averageMoves() {
         String average = String.valueOf(this.dao.averageMoves());
-        
-        if (average.equals("NaN")){
-            return "Ei dataa";
+
+        if (average.equals("NaN")) {
+            return "-";
         }
 
         String firstFourChars = "";

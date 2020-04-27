@@ -46,11 +46,23 @@ public class StatsUi {
     public VBox stats() {
         VBox stats = new VBox(5);
 
-        BorderPane size = listEntry("Suosituin ruudukko", this.topListLogic.mostPopularSize() + "x" + this.topListLogic.mostPopularSize());
+        BorderPane size;
+        BorderPane row;
+        BorderPane overall;
+
+        if (this.topListLogic.games().equals("0")) {
+            size = listEntry("Suosituin ruudukko", "-");
+            row = listEntry("Suosituin voittosuora", "-");
+            overall = listEntry("Suosituin ruudukko–\nvoittoriviyhdistelmä", "-");
+
+        } else {
+            size = listEntry("Suosituin ruudukko", this.topListLogic.mostPopularSize() + "x" + this.topListLogic.mostPopularSize());
+            row = listEntry("Suosituin voittosuora", this.topListLogic.mostPopularRow());
+            overall = listEntry("Suosituin ruudukko–\nvoittosuorayhdistelmä", this.topListLogic.mostPopularCombSize() + "x" + this.topListLogic.mostPopularCombSize() + " ja " + this.topListLogic.mostPopularCombRow());
+        }
+
         BorderPane sizeGames = listEntry("Pelejä", this.topListLogic.popularSizeQuantity());
-        BorderPane row = listEntry("Suosituin voittorivi", this.topListLogic.mostPopularRow());
         BorderPane rowGames = listEntry("Pelejä", this.topListLogic.popularRowQuantity());
-        BorderPane overall = listEntry("Suosituin\nruudukko–voittoriviyhdistelmä", this.topListLogic.mostPopularCombSize() + "x" + this.topListLogic.mostPopularCombSize() + " ja " + this.topListLogic.mostPopularCombRow());
         BorderPane overallGames = listEntry("Pelejä", this.topListLogic.popularPlayed());
         BorderPane games = listEntry("Kaikkia pelejä pelattu", this.topListLogic.games());
         BorderPane averagewin = listEntry("Voittoon tarvittavien \nsiirtojen keskiarvo", this.topListLogic.averageMoves());
@@ -60,9 +72,9 @@ public class StatsUi {
 
         return stats;
     }
-    
-    public BorderPane empty(){
-        return listEntry("","");
+
+    public BorderPane empty() {
+        return listEntry("", "");
     }
 
     public BorderPane listEntry(String text, String played) {
