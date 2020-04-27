@@ -11,4 +11,5 @@
     <suppress files="ristinollaapp.ui.StartMenuUi.java" checks="[a-zA-Z0-9]*"/>
     <suppress files="ristinollaapp.ui.WinnerLayoutUi.java" checks="[a-zA-Z0-9]*"/>
     <suppress files="ristinollaapp.ui.TopListUi.java" checks="[a-zA-Z0-9]*"/>
+    <suppress files="ristinollaapp.ui.StatsUi.java" checks="[a-zA-Z0-9]*"/>
 </suppressions>

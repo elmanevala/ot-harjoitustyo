@@ -6,7 +6,7 @@
  ja viimeinen pakkaus eli ristinollaapp.dao sisältää tietojen pysyväistalletuksen.
 
  Käyttäjän toiminnan mukaan ui-kerroksesta siirtyy metodien avulla tietoja ja käskyjä sovelluslogiikkaan, joka mm. ylläpitää käynnissä olevan ristinollapelin tilannetta. Kun pelilogiikassa huomataan, että peli 
- on päättynyt Top-listalogiikka tallettaa kyseisen pelin tietoja dao-pakkauksen tietokantaan. 
+ on päättynyt top-listalogiikka tallettaa kyseisen pelin tietoja dao-pakkauksen tietokantaan. 
 
 ![alt-text](https://raw.githubusercontent.com/elmanevala/ot-harjoitustyo/master/dokumentaatio/luokkapakkauskaavioUusi.jpg)
 
@@ -34,4 +34,6 @@ Käyttöliittymä kutsuu GameLogic-luokkaa, jossa on tietoja käynnissä olevast
 
 ![alt-text](https://raw.githubusercontent.com/elmanevala/ot-harjoitustyo/master/dokumentaatio/nimenTallennusSekvenssikkaavio.png)
 
+Käyttöliittymä kutsuu top-listalogiikkaa lisämään parametrina annetun nimen tietokantaan. Top-listalogiikka puolestaan kutsuu TopListDao-luokkaa ja asettaa nimen tietokantaan. Muut parametriarvot logiikka on saanut jo
+pelin päätyttyä konstruktorissa. Käyttöliittymä päivittää näkymää ja samalla kutsuu myös logiikkaa ja daoa, saadakseen top-listan muodostamiseen tarvittavat tiedot.
 
