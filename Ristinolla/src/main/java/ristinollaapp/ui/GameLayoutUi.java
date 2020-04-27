@@ -17,6 +17,12 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
+
+/**
+ * Creates a layout for the game and passes on the user-given
+ * data to other classes.
+ *
+ */
 public class GameLayoutUi {
 
     private BorderPane gameLayout;
@@ -25,15 +31,14 @@ public class GameLayoutUi {
     private BorderPane mainLayout;
     private int row;
 
-        /**
-     * Costructor creates a new layout for the game.
-     * It uses the method create()
+    /**
+     * Constructor creates a new layout for the game. It uses the method
+     * create()
      *
      * @param size size of the game grid
      * @param row how long the winning grid must be
-     * @param mainLayout mainlayout of the app, gamelayout 
-     * will be set to it
-
+     * @param mainLayout mainlayout of the app, gamelayout will be set to it
+     *
      */
     public GameLayoutUi(int size, int row, BorderPane mainLayout) {
         this.row = row;
@@ -45,14 +50,14 @@ public class GameLayoutUi {
         createLayout();
     }
 
-        /**
+    /**
      * Creates a new layout for the game.
      */
     public void createLayout() {
         turn.setFont(new Font("Arial", 20));
         Label rowText = new Label("Voittosuoran pituus on " + this.row);
         rowText.setFont(new Font("Arial", 15));
-        
+
         VBox titels = new VBox(10);
         titels.setAlignment(Pos.CENTER);
         titels.getChildren().addAll(this.turn, rowText);
@@ -71,10 +76,10 @@ public class GameLayoutUi {
         return gameLayout;
     }
 
-        /**
-     * Changes the titel of the layout according
-     * to the turn from the GameLogic class.
-     * 
+    /**
+     * Changes the titell of the layout according to the turn from the GameLogic
+     * class.
+     *
      * @param turn which turn is it
      */
     public void setTurn(String turn) {

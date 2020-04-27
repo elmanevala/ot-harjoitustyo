@@ -10,6 +10,10 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * Has methods to retrieve and store data from played games.
+ *
+ */
 public class TopListsDao {
 
     private Connection connection;
@@ -271,7 +275,7 @@ public class TopListsDao {
                 games = mostPopular.getString("gridsize") + "," + mostPopular.getString("rowsize");
             }
 
-            if (games.equals("")){
+            if (games.equals("")) {
                 games = "0,0";
             }
             closeConnection();
@@ -316,8 +320,8 @@ public class TopListsDao {
     }
 
     /**
-     * Checks how many moves it takes on average to win a game.
-     * Excludes rows with an empty name as they have ended in a draw.
+     * Checks how many moves it takes on average to win a game. Excludes rows
+     * with an empty name as they have ended in a draw.
      *
      * @return average moves needed for a win as a double
      */

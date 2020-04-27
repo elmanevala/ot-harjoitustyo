@@ -22,6 +22,11 @@ import javafx.stage.Stage;
 import org.sqlite.SQLiteException;
 import ristinollaapp.domain.TopListLogic;
 
+/**
+ * Creates a start menu for the game and collects the
+ * user-given data to create a game.
+ *
+ */
 public class StartMenuUi {
 
     private BorderPane mainLayout;
@@ -66,9 +71,11 @@ public class StartMenuUi {
 
         VBox textFieldLayout = new VBox(8);
         Label instructions = new Label("Kirjoita ruudukon koko ja voittosuoran pituus. \n            Ruudukon koon tulee olla 3–7 \n    Voittosuora ei voi olla ruudukkoa isompi!");
-        this.gridSize = new TextField("ruudukko");
+        this.gridSize = new TextField();
+        this.gridSize.setPromptText("ruudukko");
         gridSize.setMaxWidth(80);
-        this.rowSize = new TextField("suora");
+        this.rowSize = new TextField();
+        this.rowSize.setPromptText("suora");
         rowSize.setMaxWidth(80);
         textFieldLayout.setAlignment(Pos.CENTER);
         this.warning.setAlignment(Pos.CENTER);

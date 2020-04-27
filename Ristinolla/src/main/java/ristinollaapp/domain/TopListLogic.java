@@ -4,6 +4,11 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import ristinollaapp.dao.TopListsDao;
 
+/**
+ * Has methods to add and retrieve data from TopLists table.
+ * The class is created to store and handle a spesific game after it has ended.
+ *
+ */
 public class TopListLogic {
 
     private TopListsDao dao;

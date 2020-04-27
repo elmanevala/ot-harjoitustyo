@@ -14,6 +14,10 @@ public class GameLogic {
     private int winnermoves;
     private int gridSize;
 
+    /**
+ * Stores the information about an ongoing game and has methods to 
+ * change the status of the game.
+ */
     public GameLogic(int size, int rowsize) {
 
         this.gridSize = size;

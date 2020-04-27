@@ -12,6 +12,11 @@ import javafx.scene.text.Font;
 import ristinollaapp.domain.GameLogic;
 import ristinollaapp.ui.GameLayoutUi;
 
+/**
+ * Creates grid for the game and with the GameLogic class
+ * executes turns in the game.
+ *
+ */
 public class GridUi {
 
     private GridPane grid;
