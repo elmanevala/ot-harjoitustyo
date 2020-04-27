@@ -25,6 +25,16 @@ public class GameLayoutUi {
     private BorderPane mainLayout;
     private int row;
 
+        /**
+     * Costructor creates a new layout for the game.
+     * It uses the method create()
+     *
+     * @param size size of the game grid
+     * @param row how long the winning grid must be
+     * @param mainLayout mainlayout of the app, gamelayout 
+     * will be set to it
+
+     */
     public GameLayoutUi(int size, int row, BorderPane mainLayout) {
         this.row = row;
         this.mainLayout = mainLayout;
@@ -35,6 +45,9 @@ public class GameLayoutUi {
         createLayout();
     }
 
+        /**
+     * Creates a new layout for the game.
+     */
     public void createLayout() {
         turn.setFont(new Font("Arial", 20));
         Label rowText = new Label("Voittosuoran pituus on " + this.row);
@@ -58,6 +71,12 @@ public class GameLayoutUi {
         return gameLayout;
     }
 
+        /**
+     * Changes the titel of the layout according
+     * to the turn from the GameLogic class.
+     * 
+     * @param turn which turn is it
+     */
     public void setTurn(String turn) {
         this.turn.setText("Vuoro: " + this.gamegrid.getTurn());
     }

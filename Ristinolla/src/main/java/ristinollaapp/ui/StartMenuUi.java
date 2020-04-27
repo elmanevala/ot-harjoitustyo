@@ -30,6 +30,14 @@ public class StartMenuUi {
     private TextField rowSize;
     private Label warning;
 
+    /**
+     * Constructor creates a new layout for the menu. It uses the method
+     * createLayout()
+     *
+     * @param mainLayout mainLayout of the app, startMenulayout will be set to
+     * it
+     *
+     */
     public StartMenuUi(BorderPane mainLayout) {
         this.mainLayout = mainLayout;
         this.startMenu = new BorderPane();
@@ -38,6 +46,10 @@ public class StartMenuUi {
         createLayout();
     }
 
+    /**
+     * Creates a new layout for the start menu.
+     *
+     */
     public void createLayout() {
 
         startMenu.setPrefSize(500, 500);
@@ -53,7 +65,7 @@ public class StartMenuUi {
         top.setMargin(titel, insets);
 
         VBox textFieldLayout = new VBox(8);
-        Label instructions = new Label("Kirjoita ruudukon koko ja voittosuoran pituus. \n        Molempien minimipituus on kolme. \n    Voittosuora ei voi olla ruudukkoa isompi!");
+        Label instructions = new Label("Kirjoita ruudukon koko ja voittosuoran pituus. \n            Ruudukon koon tulee olla 3–7 \n    Voittosuora ei voi olla ruudukkoa isompi!");
         this.gridSize = new TextField("ruudukko");
         gridSize.setMaxWidth(80);
         this.rowSize = new TextField("suora");
@@ -77,20 +89,29 @@ public class StartMenuUi {
 
     }
 
+    /**
+     * Creates a button that collects the values the user gave in the
+     * TextFields. The method validates the data given by the user. This means
+     * gridsize can't be smaller than the rowsize and all values must be
+     * Integer.
+     *
+     * @return Button object that moves to user to the game
+     *
+     */
     public Button createButton() {
         Button sizesChosen = new Button("Valitse ja pelaa");
 
         sizesChosen.setOnAction((actionEvent -> {
             try {
-            if (grid() > 2 && grid() >= row() && row() > 2) {
-                GameLayoutUi gameLayout;
-                gameLayout = new GameLayoutUi(grid(), row(), mainLayout);
-                mainLayout.setCenter(gameLayout.getLayout());
+                if (grid() > 2 && grid() >= row() && row() > 2 && grid() < 8) {
+                    GameLayoutUi gameLayout;
+                    gameLayout = new GameLayoutUi(grid(), row(), mainLayout);
+                    mainLayout.setCenter(gameLayout.getLayout());
 
-            } else {
-                this.warning.setText("Tarkista, että ruudukko ja voittosuora ovat oikean kokoisia!");
-            } }
-            catch (NumberFormatException e){
+                } else {
+                    this.warning.setText("Tarkista, että ruudukko ja voittosuora ovat oikean kokoisia!");
+                }
+            } catch (NumberFormatException e) {
                 this.warning.setText("Senkin veijari! Numeroita, ei tekstiä!");
             }
         }));
@@ -98,6 +119,13 @@ public class StartMenuUi {
         return sizesChosen;
     }
 
+    /**
+     * Creates a button that retrieves data from the TopLists table and
+     * creates a new layout for the statistics.
+     *
+     * @return Button object that moves to user to the stats
+     *
+     */
     public Button statsButton() {
         Button toStats = new Button("Pelien tilastoihin");
 

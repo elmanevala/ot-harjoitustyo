@@ -17,7 +17,6 @@ public class TopListLogic {
      *
      * @param dbname name of the sqlite-file
      *
-     * @see ristinollaapp.ui.StartMenuUi#statsButton() *
      */
     public TopListLogic(String dbname) {
         this.dao = new TopListsDao(dbname);
@@ -31,8 +30,6 @@ public class TopListLogic {
      * @param moves moves needed to win the played game
      * @param dbname name of the sqlite-file
      *
-     * @see
-     * ristinollaapp.ui.WinnerLayoutUi#addTopListButton(javafx.scene.control.TextField)
      * *
      */
     public TopListLogic(int gridsize, int rowsize, int moves, String dbname) {

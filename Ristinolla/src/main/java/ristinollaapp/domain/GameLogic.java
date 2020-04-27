@@ -37,7 +37,6 @@ public class GameLogic {
      * @param x horizontal location
      * @param y vertical location
      *
-     * @see ristinollaapp.ui.GridUi
      */
     public void updateScore(int x, int y) {
         this.score[x][y] = this.turn;
@@ -54,8 +53,7 @@ public class GameLogic {
      *
      * @param x horizontal location
      * @param y vertical location
-     *
-     * @see ristinollaapp.ui.GridUi
+     * 
      * @return true if location empty, otherwise false
      */
     public boolean spaceEmpty(int x, int y) {
@@ -90,7 +88,6 @@ public class GameLogic {
      * Changes the turn.
      *
      * @return whose turn it is
-     * @see ristinollaapp.ui.GridUi
      */
     public String changeTurn() {
         if (this.turn.equals("X")) {
@@ -123,7 +120,6 @@ public class GameLogic {
      * a draw.
      *
      * @return true if scoreboard is full
-     * @see ristinollaapp.ui.GridUi
      */
     public boolean scoreboardFull() {
         for (int i = 0; i < this.gridSize; i++) {
@@ -144,7 +140,6 @@ public class GameLogic {
      * @param y vertical location
      *
      * @return true, if winning row is found
-     * @see ristinollaapp.ui.GridUi
      */
     public boolean isThereAWinnerInColumns(int x, int y) {
         int sameSymbolsInAColumn = 1;
@@ -172,7 +167,6 @@ public class GameLogic {
      * @param y vertical location
      *
      * @return true, if winning row is found
-     * @see ristinollaapp.ui.GridUi
      */
     public boolean isThereAWinnerInRows(int x, int y) {
         int sameSymbolsInARow = 1;
@@ -200,7 +194,6 @@ public class GameLogic {
      * @param y vertical location
      *
      * @return true, if winning row is found
-     * @see ristinollaapp.ui.GridUi
      */
     public boolean winnerDiagRightDown(int x, int y) {
         int row = 0;
@@ -248,7 +241,6 @@ public class GameLogic {
      * @param y vertical location
      *
      * @return true, if winning row is found
-     * @see ristinollaapp.ui.GridUi
      */
     public boolean winnerDiagLeftUp(int x, int y) {
         int row = 0;
@@ -295,7 +287,6 @@ public class GameLogic {
      * @param y vertical location
      *
      * @return true, if winning row is found
-     * @see ristinollaapp.ui.GridUi
      */
     public boolean isThereAWinner(int x, int y) {
         if (isThereAWinnerInColumns(x, y) || isThereAWinnerInRows(x, y) || winnerDiagRightDown(x, y) || winnerDiagLeftUp(x, y)) {
