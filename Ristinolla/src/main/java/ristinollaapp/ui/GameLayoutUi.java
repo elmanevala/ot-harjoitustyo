@@ -25,7 +25,7 @@ public class GameLayoutUi {
     private BorderPane mainLayout;
     private int row;
 
-    public GameLayoutUi(int size, int row, BorderPane mainLayout) throws SQLException{
+    public GameLayoutUi(int size, int row, BorderPane mainLayout) {
         this.row = row;
         this.mainLayout = mainLayout;
         this.gameLayout = new BorderPane();

@@ -48,23 +48,63 @@ public class TopListLogic {
     }
 
     public String mostPopularSize() {
-        return this.dao.mostPopularSize();
+        String[] parts = this.dao.mostPopularSize().split(",");
+        return parts[0];
+    }
+
+    public String popularSizeQuantity() {
+        String[] parts = this.dao.mostPopularSize().split(",");
+
+        if (parts.length < 2) {
+            return "0";
+        }
+        return parts[1];
     }
 
     public String mostPopularRow() {
-        return this.dao.mostPopularRow();
+        String[] parts = this.dao.mostPopularRow().split(",");
+        return parts[0];
+    }
+
+    public String popularRowQuantity() {
+        String[] parts = this.dao.mostPopularRow().split(",");
+
+        if (parts.length < 2) {
+            return "0";
+        }
+        return parts[1];
     }
 
     public String games() {
         return this.dao.gamesPlayed();
     }
 
-    public String mostPopularCombination() {
-        return this.dao.mostPopularGame();
+    public String mostPopularCombSize() {
+        String[] parts = this.dao.mostPopularGame().split(",");
+        return parts[0];
     }
 
-    public double averageMoves() {
-        return this.dao.averageMoves();
+    public String mostPopularCombRow() {
+        String[] parts = this.dao.mostPopularGame().split(",");
+        return parts[1];
+    }
+
+    public String averageMoves() {
+        String average = String.valueOf(this.dao.averageMoves());
+        
+        if (average.equals("NaN")){
+            return "Ei dataa";
+        }
+
+        String firstFourChars = "";
+
+        if (average.length() > 4) {
+            firstFourChars = average.substring(0, 4);
+        } else {
+            firstFourChars = average;
+        }
+
+        return firstFourChars;
     }
 
     public String popularPlayed() {

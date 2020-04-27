@@ -23,7 +23,7 @@ public class GameUi extends Application {
     }
 
     @Override
-    public void start(Stage stage) throws Exception {
+    public void start(Stage stage) {
 
         stage.setTitle("Ristinolla");
 

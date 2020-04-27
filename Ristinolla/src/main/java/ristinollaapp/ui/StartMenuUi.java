@@ -81,16 +81,17 @@ public class StartMenuUi {
         Button sizesChosen = new Button("Valitse ja pelaa");
 
         sizesChosen.setOnAction((actionEvent -> {
+            try {
             if (grid() > 2 && grid() >= row() && row() > 2) {
                 GameLayoutUi gameLayout;
-                try {
-                    gameLayout = new GameLayoutUi(grid(), row(), mainLayout);
-                    mainLayout.setCenter(gameLayout.getLayout());
-                } catch (SQLException ex) {
-                    Logger.getLogger(StartMenuUi.class.getName()).log(Level.SEVERE, null, ex);
-                }
+                gameLayout = new GameLayoutUi(grid(), row(), mainLayout);
+                mainLayout.setCenter(gameLayout.getLayout());
+
             } else {
                 this.warning.setText("Tarkista, että ruudukko ja voittosuora ovat oikean kokoisia!");
+            } }
+            catch (NumberFormatException e){
+                this.warning.setText("Senkin veijari! Numeroita, ei tekstiä!");
             }
         }));
 
@@ -101,13 +102,8 @@ public class StartMenuUi {
         Button toStats = new Button("Pelien tilastoihin");
 
         toStats.setOnAction((actionEvent -> {
-            StatsUi statsLayout;
-            try {
-                statsLayout = new StatsUi(new TopListLogic("toplists.db"), mainLayout);
-                mainLayout.setCenter(statsLayout.getLayout());
-            } catch (SQLException ex) {
-                Logger.getLogger(StartMenuUi.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            StatsUi statsLayout = new StatsUi(new TopListLogic("toplists.db"), mainLayout);
+            mainLayout.setCenter(statsLayout.getLayout());
 
         }));
 

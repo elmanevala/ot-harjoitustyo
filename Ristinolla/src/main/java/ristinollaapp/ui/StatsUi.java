@@ -16,7 +16,7 @@ public class StatsUi {
     private BorderPane statsLayout;
     private TopListLogic topListLogic;
 
-    public StatsUi(TopListLogic topListLogic, BorderPane mainLayout) throws SQLException {
+    public StatsUi(TopListLogic topListLogic, BorderPane mainLayout) {
         this.mainLayout = mainLayout;
         this.topListLogic = topListLogic;
         this.statsLayout = new BorderPane();
@@ -24,13 +24,13 @@ public class StatsUi {
         create();
     }
 
-    public void create() throws SQLException {
+    public void create() {
         Insets insets = new Insets(20);
         Label titel = new Label("Pelien tilastoja");
         titel.setFont(new Font("Arial", 20));
 
         Label size = new Label("Suosituin ruudukon koko: " + this.topListLogic.mostPopularSize());
-        
+
         Button toStart = toStartMenu();
 
         this.statsLayout.setAlignment(titel, Pos.CENTER);
@@ -43,23 +43,41 @@ public class StatsUi {
         this.statsLayout.setBottom(toStart);
     }
 
-    public VBox stats() throws SQLException {
-        VBox stats = new VBox(10);
+    public VBox stats() {
+        VBox stats = new VBox(5);
 
-        String[] sizeAndQuantity = this.topListLogic.mostPopularSize().split(",");
-        String[] rowAndQuantity = this.topListLogic.mostPopularRow().split(",");
-        String[] sizeAndRow = this.topListLogic.mostPopularCombination().split(",");
+        BorderPane size = listEntry("Suosituin ruudukko", this.topListLogic.mostPopularSize() + "x" + this.topListLogic.mostPopularSize());
+        BorderPane sizeGames = listEntry("Pelejä", this.topListLogic.popularSizeQuantity());
+        BorderPane row = listEntry("Suosituin voittorivi", this.topListLogic.mostPopularRow());
+        BorderPane rowGames = listEntry("Pelejä", this.topListLogic.popularRowQuantity());
+        BorderPane overall = listEntry("Suosituin\nruudukko–voittoriviyhdistelmä", this.topListLogic.mostPopularCombSize() + "x" + this.topListLogic.mostPopularCombSize() + " ja " + this.topListLogic.mostPopularCombRow());
+        BorderPane overallGames = listEntry("Pelejä", this.topListLogic.popularPlayed());
+        BorderPane games = listEntry("Kaikkia pelejä pelattu", this.topListLogic.games());
+        BorderPane averagewin = listEntry("Voittoon tarvittavien \nsiirtojen keskiarvo", this.topListLogic.averageMoves());
 
-        Label size = new Label("Suosituin ruukko: " + sizeAndQuantity[0] + "x" + sizeAndQuantity[0] + "\nPelejä: " + sizeAndQuantity[1]);
-        Label row = new Label("Suosituin voittosuora: " + rowAndQuantity[0] + "\nPelejä: " + rowAndQuantity[1]);
-        Label overall = new Label("Suosituin peliyhdistelmä: " + "\n" + sizeAndRow[0] + "x" + sizeAndRow[0] + "-ruudukko ja voittosuora " + sizeAndRow[1] + "\nPelejä: " + this.topListLogic.popularPlayed());
-        Label games = new Label("Pelejä pelattu yhteensä: " + this.topListLogic.games());
-        Label averagewin = new Label("Voittoon tarvittuja siirtoja keskimäärin: " + "\n" + this.topListLogic.averageMoves());
-
-        stats.getChildren().addAll(games, overall, row, size, averagewin);
+        stats.getChildren().addAll(averagewin, empty(), games, empty(), overall, overallGames, empty(), row, rowGames, empty(), size, sizeGames);
         stats.setAlignment(Pos.CENTER);
 
         return stats;
+    }
+    
+    public BorderPane empty(){
+        return listEntry("","");
+    }
+
+    public BorderPane listEntry(String text, String played) {
+        BorderPane entryLayout = new BorderPane();
+        entryLayout.setMaxWidth(250);
+        Label rankName = new Label(text);
+        Label movesLabel = new Label(played);
+        movesLabel.setAlignment(Pos.CENTER_LEFT);
+
+        rankName.setAlignment(Pos.CENTER_LEFT);
+
+        entryLayout.setLeft(rankName);
+        entryLayout.setRight(movesLabel);
+
+        return entryLayout;
     }
 
     public Button toStartMenu() {

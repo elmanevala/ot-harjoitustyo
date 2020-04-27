@@ -271,6 +271,9 @@ public class TopListsDao {
                 games = mostPopular.getString("gridsize") + "," + mostPopular.getString("rowsize");
             }
 
+            if (games.equals("")){
+                games = "0,0";
+            }
             closeConnection();
 
             return games;
@@ -324,13 +327,11 @@ public class TopListsDao {
             stmt = connection.prepareStatement("SELECT moves FROM TopLists WHERE name!=?");
             stmt.setString(1, "");
 
-            System.out.println("laskemassa ka:ta");
             ResultSet averageMoves = stmt.executeQuery();
 
             double sum = 0;
             double i = 0;
             while (averageMoves.next()) {
-                System.out.println(averageMoves.getDouble("moves"));
                 sum = sum + averageMoves.getDouble("moves");
                 i++;
             }

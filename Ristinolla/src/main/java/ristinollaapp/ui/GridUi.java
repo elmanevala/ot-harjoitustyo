@@ -20,7 +20,7 @@ public class GridUi {
     private GameLayoutUi layout;
     private BorderPane mainLayout;
 
-    public GridUi(int size, int row, GameLayoutUi layout, BorderPane mainLayout) throws SQLException {
+    public GridUi(int size, int row, GameLayoutUi layout, BorderPane mainLayout) {
         this.mainLayout = mainLayout;
         this.layout = layout;
         this.size = size;
@@ -30,7 +30,7 @@ public class GridUi {
         creatingGrid();
     }
 
-    public void creatingGrid() throws SQLException {
+    public void creatingGrid() {
         for (int i = 0; i < this.size; i++) {
             for (int j = 0; j < this.size; j++) {
                 Button button = createButton(i, j);
@@ -48,7 +48,7 @@ public class GridUi {
      * @param y vertical location
      *
      */
-    public Button createButton(int x, int y) throws SQLException {
+    public Button createButton(int x, int y) {
         Button button = new Button(" ");
         button.setFont(Font.font("Monospaced", 25));
 
@@ -60,22 +60,12 @@ public class GridUi {
                 this.layout.setTurn(turn);
 
                 if (this.gamelogic.isThereAWinner(x, y)) {
-                    WinnerLayoutUi winnerLayout;
-                    try {
-                        winnerLayout = new WinnerLayoutUi(this.gamelogic, this.mainLayout, false);
-                        this.mainLayout.setCenter(winnerLayout.getLayout());
-                    } catch (SQLException ex) {
-                        Logger.getLogger(GridUi.class.getName()).log(Level.SEVERE, null, ex);
-                    }
+                    WinnerLayoutUi winnerLayout = new WinnerLayoutUi(this.gamelogic, this.mainLayout, false);
+                    this.mainLayout.setCenter(winnerLayout.getLayout());
 
                 } else if (this.gamelogic.scoreboardFull()) {
-                    WinnerLayoutUi winnerLayout;
-                    try {
-                        winnerLayout = new WinnerLayoutUi(this.gamelogic, this.mainLayout, true);
-                        this.mainLayout.setCenter(winnerLayout.getLayout());
-                    } catch (SQLException ex) {
-                        Logger.getLogger(GridUi.class.getName()).log(Level.SEVERE, null, ex);
-                    }
+                    WinnerLayoutUi winnerLayout = new WinnerLayoutUi(this.gamelogic, this.mainLayout, true);
+                    this.mainLayout.setCenter(winnerLayout.getLayout());
 
                 }
                 this.gamelogic.printScoreBoard(); // Tarkistetaan muuttuko pelitilanne pelilogiikassa
