@@ -31,18 +31,14 @@ public class GameLogic {
         }
     }
 
-    
     /**
- * Method sets a new value to a given place in
- * the scoreboard.
- * 
- * @param   x   horizontal location 
- * @param   y   vertical location
- *
- * @see    ristinollaapp.ui.GridUi#createBut
- *
- * @return todennäköisyys kalibroituna
- */
+     * Sets a new value to a given place in the scoreboard.
+     *
+     * @param x horizontal location
+     * @param y vertical location
+     *
+     * @see ristinollaapp.ui.GridUi
+     */
     public void updateScore(int x, int y) {
         this.score[x][y] = this.turn;
         if (this.turn == "X") {
@@ -52,6 +48,16 @@ public class GameLogic {
         }
     }
 
+    /**
+     * Checks if a given location in scoreboard is empty meaning it has the
+     * value "e".
+     *
+     * @param x horizontal location
+     * @param y vertical location
+     *
+     * @see ristinollaapp.ui.GridUi
+     * @return true if location empty, otherwise false
+     */
     public boolean spaceEmpty(int x, int y) {
         if (this.score[x][y].equals("e")) {
             return true;
@@ -80,13 +86,19 @@ public class GameLogic {
         return this.gameOver;
     }
 
+    /**
+     * Changes the turn.
+     *
+     * @return whose turn it is
+     * @see ristinollaapp.ui.GridUi
+     */
     public String changeTurn() {
         if (this.turn.equals("X")) {
             this.turn = "0";
         } else {
             this.turn = "X";
         }
-        
+
         return this.turn;
     }
 
@@ -106,6 +118,13 @@ public class GameLogic {
         return this.score[x][y];
     }
 
+    /**
+     * Checks if the scoreboard is full, is used to see if the game has ended in
+     * a draw.
+     *
+     * @return true if scoreboard is full
+     * @see ristinollaapp.ui.GridUi
+     */
     public boolean scoreboardFull() {
         for (int i = 0; i < this.gridSize; i++) {
             for (int j = 0; j < this.rowSize; j++) {
@@ -117,6 +136,16 @@ public class GameLogic {
         return true;
     }
 
+    /**
+     * Checks if there is a winning row of values in the column of the given
+     * location.
+     *
+     * @param x horizontal location
+     * @param y vertical location
+     *
+     * @return true, if winning row is found
+     * @see ristinollaapp.ui.GridUi
+     */
     public boolean isThereAWinnerInColumns(int x, int y) {
         int sameSymbolsInAColumn = 1;
 
@@ -135,6 +164,16 @@ public class GameLogic {
         return this.gameOver;
     }
 
+    /**
+     * Checks if there is a winning row of values in the row of the given
+     * location.
+     *
+     * @param x horizontal location
+     * @param y vertical location
+     *
+     * @return true, if winning row is found
+     * @see ristinollaapp.ui.GridUi
+     */
     public boolean isThereAWinnerInRows(int x, int y) {
         int sameSymbolsInARow = 1;
 
@@ -152,6 +191,17 @@ public class GameLogic {
         return this.gameOver;
     }
 
+    /**
+     * Checks if there is a winning row of values in the diagonal line that
+     * start from the upper right hand corner and ends in the lower left hand
+     * corner. Row has to cross through the given location.
+     *
+     * @param x horizontal location
+     * @param y vertical location
+     *
+     * @return true, if winning row is found
+     * @see ristinollaapp.ui.GridUi
+     */
     public boolean winnerDiagRightDown(int x, int y) {
         int row = 0;
         int col = 0;
@@ -189,6 +239,17 @@ public class GameLogic {
         return this.gameOver;
     }
 
+    /**
+     * Checks if there is a winning row of values in the diagonal line that
+     * start from the lower right hand corner and ends in the upper left hand
+     * corner. Row has to cross through the given location.
+     *
+     * @param x horizontal location
+     * @param y vertical location
+     *
+     * @return true, if winning row is found
+     * @see ristinollaapp.ui.GridUi
+     */
     public boolean winnerDiagLeftUp(int x, int y) {
         int row = 0;
         int col = 0;
@@ -224,6 +285,18 @@ public class GameLogic {
         return this.gameOver;
     }
 
+    /**
+     * Checks if there is a winning row of values in the diagonal lines, in the
+     * row or in the column of the given location. Sets a new winner and
+     * gameover value as true if a winning row is found.
+     *
+     *
+     * @param x horizontal location
+     * @param y vertical location
+     *
+     * @return true, if winning row is found
+     * @see ristinollaapp.ui.GridUi
+     */
     public boolean isThereAWinner(int x, int y) {
         if (isThereAWinnerInColumns(x, y) || isThereAWinnerInRows(x, y) || winnerDiagRightDown(x, y) || winnerDiagLeftUp(x, y)) {
             this.gameOver = true;
@@ -236,6 +309,9 @@ public class GameLogic {
         }
     }
 
+    /**
+     * Sets the winnerMoves according to the winner of the game.
+     */
     public void setWinnerMoves() {
         if (this.turn.equals("X")) {
             this.winnermoves = this.xmoves;

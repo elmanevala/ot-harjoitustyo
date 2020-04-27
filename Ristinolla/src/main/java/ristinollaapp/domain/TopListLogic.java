@@ -10,19 +10,19 @@ public class TopListLogic {
     private int gridsize;
     private int rowsize;
     private int moves;
-    
-    public TopListLogic(String dbname) throws SQLException {
+
+    public TopListLogic(String dbname) {
         this.dao = new TopListsDao(dbname);
     }
 
-    public TopListLogic(int gridsize, int rowsize, int moves, String dbname) throws SQLException {
+    public TopListLogic(int gridsize, int rowsize, int moves, String dbname) {
         this.dao = new TopListsDao(dbname);
         this.gridsize = gridsize;
         this.rowsize = rowsize;
         this.moves = moves;
     }
 
-    public boolean isInTopFive() throws SQLException {
+    public boolean isInTopFive() {
         if (this.dao.isInTopFive(this.gridsize, this.rowsize, this.moves)) {
             return true;
         } else {
@@ -30,12 +30,12 @@ public class TopListLogic {
         }
     }
 
-    public ArrayList<String> topFive() throws SQLException {
+    public ArrayList<String> topFive() {
         ArrayList<String> topfive = dao.topFive(this.gridsize, this.rowsize, this.moves);
         return topfive;
     }
 
-    public void addName(String name) throws SQLException {
+    public void addName(String name) {
         this.dao.insertTopPlayer(this.gridsize, this.rowsize, name, this.moves);
     }
 
@@ -46,28 +46,28 @@ public class TopListLogic {
     public int getgridSize() {
         return this.gridsize;
     }
-    
-    public String mostPopularSize() throws SQLException{
+
+    public String mostPopularSize() {
         return this.dao.mostPopularSize();
     }
-    
-    public String mostPopularRow() throws SQLException{
+
+    public String mostPopularRow() {
         return this.dao.mostPopularRow();
     }
-    
-    public String games() throws SQLException {
+
+    public String games() {
         return this.dao.gamesPlayed();
     }
-    
-    public String mostPopularCombination() throws SQLException {
+
+    public String mostPopularCombination() {
         return this.dao.mostPopularGame();
     }
-    
-    public double averageMoves() throws SQLException {
+
+    public double averageMoves() {
         return this.dao.averageMoves();
     }
-    
-    public String popularPlayed() throws SQLException {
+
+    public String popularPlayed() {
         return this.dao.mostPopularPlayed();
     }
 }

@@ -23,8 +23,10 @@ public class WinnerLayoutUi {
     private TopListLogic topListLogic;
     private BorderPane mainLayout;
     private boolean draw;
+    private Label warning;
 
-    public WinnerLayoutUi(GameLogic gameLogic, BorderPane mainLayout, boolean draw) throws SQLException {
+    public WinnerLayoutUi(GameLogic gameLogic, BorderPane mainLayout, boolean draw) {
+        this.warning = new Label("");
         this.draw = draw;
         this.mainLayout = mainLayout;
         this.gameLogic = gameLogic;
@@ -35,7 +37,7 @@ public class WinnerLayoutUi {
         createLayout();
     }
 
-    public void createLayout() throws SQLException {
+    public void createLayout() {
         Label winner = new Label();
         if (this.draw) {
             winner.setText("Peli päättyi tasapeliin");
@@ -51,10 +53,10 @@ public class WinnerLayoutUi {
 
         if (topListLogic.isInTopFive() && !this.draw) {
             TextField winnerName = nameField();
-            buttons.getChildren().addAll(new Text("Mahtavaa, pääsit TOP-listalle!"), winnerName, addTopListButton(winnerName));
+            buttons.getChildren().addAll(new Text("Mahtavaa, pääsit TOP-listalle!"), winnerName, addTopListButton(winnerName), this.warning);
         } else {
             buttons.getChildren().addAll(addStartMenuButton(), toTopListButton());
-            this.topListLogic.addName("notOntheList");
+            this.topListLogic.addName("");
             System.out.println(this.topListLogic.mostPopularSize());
         }
 
@@ -82,15 +84,19 @@ public class WinnerLayoutUi {
         toLists.setAlignment(Pos.CENTER);
 
         toLists.setOnAction((actionEvent -> {
+            if (!name.getText().equals("")){
             TopListUi topList;
-            try {
-                topList = new TopListUi(mainLayout, this.topListLogic);
-                this.topListLogic.addName(name.getText());
-                topList.updateList();
-                mainLayout.setCenter(topList.getTopListLayout());
-            } catch (SQLException ex) {
-                Logger.getLogger(WinnerLayoutUi.class.getName()).log(Level.SEVERE, null, ex);
+
+            topList = new TopListUi(mainLayout, this.topListLogic);
+            this.topListLogic.addName(name.getText());
+            topList.updateList();
+            mainLayout.setCenter(topList.getTopListLayout());
             }
+            
+            else {
+                this.warning.setText("Nimimerkki ei voi olla tyhjä!");
+            }
+
         }));
 
         return toLists;
@@ -103,13 +109,10 @@ public class WinnerLayoutUi {
 
         toLists.setOnAction((actionEvent -> {
             TopListUi topList;
-            try {
-                topList = new TopListUi(mainLayout, this.topListLogic);
-                topList.updateList();
-                mainLayout.setCenter(topList.getTopListLayout());
-            } catch (SQLException ex) {
-                Logger.getLogger(WinnerLayoutUi.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            topList = new TopListUi(mainLayout, this.topListLogic);
+            topList.updateList();
+            mainLayout.setCenter(topList.getTopListLayout());
+
         }));
 
         return toLists;

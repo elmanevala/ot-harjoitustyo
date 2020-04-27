@@ -24,7 +24,7 @@ public class TopListUi {
     private TopListLogic topListLogic;
     private VBox topFiveLayout;
 
-    public TopListUi(BorderPane mainLayout, TopListLogic topListLogic) throws SQLException {
+    public TopListUi(BorderPane mainLayout, TopListLogic topListLogic) {
         this.topFiveLayout = new VBox(10);
         this.topListLogic = topListLogic;
         this.mainLayout = mainLayout;
@@ -33,7 +33,7 @@ public class TopListUi {
         createTopListLayout();
     }
 
-    public void createTopListLayout() throws SQLException {
+    public void createTopListLayout() {
         Insets insets = new Insets(20);
         Label titel = new Label("TOP-5 voittoa, joissa käytetty vähiten siirtoja");
         titel.setFont(new Font("Arial", 20));
@@ -57,13 +57,13 @@ public class TopListUi {
         this.topListLayout.setCenter(this.topFiveLayout);
     }
 
-    public void updateList() throws SQLException {
+    public void updateList() {
         this.topFiveLayout.getChildren().removeAll(this.topFiveLayout.getChildren());
 
         setTopFive();
     }
 
-    public VBox setTopFive() throws SQLException {
+    public VBox setTopFive() {
         ArrayList<String> list = this.topListLogic.topFive();
         Label titel = new Label("Nimimerkki:      siirrot:");
         titel.setFont(Font.font("Verdana", FontWeight.BOLD, 12));

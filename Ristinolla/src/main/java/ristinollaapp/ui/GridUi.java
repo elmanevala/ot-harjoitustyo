@@ -41,6 +41,13 @@ public class GridUi {
         this.grid.setAlignment(Pos.CENTER);
     }
 
+    /**
+     * It does it all.
+     *
+     * @param x horizontal location
+     * @param y vertical location
+     *
+     */
     public Button createButton(int x, int y) throws SQLException {
         Button button = new Button(" ");
         button.setFont(Font.font("Monospaced", 25));
