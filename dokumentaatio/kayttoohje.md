@@ -1,6 +1,7 @@
 # Kayttöohje
 
-Lataa tiedosto (tähän release)
+[Lataa tiedosto](https://github.com/elmanevala/ot-harjoitustyo/releases/tag/viikko6)
+
 
 ## Ohjelman käynnistäminen
 
