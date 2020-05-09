@@ -1,6 +1,9 @@
 package ristinollaapp.ui;
 
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.sql.SQLException;
+import java.util.Properties;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -10,12 +13,23 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import ristinollaapp.domain.TopListLogic;
 
+/**
+ * Creates a view with statistics from previously played games.
+ *
+ */
 public class StatsUi {
 
     private BorderPane mainLayout;
     private BorderPane statsLayout;
     private TopListLogic topListLogic;
 
+    /**
+     * Creates a new layout for the statistics.
+     *
+     * @param toplistlogic retrieves information about the previous games
+     * @param mainLayout mainlayout of the app, statsLayout will be set to it
+     *
+     */
     public StatsUi(TopListLogic topListLogic, BorderPane mainLayout) {
         this.mainLayout = mainLayout;
         this.topListLogic = topListLogic;
@@ -24,6 +38,10 @@ public class StatsUi {
         create();
     }
 
+    /**
+     * Creates a new layout for the statistics.
+     *
+     */
     public void create() {
         Insets insets = new Insets(20);
         Label titel = new Label("Pelien tilastoja");
@@ -43,6 +61,11 @@ public class StatsUi {
         this.statsLayout.setBottom(toStart);
     }
 
+    /**
+     * Retrieves information about previous games using the topListLogic class
+     * and places them to a VBox.
+     *
+     */
     public VBox stats() {
         VBox stats = new VBox(5);
 
@@ -73,10 +96,20 @@ public class StatsUi {
         return stats;
     }
 
+    /**
+     * Creates an empty entry to spaceout all the entries.
+     *
+     */
     public BorderPane empty() {
         return listEntry("", "");
     }
 
+    /**
+     * Creates one entry with the proper alignments.
+     *
+     * @param text text for the wanted entry
+     * @param palyed how many times the game has been played
+     */
     public BorderPane listEntry(String text, String played) {
         BorderPane entryLayout = new BorderPane();
         entryLayout.setMaxWidth(250);
@@ -92,6 +125,10 @@ public class StatsUi {
         return entryLayout;
     }
 
+     /**
+     * Creates a button for going back to the start menu.
+     *
+     */
     public Button toStartMenu() {
         Button toStart = new Button("Aloitusvalikkoon");
 

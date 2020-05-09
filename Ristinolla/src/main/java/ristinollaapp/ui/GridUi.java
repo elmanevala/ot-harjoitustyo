@@ -90,7 +90,7 @@ public class GridUi {
                     this.mainLayout.setCenter(winnerLayout.getLayout());
 
                 }
-                this.gamelogic.printScoreBoard(); // Tarkistetaan muuttuko pelitilanne pelilogiikassa
+                this.gamelogic.printScoreBoard();
             }
         });
 

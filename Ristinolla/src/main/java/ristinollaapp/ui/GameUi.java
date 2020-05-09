@@ -14,14 +14,23 @@ import javafx.scene.layout.HBox;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
+/**
+ * The class that starts the game.
+ */
 public class GameUi extends Application {
 
     BorderPane mainLayout;
 
+    /**
+     * Launches the game.
+     */
     public static void main(String[] args) {
         launch(args);
     }
 
+    /**
+     * Sets the stage for the game and creates a new start menu.
+     */
     @Override
     public void start(Stage stage) {
 

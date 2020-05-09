@@ -17,6 +17,9 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import ristinollaapp.domain.TopListLogic;
 
+/**
+ * Creates a view for the top wins of a specific game.
+ */
 public class TopListUi {
 
     private BorderPane mainLayout;
@@ -24,6 +27,12 @@ public class TopListUi {
     private TopListLogic topListLogic;
     private VBox topFiveLayout;
 
+    /**
+     * Creates a layout for the Toplist view.
+     *
+     * @param toplistlogic retrieves other top wins for a spesific game.
+     * @param mainLayout mainlayout of the app, topListLayout will be set to it.
+     */
     public TopListUi(BorderPane mainLayout, TopListLogic topListLogic) {
         this.topFiveLayout = new VBox(10);
         this.topListLogic = topListLogic;
@@ -33,6 +42,10 @@ public class TopListUi {
         createTopListLayout();
     }
 
+    /**
+     * Creates a layout for the Toplist view.
+     *
+     */
     public void createTopListLayout() {
         Insets insets = new Insets(20);
         Label titel = new Label("TOP-5 voittoa, joissa käytetty vähiten siirtoja");
@@ -57,12 +70,18 @@ public class TopListUi {
         this.topListLayout.setCenter(this.topFiveLayout);
     }
 
+    /**
+     * Updates the view with the the method setTopFive().
+     */
     public void updateList() {
         this.topFiveLayout.getChildren().removeAll(this.topFiveLayout.getChildren());
 
         setTopFive();
     }
 
+    /**
+     * Sets five top games to a VBox. Uses the class TopListLogic for that.
+     */
     public VBox setTopFive() {
         ArrayList<String> list = this.topListLogic.topFive();
         Label titel = new Label("Nimimerkki:      siirrot:");
@@ -79,6 +98,13 @@ public class TopListUi {
         return this.topFiveLayout;
     }
 
+    /**
+     * Creates one entry with the proper alignments.
+     *
+     * @param rank the rank of the game
+     * @param name name of the winner
+     * @param moves amount moves it took to win the game
+     */
     public BorderPane listEntry(int rank, String name, String moves) {
         BorderPane entryLayout = new BorderPane();
         entryLayout.setMaxWidth(125);
@@ -94,6 +120,9 @@ public class TopListUi {
         return entryLayout;
     }
 
+    /**
+     * Creates a button to return to the start menu.
+     */
     public Button toStartMenu() {
         Button toStart = new Button("Aloitusvalikkoon");
 

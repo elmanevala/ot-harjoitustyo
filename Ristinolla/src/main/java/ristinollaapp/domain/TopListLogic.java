@@ -1,12 +1,16 @@
 package ristinollaapp.domain;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Properties;
 import ristinollaapp.dao.TopListsDao;
 
 /**
- * Has methods to add and retrieve data from TopLists table.
- * The class is created to store and handle a spesific game after it has ended.
+ * Has methods to add and retrieve data from TopLists table. The class is
+ * created to store and handle a specific game after it has ended.
  *
  */
 public class TopListLogic {
@@ -38,6 +42,7 @@ public class TopListLogic {
      * *
      */
     public TopListLogic(int gridsize, int rowsize, int moves, String dbname) {
+
         this.dao = new TopListsDao(dbname);
         this.gridsize = gridsize;
         this.rowsize = rowsize;
@@ -154,8 +159,7 @@ public class TopListLogic {
     }
 
     /**
-     * Checking what's most popular combination of gridsizes
-     * and rowsizes.
+     * Checking what's most popular combination of gridsizes and rowsizes.
      *
      * @return the gridsize of the most popular combination as a a String
      */
@@ -167,10 +171,8 @@ public class TopListLogic {
         return parts[0];
     }
 
-    
-     /**
-     * Checking what's most popular combination of gridsizes
-     * and rowsizes.
+    /**
+     * Checking what's most popular combination of gridsizes and rowsizes.
      *
      * @return the rowsize of the most popular combination as a a String
      */
@@ -179,9 +181,9 @@ public class TopListLogic {
         return parts[1];
     }
 
-     /**
-     * Checking the average amount of moves needed to win a game.
-     * Shortens the average String to a maximum a four characters.
+    /**
+     * Checking the average amount of moves needed to win a game. Shortens the
+     * average String to a maximum a four characters.
      *
      * @return the average
      */
@@ -203,9 +205,9 @@ public class TopListLogic {
         return firstFourChars;
     }
 
-     /**
-     * Checking how many times the most popular game combination 
-     * has been played.
+    /**
+     * Checking how many times the most popular game combination has been
+     * played.
      *
      * @return quantity of games with the most popular combination
      */

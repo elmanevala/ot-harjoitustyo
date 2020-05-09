@@ -1,10 +1,14 @@
 package ristinollaapp.ui;
 
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.sql.SQLException;
+import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -15,6 +19,9 @@ import javafx.scene.text.Text;
 import ristinollaapp.domain.GameLogic;
 import ristinollaapp.domain.TopListLogic;
 
+/**
+ * Creates a view for a game that has ended.
+ */
 public class WinnerLayoutUi {
 
     private BorderPane winnerLayout;
@@ -25,6 +32,12 @@ public class WinnerLayoutUi {
     private boolean draw;
     private Label warning;
 
+    /**
+     * Creates a layout for the game ending view.
+     *
+     * @param gamelogic retrieves information from the game that ended
+     * @param mainLayout mainlayout of the app, winnerLayout will be set to it.
+     */
     public WinnerLayoutUi(GameLogic gameLogic, BorderPane mainLayout, boolean draw) {
         this.warning = new Label("");
         this.draw = draw;
@@ -32,11 +45,14 @@ public class WinnerLayoutUi {
         this.gameLogic = gameLogic;
         this.winnerLayout = new BorderPane();
         this.winner = this.gameLogic.getWinner();
-        this.topListLogic = new TopListLogic(gameLogic.getGridSize(), gameLogic.getRowSize(), gameLogic.getWinnerMoves(), "toplists.db");
+        this.topListLogic = new TopListLogic(gameLogic.getGridSize(), gameLogic.getRowSize(), gameLogic.getWinnerMoves(), dbname());
 
         createLayout();
     }
 
+    /**
+     * Creates a the game ending layout.
+     */
     public void createLayout() {
         Label winner = new Label();
         if (this.draw) {
@@ -65,6 +81,9 @@ public class WinnerLayoutUi {
         winnerLayout.setCenter(buttons);
     }
 
+    /**
+     * Creates a button to return to the start menu.
+     */
     public Button addStartMenuButton() {
         Button toStart = new Button("Aloitusvalikkoon");
 
@@ -78,22 +97,23 @@ public class WinnerLayoutUi {
         return toStart;
     }
 
+    /**
+     * Creates a button to return to the start menu.
+     */
     public Button addTopListButton(TextField name) {
         Button toLists = new Button("Lisää nimimerkkisi!");
 
         toLists.setAlignment(Pos.CENTER);
 
         toLists.setOnAction((actionEvent -> {
-            if (!name.getText().equals("")){
-            TopListUi topList;
+            if (!name.getText().equals("")) {
+                TopListUi topList;
 
-            topList = new TopListUi(mainLayout, this.topListLogic);
-            this.topListLogic.addName(name.getText());
-            topList.updateList();
-            mainLayout.setCenter(topList.getTopListLayout());
-            }
-            
-            else {
+                topList = new TopListUi(mainLayout, this.topListLogic);
+                this.topListLogic.addName(name.getText());
+                topList.updateList();
+                mainLayout.setCenter(topList.getTopListLayout());
+            } else {
                 this.warning.setText("Nimimerkki ei voi olla tyhjä!");
             }
 
@@ -102,6 +122,9 @@ public class WinnerLayoutUi {
         return toLists;
     }
 
+    /**
+     * Creates a button to view the top wins for this game.
+     */
     public Button toTopListButton() {
         Button toLists = new Button("TOP-listat");
 
@@ -118,8 +141,12 @@ public class WinnerLayoutUi {
         return toLists;
     }
 
+    /**
+     * Creates a text field for the winner that gets to go to the top list.
+     */
     public TextField nameField() {
-        TextField winnerName = new TextField("nimimerkki");
+        TextField winnerName = new TextField();
+        winnerName.setPromptText("nimimerkki");
         winnerName.setAlignment(Pos.CENTER);
         winnerName.setMaxWidth(120);
 
@@ -128,6 +155,28 @@ public class WinnerLayoutUi {
 
     public BorderPane getLayout() {
         return this.winnerLayout;
+    }
+
+    /**
+     * Retrieves the name of the file to which the data from the games will be
+     * stored.
+     *
+     * @return name of the file as a String.
+     */
+    public String dbname() {
+        try {
+            Properties properties = new Properties();
+
+            properties.load(new FileInputStream("config.properties"));
+
+            String topListFile = properties.getProperty("topListsFile");
+
+            return topListFile;
+        } catch (IOException e) {
+            System.out.println("Tiedostoa ei löydy!");
+            return null;
+        }
+
     }
 
 }

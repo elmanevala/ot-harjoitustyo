@@ -1,5 +1,7 @@
 package ristinollaapp.dao;
 
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.sql.*;
 
 import java.sql.Connection;
@@ -9,6 +11,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.Properties;
 
 /**
  * Has methods to retrieve and store data from played games.
@@ -19,14 +22,15 @@ public class TopListsDao {
     private Connection connection;
     private PreparedStatement stmt;
     private Statement s;
-    private String bdname;
+    private String dbname;
 
     /**
      * Sets the name of the file that id used to store the data. Using the
      * method initializeDB() creates a new table if one doesn't exist.
      */
     public TopListsDao(String dbname) {
-        this.bdname = dbname;
+        this.dbname = dbname;
+
         initializeDB();
 
     }
@@ -49,7 +53,7 @@ public class TopListsDao {
      */
     public void startConnection() {
         try {
-            connection = DriverManager.getConnection("jdbc:sqlite:" + this.bdname);
+            connection = DriverManager.getConnection("jdbc:sqlite:" + this.dbname);
             s = connection.createStatement();
         } catch (SQLException e) {
             System.out.println("Yhteyttä luodessa tapahtui virhe!");
@@ -97,11 +101,11 @@ public class TopListsDao {
      * five games with the same grid and row sizes in the table.
      *
      *
-     * @param gridsize size of the grid in the game-
-     * @param rowsize size of the winning row in the game.
-     * @param moves how many moves it took to win the game.
+     * @param gridsize size of the grid in the game
+     * @param rowsize size of the winning row in the game
+     * @param moves how many moves it took to win the game
      *
-     * @return true, if game is in the top five games.
+     * @return true, if game is in the top five games
      */
     public boolean isInTopFive(int gridsize, int rowsize, int moves) {
         try {

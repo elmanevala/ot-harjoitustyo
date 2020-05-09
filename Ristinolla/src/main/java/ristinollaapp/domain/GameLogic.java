@@ -15,9 +15,9 @@ public class GameLogic {
     private int gridSize;
 
     /**
- * Stores the information about an ongoing game and has methods to 
- * change the status of the game.
- */
+     * Stores the information about an ongoing game and has methods to change
+     * the status of the game.
+     */
     public GameLogic(int size, int rowsize) {
 
         this.gridSize = size;
@@ -57,7 +57,7 @@ public class GameLogic {
      *
      * @param x horizontal location
      * @param y vertical location
-     * 
+     *
      * @return true if location empty, otherwise false
      */
     public boolean spaceEmpty(int x, int y) {

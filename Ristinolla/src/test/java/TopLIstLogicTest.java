@@ -4,7 +4,10 @@
  * and open the template in the editor.
  */
 
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.sql.SQLException;
+import java.util.Properties;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -36,9 +39,25 @@ public class TopLIstLogicTest {
 
     @Before
     public void setUp() {
-        this.dao = new TopListsDao("test.db");
-        this.logic = new TopListLogic(4, 3, 3, "test.db");
+        this.dao = new TopListsDao(dbname());
+        this.logic = new TopListLogic(4, 3, 3, dbname());
         this.dao.clear();
+    }
+    
+    public String dbname() {
+        try {
+            Properties properties = new Properties();
+
+            properties.load(new FileInputStream("config.properties"));
+
+            String testFile = properties.getProperty("testFile");
+
+            return testFile;
+        } catch (IOException e) {
+            System.out.println("Tiedostoa ei löydy!");
+            return null;
+        }
+
     }
 
     @After
@@ -205,22 +224,22 @@ public class TopLIstLogicTest {
     public void emptyTableReturnNoDataRows() {
         assertEquals("Ei dataa", logic.mostPopularRow());
     }
-    
+
     @Test
     public void emptyTableReturnNoAverage() {
         assertEquals("-", logic.averageMoves());
     }
-    
+
     @Test
     public void emptyTableReturnZeroCombinationsSize() {
         assertEquals("0", logic.mostPopularCombSize());
     }
-    
+
     @Test
     public void emptyTableReturnZeroCombinationRow() {
         assertEquals("0", logic.mostPopularCombRow());
     }
-    
+
     @Test
     public void emptyTableReturnZeroAllQuantaties() {
         assertEquals("0", logic.games());

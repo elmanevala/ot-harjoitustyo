@@ -1,8 +1,11 @@
 package ristinollaapp.ui;
 
 import java.awt.Color;
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.application.Application;
@@ -23,8 +26,8 @@ import org.sqlite.SQLiteException;
 import ristinollaapp.domain.TopListLogic;
 
 /**
- * Creates a start menu for the game and collects the
- * user-given data to create a game.
+ * Creates a start menu for the game and collects the user-given data to create
+ * a game.
  *
  */
 public class StartMenuUi {
@@ -127,8 +130,8 @@ public class StartMenuUi {
     }
 
     /**
-     * Creates a button that retrieves data from the TopLists table and
-     * creates a new layout for the statistics.
+     * Creates a button that retrieves data from the TopLists table and creates
+     * a new layout for the statistics.
      *
      * @return Button object that moves to user to the stats
      *
@@ -137,12 +140,34 @@ public class StartMenuUi {
         Button toStats = new Button("Pelien tilastoihin");
 
         toStats.setOnAction((actionEvent -> {
-            StatsUi statsLayout = new StatsUi(new TopListLogic("toplists.db"), mainLayout);
+            StatsUi statsLayout = new StatsUi(new TopListLogic(dbname()), mainLayout);
             mainLayout.setCenter(statsLayout.getLayout());
 
         }));
 
         return toStats;
+    }
+
+    /**
+     * Retrieves the name of the file to which the data from the games will be
+     * stored.
+     *
+     * @return name of the file as a String.
+     */
+    public String dbname() {
+        try {
+            Properties properties = new Properties();
+
+            properties.load(new FileInputStream("config.properties"));
+
+            String topListFile = properties.getProperty("topListsFile");
+
+            return topListFile;
+        } catch (IOException e) {
+            System.out.println("Tiedostoa ei löydy!");
+            return null;
+        }
+
     }
 
     public int grid() {
