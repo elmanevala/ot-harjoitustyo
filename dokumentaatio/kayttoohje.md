@@ -2,6 +2,17 @@
 
 [Lataa tiedosto](https://github.com/elmanevala/ot-harjoitustyo/releases/tag/viikko6)
 
+## Konfigurointi
+
+Sovellukseen juureen tulee sijoittaa tiedosto config.properties, jonka sisältö on seuraava:
+
+```
+topListsFile=toplists.db
+testFile=test.db
+```
+
+"test.db" ja "toplists.db" -kohtia muuttamalla voi vaihtaa tiedostoja, johon sovellus tallentaa tietoja.
+
 
 ## Ohjelman käynnistäminen
 

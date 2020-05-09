@@ -46,7 +46,7 @@
 
  Testeille on oma tietokanta, jotta testit eivät vaikuttaisi pelin Top-listoihin tai tilastointiin.
 
-### Tiedosot
+### Tiedostot
 
  Käyttäjä voi itse päättää, minkä nimiseen tiedostoon pelit ja voittajat tallenetaan.
 
@@ -60,6 +60,8 @@
  "test.db" ja "toplists.db" -kohtia muuttamalla voi vaihtaa tiedostoja, johon sovellus tallentaa tietoja.
 
 ## Sekvenssikaavioita
+
+* Muutamia sovelluksen toiminnalle oleellisia sekvenssikaavioita.
 
 ### Voitto
 
@@ -86,3 +88,13 @@ pelin päätyttyä konstruktorissa. Käyttöliittymä päivittää näkymää ja
 
 Käyttäjä painaa Pelien tilastoihin -nappulaa ja käyttöliittymä luo uuden näkymän. Uutta näkymään varten tarvitaan tallennettuja tietoja peleistä, joten luodaan uusi TopListLogic-luokka joka puolestaan luo uuden
 TopListDao-luokan. StatsUi-luokkaa luodessa haetaan monta kertaa tietoja TopListLogic- ja TopListDao-luokkia käyttämällä. Koska käskyjä on hyvin monta ja ne toimivat kaikki samalla tavalla, selkeyden vuoksi ne ovat sekvenssikaaviossa kuvattu yhdellä haulla. Tietokannasta saadut tiedot asetetaan Stats-näkymään listEntry metodia hyödyntämällä metodissa stats. Lopulta näkymä asetetaan päänäkymään käyttäjän tarkasteltavaksi.
+
+
+### Ohjelman rakenteeseen jääneet heikkoidet
+
+## Käyttöliittymä
+
+ Sovellus luo uusia näkymiä aina, kun sellaiseen siirrytään. Javan roskankerääjä kerää ne pois, mutta olisi ehkä käytännöllisempää uusien näkymien luonnin sijaan päivittää jo olemassa olevia näkymiä.
+
+## Dao  
+ Sovellus luo uuden yhteyden tietokantaan käytännössä jokaisessa metodissa.
