@@ -59,4 +59,5 @@ Harjoitustyö kursille ohjelmistotekniikka. Sovelluksella voi pelata ristinollaa
 * [Työaikakirjanpito](https://github.com/elmanevala/ot-harjoitustyo/blob/master/dokumentaatio/tyoaikakirjanpito.md)
 * [Arkkitehtuuria](https://github.com/elmanevala/ot-harjoitustyo/blob/master/dokumentaatio/arkkitehtuuri.md)
 * [Kayttöohje](https://github.com/elmanevala/ot-harjoitustyo/blob/master/dokumentaatio/kayttoohje.md)
+* [Testausta](https://github.com/elmanevala/ot-harjoitustyo/blob/master/dokumentaatio/testaus.md)
 
