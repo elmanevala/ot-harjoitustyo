@@ -22,8 +22,11 @@
 ![alt-text](https://raw.githubusercontent.com/elmanevala/ot-harjoitustyo/master/dokumentaatio/kayttoliittyma.jpg)
  
  Jokainen näkymä on oma BorderPane-olio, joka asetetaan GameUi-luokassa luotuun päänäkymään.
- Käyttäjä syöttää käyttäliittymään tietoja, kuten mihin asettaa seuraavan siirtonsa, mikä on käyttäjän nimimerkki ja mikä on haluttu peliruudukon koko.
- TopListLogic- sekä GameLogic-luokka käyttävät näitä tietoja pelin suorittamiseen ja tiedon tallennukseen. Kaikki käyttäjän syöttämä tieto validoidaan, jottei väärät syötteet kaada sovellusta.
+
+ Käyttäjä syöttää käyttöliittymään tietoja esimerkiksi mihin hän asettaa seuraavan siirtonsa, mikä on käyttäjän nimimerkki ja mikä on haluttu peliruudukon koko.
+ TopListLogic- sekä GameLogic-luokka käyttävät näitä tietoja pelin suorittamiseen ja tiedon tallennukseen. 
+
+ Kaikki käyttäjän syöttämä tieto validoidaan, jotteivat väärät syötteet kaada sovellusta.
 
 ## Sovelluslogiikka
 
@@ -49,10 +52,10 @@
 
  Sovellukseen juureen on sijoitettu tiedosto config.properties, jonka sisältö on seuraava:
 
- ´´´
+ ```
  topListsFile=toplists.db
  testFile=test.db
- ´´´
+ ```
 
  "test.db" ja "toplists.db" -kohtia muuttamalla voi vaihtaa tiedostoja, johon sovellus tallentaa tietoja.
 
@@ -79,7 +82,7 @@ pelin päätyttyä konstruktorissa. Käyttöliittymä päivittää näkymää ja
 
 * Sovelluksen toimintalogiikka, kun käyttä tarkastelee tilastoja.
 
-![alt-text](https://raw.githubusercontent.com/elmanevala/ot-harjoitustyo/master/dokumentaatio/tilastonakymaSekvenssikkaavio.png)
+![alt-text](https://raw.githubusercontent.com/elmanevala/ot-harjoitustyo/master/dokumentaatio/tilastonakymaSekvenssikaavio.png)
 
 Käyttäjä painaa Pelien tilastoihin -nappulaa ja käyttöliittymä luo uuden näkymän. Uutta näkymään varten tarvitaan tallennettuja tietoja peleistä, joten luodaan uusi TopListLogic-luokka joka puolestaan luo uuden
 TopListDao-luokan. StatsUi-luokkaa luodessa haetaan monta kertaa tietoja TopListLogic- ja TopListDao-luokkia käyttämällä. Koska käskyjä on hyvin monta ja ne toimivat kaikki samalla tavalla, selkeyden vuoksi ne ovat sekvenssikaaviossa kuvattu yhdellä haulla. Tietokannasta saadut tiedot asetetaan Stats-näkymään listEntry metodia hyödyntämällä metodissa stats. Lopulta näkymä asetetaan päänäkymään käyttäjän tarkasteltavaksi.
