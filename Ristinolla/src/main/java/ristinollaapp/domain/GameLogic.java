@@ -103,18 +103,6 @@ public class GameLogic {
         return this.turn;
     }
 
-    public void printScoreBoard() {
-        for (int i = 0; i < score.length; i++) {
-            for (int j = 0; j < score[0].length; j++) {
-                System.out.print(score[i][j]);
-                System.out.print(", ");
-            }
-            System.out.println("");
-        }
-        System.out.println("");
-        System.out.println("x:n vuorot: " + this.xmoves + ". 0:n vuorot: " + this.omoves);
-    }
-
     public String getSymbolFromScoreBoard(int x, int y) {
         return this.score[x][y];
     }

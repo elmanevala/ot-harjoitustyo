@@ -90,7 +90,6 @@ public class GridUi {
                     this.mainLayout.setCenter(winnerLayout.getLayout());
 
                 }
-                this.gamelogic.printScoreBoard();
             }
         });
 

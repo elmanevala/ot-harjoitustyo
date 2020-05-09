@@ -1,3 +1,5 @@
+package logictests;
+
 
 import org.junit.After;
 import org.junit.AfterClass;
@@ -197,7 +199,4 @@ public class GameLogicTest {
         assertEquals(false, logic.scoreboardFull());
     }
 
-    @Test
-    public void hello() {
-    }
 }

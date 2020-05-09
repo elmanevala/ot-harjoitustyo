@@ -190,7 +190,7 @@ public class TopListLogic {
     public String averageMoves() {
         String average = String.valueOf(this.dao.averageMoves());
 
-        if (average.equals("NaN")) {
+        if (average.equals("0.0")) {
             return "-";
         }
 

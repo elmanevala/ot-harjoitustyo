@@ -105,7 +105,7 @@ public class TopListsDao {
      * @param rowsize size of the winning row in the game
      * @param moves how many moves it took to win the game
      *
-     * @return true, if game is in the top five games
+     * @return true, if game is in the top five games.
      */
     public boolean isInTopFive(int gridsize, int rowsize, int moves) {
         try {
@@ -236,7 +236,7 @@ public class TopListsDao {
     /**
      * Checks from the table which how many games have been played in total.
      *
-     * @return most popular size as a String
+     * @return how many games have been played in total
      */
     public String gamesPlayed() {
         try {
@@ -333,23 +333,19 @@ public class TopListsDao {
         try {
             startConnection();
 
-            stmt = connection.prepareStatement("SELECT moves FROM TopLists WHERE name!=?");
+            stmt = connection.prepareStatement("SELECT avg(moves) as avg FROM TopLists WHERE name!=?");
             stmt.setString(1, "");
 
             ResultSet averageMoves = stmt.executeQuery();
 
-            double sum = 0;
+            double avg = 0;
             double i = 0;
             while (averageMoves.next()) {
-                sum = sum + averageMoves.getDouble("moves");
-                i++;
+                avg = averageMoves.getDouble("avg");
             }
 
-            double average = 1.0 * sum / i;
-
             closeConnection();
-
-            return average;
+            return avg;
         } catch (SQLException e) {
             System.out.println("Keskiverto voittosiirtoja etsiessä tapahtui virhe!");
             return 0;

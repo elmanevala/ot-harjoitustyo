@@ -17,10 +17,9 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
-
 /**
- * Creates a layout for the game and passes on the user-given
- * data to other classes.
+ * Creates a layout for the game and passes on the user-given data to other
+ * classes.
  *
  */
 public class GameLayoutUi {
@@ -77,7 +76,7 @@ public class GameLayoutUi {
     }
 
     /**
-     * Changes the titell of the layout according to the turn from the GameLogic
+     * Changes the titel of the layout according to the turn from the GameLogic
      * class.
      *
      * @param turn which turn is it

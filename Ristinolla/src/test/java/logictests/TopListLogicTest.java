@@ -1,3 +1,5 @@
+package logictests;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -21,12 +23,12 @@ import ristinollaapp.domain.TopListLogic;
  *
  * @author elmaneva
  */
-public class TopLIstLogicTest {
+public class TopListLogicTest {
 
     TopListLogic logic;
     TopListsDao dao;
 
-    public TopLIstLogicTest() {
+    public TopListLogicTest() {
     }
 
     @BeforeClass
@@ -43,7 +45,7 @@ public class TopLIstLogicTest {
         this.logic = new TopListLogic(4, 3, 3, dbname());
         this.dao.clear();
     }
-    
+
     public String dbname() {
         try {
             Properties properties = new Properties();
@@ -57,7 +59,6 @@ public class TopLIstLogicTest {
             System.out.println("Tiedostoa ei löydy!");
             return null;
         }
-
     }
 
     @After
@@ -248,7 +249,4 @@ public class TopLIstLogicTest {
         assertEquals("0", logic.popularSizeQuantity());
     }
 
-    @Test
-    public void hello() {
-    }
 }
