@@ -16,5 +16,7 @@
 | 21.4.2020	| 3h	| TOP-listojen käyttöliittymän paratelua ja ensimmäinen release.			| 
 | 25.4.2020	| 4h	| Pelitilastojen luonti.								|
 | 26.4.2020	| 2h	| Javadociin tutustumista ja sen lisäys pomiin.						|		
-| 27.4.2020	| 9h	| Javadoci, bugien korjaus, koodin siistiminen ja sovelluslogiikan dokumentointi.	|
-|Aika yhteensä:	| 63h	|											|
+| 27.4.2020	| 9h	| Javadoc, bugien korjaus, koodin siistiminen ja sovelluslogiikan dokumentointi.	|
+| 8.5.2020	| 1h	| Käyttöliittymän siistimistä.								|
+| 9.5.2020	| 9h 	| Javadoc, testauksen refaktorointi ja dokumentointi, konfiguraatio-tiedosto.		| 
+|Aika yhteensä:	| 73h	|											|
