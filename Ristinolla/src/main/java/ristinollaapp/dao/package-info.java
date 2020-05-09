@@ -3,4 +3,4 @@
  * Data storage
  */
 
-package ristinollaapp.dao
+package ristinollaapp.dao;
