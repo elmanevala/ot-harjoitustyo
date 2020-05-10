@@ -13,8 +13,8 @@ import ristinollaapp.domain.GameLogic;
 import ristinollaapp.ui.GameLayoutUi;
 
 /**
- * Creates grid for the game and with the GameLogic class
- * executes turns in the game.
+ * Creates grid for the game and with the GameLogic class executes turns in the
+ * game.
  *
  */
 public class GridUi {
@@ -43,7 +43,7 @@ public class GridUi {
         creatingGrid();
     }
 
-           /**
+    /**
      * Creates a new grid according to the size-object
      */
     public void creatingGrid() {
@@ -59,12 +59,12 @@ public class GridUi {
 
     /**
      * Communicates with the GameLogic class to execute one turn.
-     * 
-     * Creates a new button. When the button is pushed, method checks if the place
-     * given in the parameters is empty and sets a new value to the button. 
-     * If the game ends and there is a winner, new layout is created and user must submit
-     * their name to the database.
-     * If the game ends in a draw, new game is added without a name.
+     *
+     * Creates a new button. When the button is pushed, method checks if the
+     * place given in the parameters is empty and sets a new value to the
+     * button. If the game ends and there is a winner, new layout is created and
+     * user must submit their name to the database. If the game ends in a draw,
+     * new game is added without a name.
      *
      * @param x horizontal location
      * @param y vertical location

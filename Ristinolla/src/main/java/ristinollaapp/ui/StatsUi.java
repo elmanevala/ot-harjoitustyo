@@ -125,7 +125,7 @@ public class StatsUi {
         return entryLayout;
     }
 
-     /**
+    /**
      * Creates a button for going back to the start menu.
      *
      */

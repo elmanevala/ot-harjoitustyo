@@ -98,9 +98,8 @@ public class WinnerLayoutUi {
     }
 
     /**
-     * Creates a button to go to the toplist view.
-     * Adds a game to the database and validates the 
-     * information the user gave in the text field.
+     * Creates a button to go to the toplist view. Adds a game to the database
+     * and validates the information the user gave in the text field.
      */
     public Button addTopListButton(TextField name) {
         Button toLists = new Button("Lisää nimimerkkisi!");

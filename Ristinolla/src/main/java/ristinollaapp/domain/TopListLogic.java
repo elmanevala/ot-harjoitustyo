@@ -21,8 +21,7 @@ public class TopListLogic {
     private int moves;
 
     /**
-     * Constructor for when TopLists aren't used for adding a game. For example,
-     * when statistics are viewed.
+     * Constructor for when TopLists are used to view statistics.
      *
      * @param dbname name of the sqlite-file
      *
@@ -50,7 +49,7 @@ public class TopListLogic {
     }
 
     /**
-     * Checking if the game given in the constructor is in the top five
+     * Checking if the game given in the constructor is in the top five.
      *
      * @return true if game is in the top five
      */
@@ -64,7 +63,7 @@ public class TopListLogic {
 
     /**
      * Retrieving the top five games with the same customization as the game
-     * given in the constructor
+     * given in the constructor.
      *
      * @return an ArrayList with the top five games
      */
@@ -75,7 +74,7 @@ public class TopListLogic {
 
     /**
      * Adding a name to the table with other information given in the
-     * constructor
+     * constructor.
      *
      * @param name name of the entry
      */
@@ -92,7 +91,7 @@ public class TopListLogic {
     }
 
     /**
-     * Checking what's most popular gridsize in the table
+     * Checking the most popular gridsize in the table.
      *
      * @return the most popular size as a String or if no games have been played
      * "Ei dataa"
@@ -107,7 +106,7 @@ public class TopListLogic {
     }
 
     /**
-     * Checking how many games have been played with the most popular size
+     * Checking how many games have been played with the most popular size.
      *
      * @return quantity of games with the most popular size as a String
      */
@@ -121,7 +120,7 @@ public class TopListLogic {
     }
 
     /**
-     * Checking what's most popular rowsize in the table
+     * Checking the most popular rowsize in the table.
      *
      * @return the most popular rowsize as a String or if no games have been
      * played "Ei dataa"
@@ -159,7 +158,7 @@ public class TopListLogic {
     }
 
     /**
-     * Checking what's most popular combination of gridsizes and rowsizes.
+     * Checking the gridsize of the most popular game combination.
      *
      * @return the gridsize of the most popular combination as a a String
      */
@@ -172,7 +171,7 @@ public class TopListLogic {
     }
 
     /**
-     * Checking what's most popular combination of gridsizes and rowsizes.
+     * Checking rowsize of the most popular game combination.
      *
      * @return the rowsize of the most popular combination as a a String
      */

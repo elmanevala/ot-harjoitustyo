@@ -1,6 +1,7 @@
 package ristinollaapp.domain;
 
 import java.util.ArrayList;
+
 /**
  * Has methods to change and observe the current status of the game.
  *
@@ -55,7 +56,7 @@ public class GameLogic {
     }
 
     /**
-     * Checks if a given location in scoreboard is empty meaning it has the
+     * Checks if a given location in scoreboard is empty, meaning it has the
      * value "e".
      *
      * @param x horizontal location

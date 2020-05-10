@@ -25,7 +25,7 @@ public class TopListsDao {
     private String dbname;
 
     /**
-     * Sets the name of the file that id used to store the data. Using the
+     * Sets the name of the file that is used to store the data. Using the
      * method initializeDB() creates a new table if one doesn't exist.
      */
     public TopListsDao(String dbname) {
@@ -61,7 +61,7 @@ public class TopListsDao {
     }
 
     /**
-     * Closes the connection to an connected database.
+     * Closes the connection to a connected database.
      */
     public void closeConnection() {
         try {
@@ -75,10 +75,10 @@ public class TopListsDao {
     /**
      * Inserts a new game to the table.
      *
-     * @param gridsize size of the grid in the game-
-     * @param rowsize size of the winning row in the game.
-     * @param name name of the game's winner.
-     * @param moves how many moves it took to win the game.
+     * @param gridsize size of the grid in the game
+     * @param rowsize size of the winning row in the game
+     * @param name name of the game's winner
+     * @param moves how many moves it took to win the game
      */
     public void insertTopPlayer(int gridsize, int rowsize, String name, int moves) {
         try {
@@ -136,7 +136,7 @@ public class TopListsDao {
     /**
      * Gets the top five games, that were won with the least amount of moves. If
      * games have the same amount of moves, top five is created based on how new
-     * the games are. Newer games go to the top of the list.
+     * the games are. Most recent games go to the top of the list.
      *
      * @param gridsize size of the grid in the game-
      * @param rowsize size of the winning row in the game.
@@ -234,7 +234,7 @@ public class TopListsDao {
     }
 
     /**
-     * Checks from the table which how many games have been played in total.
+     * Checks from the table how many games have been played in total.
      *
      * @return how many games have been played in total
      */
