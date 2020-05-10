@@ -7,7 +7,7 @@ Ohjelmaa on testattu sekä automatisoiduin yksikkötestein JUnitilla että manua
 Automatisoidut testit testaavat sekä tiedon tallennusta, että pelilogiikan toimintaa.
 
 ### Sovelluslogiikka
-Pakkauksen ristinollaapp.domain toimintaa testaa luokat GameLogicTest ja TopListLogicTest. GameLogicTest-luokka testaa ristinollapelin eri vaiheita ja mahdollsia pelitilanteita. TopListLogicTest testaa tiedon tallennusta pelien päättyessä ja sen lukemista tilastoja varten. TopListLogicTest käyttää apunaan myös dao-luokkaa, koska sen avulla on helppo lisätä tietoja tietokantaan ilman, että tarvitsee luoda uusia TopListLogic-luokkia.
+Pakkauksen ristinollaapp.domain toimintaa testaavat luokat GameLogicTest ja TopListLogicTest. GameLogicTest-luokka testaa ristinollapelin eri vaiheita ja mahdollsia pelitilanteita. TopListLogicTest testaa tiedon tallennusta pelien päättyessä ja sen lukemista tilastoja varten. TopListLogicTest käyttää apunaan myös dao-luokkaa, koska sen avulla on helppo lisätä tietoja tietokantaan ilman, että tarvitsee luoda uusia TopListLogic-luokkia.
 Näin testit pysyvät huomattavasti selkeämpinä.
 
 ### Dao
@@ -24,6 +24,10 @@ Sovelluksen testauksen rivikattavuus on 88% ja haaraumakattavuus on 89%.
 ## Järjestelmätestaus
 
 Sovelluksen järjestelmätestaus on suoritettu manuaalisesti.
+
+### Asennus ja konfigurointi
+
+Sovellus on ladattu githubista ja sen juureen on asetettu ohjeiden mukaisesti config.properties-tiedosto.
 
 ### Toiminnallisuudet
 

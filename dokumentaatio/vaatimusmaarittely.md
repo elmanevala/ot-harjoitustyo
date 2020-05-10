@@ -11,26 +11,36 @@ Ainostaan yksi käyttäjärooli eli pelaajat. Top-listalle päästäessä valita
 
 ## Käyttöliittymäluonnos
 
-Sovellus koostuu alustavasti neljästä eri näkymästä.
+Sovellus koostuu viidestä eri näkymästä.
 
-![alt-text](https://raw.githubusercontent.com/elmanevala/ot-harjoitustyo/master/dokumentaatio/kayttoliittymaluonnos.jpg)
+![alt-text](https://raw.githubusercontent.com/elmanevala/ot-harjoitustyo/master/dokumentaatio/kayttoliittyma.jpg)
+
+* Aloitusnäkymässä voi kustomoida pelistä haluamansa kokoisen.
+* Pelinäkymässä voi pelata valitulla ruudukolla ja voittosuoralla ristinollaa.
+* Voittonäkymä ilmoittaa voitosta tai tasapelistä.
+	* Tässä näkymässä myös mahdollisuus nimimerkin lisäykseen top-listoille.
+* Top-listanäkymä näyttää voitot kaikista pienimmillä siirtomäärillä.
+* Tilastonäkymä, jonne pääsee aloitusnäytöstä, näyttää pelien tilastoja.
 
 
 ## Perusversion toiminnallisuudet
 
-* Käyttäjä voi kustomoida peliä
-  * Käyttäjä voi valita ruudukon koon. **TEHTY, VKO3**
-  * Käyttäjä voi voittavan rivin pituuden.  **TEHTY, VKO4** 
-* Käyttäjä voi pelata ristinollaa samalla koneella toisen pelaajan kanssa. **TEHTY, VKO4**
-* Jos käyttäjä voittaa erityisen vähillä siirroilla, hän voi päästä TOP-listalle. **TEHTY, VKO5**
+* Käyttäjä voi kustomoida peliä :heavy_check_mark:
+  * Käyttäjä voi valita ruudukon koon.
+  * Käyttäjä voi voittavan rivin pituuden. 
+* Käyttäjä voi pelata ristinollaa samalla koneella toisen pelaajan kanssa. :heavy_check_mark:
+* Jos käyttäjä voittaa erityisen vähillä siirroilla, hän voi päästä TOP-listalle. :heavy_check_mark:
+* Käyttäjä voi tarkastella päättyneen pelin TOP-listoja. :heavy_check_mark:
+* Käyttäjä voi tarkastella pelin tilastoja. :heavy_check_mark:
+  * Kuinka monta peliä on pelattu.
+  * Mikä koko, voittosuora ja niiden yhdistelmä on suosituin.
+  * Keskiverto siirtojen määrä tarvittu voittoihin
 
 
 ## Jatkokehitysideoita
 
-* Käyttäjä voi tarkastella pelin tilastoja. **TEHTY, VKO6**
-  * Kuinka monta peliä on pelattu.
-  * Mikä koko, voittosuora ja niiden yhdistelmä on suosituin.
-  * Keskiverto siirtojen määrä tarvittu voittoihin
+Sovellusta voisi laajentaa mm. näillä tavoilla:
+
 * Lisää kustomointia
   * Ristin ja nollan sijaan peliin voi valita eri symboleja
   * Pelin taustaväriä voi vaihtaa

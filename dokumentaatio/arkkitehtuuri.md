@@ -9,7 +9,7 @@
 ## Käyttöliittymä
 
  Sovelluksen käyttöliittymä koostuu kolmesta kokonaisuudesta:
- * Peli ja siihen liittyvän valinnat
+ * Peli ja siihen liittyvät valinnat
 	* Aloitusnäkymä, jossa voi valita peliruudukon sekä voittosuoran koon
 	* Pelinäkymä
  * Näkymä top-listoille ja mahdollisuus nimen lisäykseen top-listoille
@@ -41,10 +41,11 @@
 ## Tietojen pysyväistalletus
 
  Pakkauksen ristinollaapp.dao luokka TopListDao huolehtii pelien tietojen talletuksesta.
- Pelin päätyttyä sen tiedot tallennetaan TopList tietokantatauluun. Jos peli ei pääse TopListalle, se tallennetaan ilman voittajan nimeä. Tauluun tallennetaan tiedot muodossa
- (id INTEGER PRIMARY KEY, name TEXT NOT NULL, gridsize INTEGER, rowsize INTEGER, moves INTEGER).
+ Pelin päätyttyä sen tiedot tallennetaan TopLists tietokantatauluun. Jos peli ei pääse TopListalle, se tallennetaan ilman voittajan nimeä. Tauluun tallennetaan tiedot muodossa:
 
- Testeille on oma tietokanta, jotta testit eivät vaikuttaisi pelin Top-listoihin tai tilastointiin.
+ (id INTEGER PRIMARY KEY, name TEXT NOT NULL, gridsize INTEGER, rowsize INTEGER, moves INTEGER)
+
+ Testeille on oma tietokantansa, jotta testit eivät vaikuttaisi pelin Top-listoihin tai tilastointiin.
 
 ### Tiedostot
 
@@ -61,7 +62,7 @@
 
 ## Sekvenssikaavioita
 
-* Muutamia sovelluksen toiminnalle oleellisia sekvenssikaavioita.
+ Muutamia sovelluksen toiminnalle oleellisia sekvenssikaavioita.
 
 ### Voitto
 
@@ -82,7 +83,7 @@ pelin päätyttyä konstruktorissa. Käyttöliittymä päivittää näkymää ja
 
 ### Tilastojen tarkastelu
 
-* Sovelluksen toimintalogiikka, kun käyttä tarkastelee tilastoja.
+* Sovelluksen toimintalogiikka, kun käyttäjä tarkastelee tilastoja.
 
 ![alt-text](https://raw.githubusercontent.com/elmanevala/ot-harjoitustyo/master/dokumentaatio/tilastonakymaSekvenssikaavio.png)
 
@@ -90,11 +91,11 @@ Käyttäjä painaa Pelien tilastoihin -nappulaa ja käyttöliittymä luo uuden n
 TopListDao-luokan. StatsUi-luokkaa luodessa haetaan monta kertaa tietoja TopListLogic- ja TopListDao-luokkia käyttämällä. Koska käskyjä on hyvin monta ja ne toimivat kaikki samalla tavalla, selkeyden vuoksi ne ovat sekvenssikaaviossa kuvattu yhdellä haulla. Tietokannasta saadut tiedot asetetaan Stats-näkymään listEntry metodia hyödyntämällä metodissa stats. Lopulta näkymä asetetaan päänäkymään käyttäjän tarkasteltavaksi.
 
 
-### Ohjelman rakenteeseen jääneet heikkoidet
+## Ohjelman rakenteeseen jääneet heikkoidet
 
-## Käyttöliittymä
+### Käyttöliittymä
 
  Sovellus luo uusia näkymiä aina, kun sellaiseen siirrytään. Javan roskankerääjä kerää ne pois, mutta olisi ehkä käytännöllisempää uusien näkymien luonnin sijaan päivittää jo olemassa olevia näkymiä.
 
-## Dao  
+### Dao  
  Sovellus luo uuden yhteyden tietokantaan käytännössä jokaisessa metodissa.
