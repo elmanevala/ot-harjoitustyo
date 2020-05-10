@@ -18,5 +18,6 @@
 | 26.4.2020	| 2h	| Javadociin tutustumista ja sen lisäys pomiin.						|		
 | 27.4.2020	| 9h	| Javadoc, bugien korjaus, koodin siistiminen ja sovelluslogiikan dokumentointi.	|
 | 8.5.2020	| 1h	| Käyttöliittymän siistimistä.								|
-| 9.5.2020	| 9h 	| Javadoc, testauksen refaktorointi ja dokumentointi, konfiguraatio-tiedosto.		| 
-|Aika yhteensä:	| 73h	|											|
+| 9.5.2020	| 9h    | Javadoc, testauksen refaktorointi ja dokumentointi, konfiguraatio-tiedosto.		| 
+| 10.5.2020	| 2h    | Lopullinen release ja yleistä viimeistelyä.						|
+|Aika yhteensä:	| 75h	|											|
