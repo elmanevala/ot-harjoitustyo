@@ -3,7 +3,7 @@
 ## Sovelluksen tarkoitus 
 
 Sovellus on perinteinen Ristinolla, jossa kaksi pelaajaa voi pelata toisiaan vastaan. Sovelluksessa on mahdollista valita ristinollaruudukon koko ja voittorivin pituus.
-Jos pelaaja voittaa erityisen vähillä siirroilla, hän voi päästä TOP-listoille.
+Jos pelaaja voittaa erityisen vähillä siirroilla, hän voi päästä TOP-listoille. Pelaaja voi myös tarkastella edellisten pelien tilastoja.
 
 ## Käyttäjät
 

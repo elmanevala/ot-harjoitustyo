@@ -6,6 +6,7 @@ Harjoitustyö kursille ohjelmistotekniikka. Sovelluksella voi pelata ristinollaa
 
 * [Ensimmäinen release](https://github.com/elmanevala/ot-harjoitustyo/releases/tag/viikko5)
 * [Toinen release](https://github.com/elmanevala/ot-harjoitustyo/releases/tag/viikko6)
+* [Loppupalautus](https://github.com/elmanevala/ot-harjoitustyo/releases/tag/loppupalautus)
 
 ## Komentorivitoiminnot
 
