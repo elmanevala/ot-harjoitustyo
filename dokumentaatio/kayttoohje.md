@@ -1,6 +1,6 @@
 # Kayttöohje
 
-[Lataa tiedosto](https://github.com/elmanevala/ot-harjoitustyo/releases/tag/viikko6)
+[Lataa tiedosto](https://github.com/elmanevala/ot-harjoitustyo/releases/tag/loppupalautus)
 
 ## Konfigurointi
 
